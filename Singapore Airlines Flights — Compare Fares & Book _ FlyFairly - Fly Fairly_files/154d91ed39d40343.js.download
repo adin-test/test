@@ -1,0 +1,16 @@
+;!function(){try { var e="undefined"!=typeof globalThis?globalThis:"undefined"!=typeof global?global:"undefined"!=typeof window?window:"undefined"!=typeof self?self:{},n=(new e.Error).stack;n&&((e._debugIds|| (e._debugIds={}))[n]="36fd1749-fa25-bf39-011e-967490635275")}catch(e){}}();
+(globalThis.TURBOPACK||(globalThis.TURBOPACK=[])).push(["object"==typeof document?document.currentScript:void 0,327631,t=>{"use strict";var e=t.i(662537);function r(t,r,n){try{let o=r instanceof Error?r:Error(String(r)),i=o.message;o.message=`${t} | ${i}`,console.error(...[o,n?.extra?{extra:n.extra}:void 0].filter(t=>void 0!==t)),(0,e.captureException)(o,n?.extra?{extra:n.extra}:void 0)}catch(t){console.error("Error capturing client error:",t)}}t.s(["captureClientError",()=>r])},103870,t=>{"use strict";var e=t.i(843476),r=t.i(3303),n=t.i(271645),o=t.i(672464),i=t.i(107075),s=t.i(618566),a=t.i(327631),c=t.i(172715);function l(){let t=(0,o.useAtomValue)(i.cookieConsentStatusAtom),s=(0,n.useRef)(t.analytics);return(0,n.useEffect)(()=>{if(t.analytics!==i.CookieConsentStatus.NOT_SET&&window.clarity)try{t.analytics===i.CookieConsentStatus.ACCEPTED?window.clarity("consent"):t.analytics===i.CookieConsentStatus.REJECTED&&s.current===i.CookieConsentStatus.ACCEPTED&&window.clarity("consent",!1),t.analytics===i.CookieConsentStatus.REJECTED&&y()}catch(t){(0,a.captureClientError)("Microsoft Clarity consent management failed",t)}},[t]),(0,n.useEffect)(()=>()=>{s.current=t.analytics},[t]),(0,e.jsxs)(e.Fragment,{children:[(0,e.jsx)(r.default,{id:"microsoft-clarity-init",children:`
+        (function(c,l,a,r,i,t,y) {
+          c[a]=c[a]||function() {
+            (c[a].q=c[a].q||[]).push(arguments)
+          };
+          t=l.createElement(r);
+          t.async=1;
+          t.src="https://www.clarity.ms/tag/"+i;
+          y=l.getElementsByTagName(r)[0];
+          y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "nj1kxy8xm5");
+      `}),(0,e.jsx)(c.NoSsr,{children:(0,e.jsx)(u,{})})]})}function u(){let t=(0,s.useSearchParams)(),e=(0,s.usePathname)(),r=(0,o.useAtomValue)(i.cookieConsentStatusAtom);return(0,n.useEffect)(()=>{r.analytics===i.CookieConsentStatus.REJECTED&&y()},[t,e,r]),null}function y(){if(window.clarity)try{let t,e,r=(t="anonymous_session_id",(e=sessionStorage.getItem(t))||(e=`anon_session_${Date.now()}_${Math.random().toString(36).substr(2,9)}`,sessionStorage.setItem(t,e)),e);window.clarity("identify",r,r)}catch(t){(0,a.captureClientError)("Microsoft Clarity session tagging failed",t)}}t.s(["MicrosoftClarity",()=>l])},618998,t=>{t.n(t.i(103870))}]);
+
+//# debugId=36fd1749-fa25-bf39-011e-967490635275
+//# sourceMappingURL=b422d9a17e78ed21.js.map
