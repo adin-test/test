@@ -459,40 +459,58 @@
     margin-bottom: 0.5rem;
   }
 
-  /* Calculator */
-  .calc-wrap {
-    background: var(--homepage-surface-alt);
-    border: 2px solid var(--homepage-border);
-    border-radius: var(--homepage-card-radius);
-    padding: 1.5rem;
-    max-width: 560px;
-    margin-top: 2rem;
-  }
-  .calc-title { font-size: 13px; font-weight: 900; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 1rem; }
-  .calc-row { display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: flex-end; margin-bottom: 1rem; }
-  .calc-field { display: flex; flex-direction: column; gap: 4px; flex: 1; min-width: 120px; }
-  .calc-field label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--homepage-muted); }
-  .calc-field input, .calc-field select {
-    border: 2px solid var(--homepage-border);
-    border-radius: 8px;
-    padding: 8px 12px;
-    font-size: 14px;
-    font-family: inherit;
-    font-weight: 600;
-    color: var(--homepage-ink);
-    background: white;
-    outline: none;
-  }
-  .calc-result {
-    background: var(--palette-klarna-pink);
-    border-radius: 10px;
-    padding: 0.9rem 1.25rem;
-    font-size: 1.3rem;
+  /* Calculator — Option 2 */
+  .calc-wrap { margin-top: 2rem; background: var(--homepage-surface); border: 2px solid var(--homepage-border); border-radius: var(--homepage-card-radius); padding: 1.75rem 2rem; }
+  .calc-title { font-size: 10px; font-weight: 900; text-transform: uppercase; letter-spacing: 0.08em; color: var(--homepage-muted); margin-bottom: 0.5rem; }
+  .calc-input-row { display: flex; align-items: center; gap: 4px; margin-bottom: 1.5rem; }
+  .calc-sym { font-size: 36px; font-weight: 700; color: var(--homepage-muted); line-height: 1; }
+  .calc-price-input {
+    font-size: 48px;
     font-weight: 900;
+    font-family: var(--font-heading);
+    width: 240px;
+    background: transparent;
+    border: none;
+    border-bottom: 1.5px solid var(--palette-ui-line);
     color: var(--homepage-ink);
-    letter-spacing: -0.02em;
+    outline: none;
+    padding: 2px 4px;
+    letter-spacing: -0.03em;
   }
-  .calc-result-note { font-size: 11px; font-weight: 600; color: var(--homepage-muted); margin-top: 4px; }
+  .calc-price-input:focus { border-bottom-color: var(--palette-klarna-pink-dark); }
+  .calc-divider { height: 1px; background: var(--palette-ui-line); margin-bottom: 1.25rem; }
+  .calc-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    border: 1.5px solid var(--homepage-border);
+    border-radius: var(--homepage-card-radius);
+    overflow: hidden;
+  }
+  .calc-card {
+    padding: 1rem 1.1rem;
+    border-right: 1.5px solid var(--homepage-border);
+    border-bottom: 1.5px solid var(--homepage-border);
+    background: var(--homepage-surface);
+  }
+  .calc-card:nth-child(3n)   { border-right: none; }
+  .calc-card:nth-child(4),
+  .calc-card:nth-child(5),
+  .calc-card:nth-child(6)    { border-bottom: none; }
+  .calc-card-title { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--homepage-muted); margin-bottom: 6px; }
+  .calc-card-amount { font-size: 1.5rem; font-weight: 900; font-family: var(--font-heading); color: var(--homepage-ink); line-height: 1; letter-spacing: -0.02em; }
+  .calc-card-sub { font-size: 10px; color: var(--homepage-muted); margin-top: 3px; line-height: 1.4; }
+  .calc-card-tag { font-size: 9px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; color: var(--homepage-muted); margin-top: 5px; display: block; }
+  @media (max-width: 640px) {
+    .calc-cards-grid { grid-template-columns: repeat(2, 1fr); }
+    .calc-card:nth-child(3n)   { border-right: 1.5px solid var(--homepage-border); }
+    .calc-card:nth-child(2n)   { border-right: none; }
+    .calc-card:nth-child(4),
+    .calc-card:nth-child(5)    { border-bottom: 1.5px solid var(--homepage-border); }
+    .calc-card:nth-child(5),
+    .calc-card:nth-child(6)    { border-bottom: none; }
+    .calc-price-input { font-size: 36px; width: 180px; }
+  }
 
   /* ===========================
      HOW IT WORKS STEPS
@@ -567,9 +585,26 @@
   /* ===========================
      ROUTES GRID
   =========================== */
-  .routes-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 1rem; }
-  @media (min-width: 640px) { .routes-grid { grid-template-columns: repeat(3,1fr); } }
+  .routes-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 10px; }
+  @media (min-width: 640px)  { .routes-grid { grid-template-columns: repeat(3,1fr); } }
   @media (min-width: 1024px) { .routes-grid { grid-template-columns: repeat(4,1fr); } }
+
+  .route-card {
+    background: var(--homepage-surface);
+    border: 2px solid var(--homepage-border);
+    border-radius: var(--homepage-card-radius);
+    padding: 1rem 1.1rem;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    transition: box-shadow 0.18s ease, border-color 0.15s ease;
+  }
+  .route-card:hover { box-shadow: var(--homepage-shadow); border-color: var(--palette-klarna-pink-dark); }
+  .route-card-route { font-size: 11px; font-weight: 600; color: var(--homepage-muted); margin-bottom: 8px; }
+  .route-card-mid { padding-bottom: 8px; border-bottom: 1px solid var(--palette-ui-line); }
+  .route-card-split-amt { font-size: 1.4rem; font-weight: 900; font-family: var(--font-heading); color: var(--homepage-ink); letter-spacing: -0.02em; line-height: 1; }
+  .route-card-split-label { font-size: 11px; color: var(--homepage-muted); margin-top: 3px; }
+  .route-card-total { font-size: 11px; color: var(--homepage-muted); margin-top: 7px; opacity: 0.7; }
 
   /* ===========================
      COUNTRY TABLE
@@ -943,25 +978,49 @@
     <!-- Instalment Calculator -->
     <div class="calc-wrap">
       <p class="calc-title">Instalment Calculator</p>
-      <div class="calc-row">
-        <div class="calc-field">
-          <label for="calc-price">Flight price ($)</label>
-          <input type="number" id="calc-price" value="450" min="35" max="10000" placeholder="e.g. 450">
+      <div class="calc-input-row">
+        <span class="calc-sym">$</span>
+        <input class="calc-price-input" type="number" id="calc-price" value="450" min="0" placeholder="0" aria-label="Enter flight price in dollars">
+      </div>
+      <div class="calc-divider"></div>
+      <div class="calc-cards-grid">
+        <div class="calc-card">
+          <div class="calc-card-title">Pay in 4</div>
+          <div class="calc-card-amount" id="calc-p4">$112.50</div>
+          <div class="calc-card-sub">× 4 payments, every 2 weeks</div>
+          <span class="calc-card-tag">0% interest</span>
         </div>
-        <div class="calc-field">
-          <label for="calc-plan">Klarna plan</label>
-          <select id="calc-plan">
-            <option value="pay4">Pay in 4 (biweekly)</option>
-            <option value="pay30">Pay in 30 (full defer)</option>
-            <option value="month6">Pay Monthly · 6 months</option>
-            <option value="month12">Pay Monthly · 12 months</option>
-            <option value="month18">Pay Monthly · 18 months</option>
-            <option value="month24">Pay Monthly · 24 months</option>
-          </select>
+        <div class="calc-card">
+          <div class="calc-card-title">Pay in 30</div>
+          <div class="calc-card-amount" id="calc-p30">$450.00</div>
+          <div class="calc-card-sub">full amount, due in 30 days</div>
+          <span class="calc-card-tag">0% interest</span>
+        </div>
+        <div class="calc-card">
+          <div class="calc-card-title">Pay Monthly · 6 mo</div>
+          <div class="calc-card-amount" id="calc-m6">$75.00</div>
+          <div class="calc-card-sub">× 6 monthly payments</div>
+          <span class="calc-card-tag">from 0% APR</span>
+        </div>
+        <div class="calc-card">
+          <div class="calc-card-title">Pay Monthly · 12 mo</div>
+          <div class="calc-card-amount" id="calc-m12">$37.50</div>
+          <div class="calc-card-sub">× 12 monthly payments</div>
+          <span class="calc-card-tag">from 0% APR</span>
+        </div>
+        <div class="calc-card">
+          <div class="calc-card-title">Pay Monthly · 18 mo</div>
+          <div class="calc-card-amount" id="calc-m18">$25.00</div>
+          <div class="calc-card-sub">× 18 monthly payments</div>
+          <span class="calc-card-tag">from 0% APR</span>
+        </div>
+        <div class="calc-card">
+          <div class="calc-card-title">Pay Monthly · 24 mo</div>
+          <div class="calc-card-amount" id="calc-m24">$18.75</div>
+          <div class="calc-card-sub">× 24 monthly payments</div>
+          <span class="calc-card-tag">from 0% APR</span>
         </div>
       </div>
-      <div class="calc-result" id="calc-output">4 × $20.00 — 25% today ($20.00), then 3 payments every 2 weeks</div>
-      <p class="calc-result-note" id="calc-note">0% interest · Pay in 4 · Baskets $35–$1,000 · Late fees up to $7 may apply.</p>
     </div>
 
     <p style="font-size:11px;color:var(--homepage-muted);margin-top:1rem">Pay in 4 available on baskets $35–$1,000. Pay Monthly subject to APR 0.00%–35.99% and soft credit check. Plan availability depends on your billing country.</p>
@@ -969,10 +1028,10 @@
 </section>
 
 <!-- ===========================
-     SECTION 7 — COUNTRY AVAILABILITY GRID
+     SECTION 7 — COUNTRY AVAILABILITY GRID (SEO-safe: all content in DOM at load)
 =========================== -->
 <style>
-  /* Country Card Grid */
+  /* ---- Card grid ---- */
   .kc-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
@@ -988,167 +1047,92 @@
     align-items: center;
     gap: 8px;
     cursor: pointer;
-    transition: box-shadow 0.18s ease, background 0.15s ease, border-color 0.15s ease;
+    transition: box-shadow 0.18s ease, border-color 0.15s ease;
     user-select: none;
   }
-  .kc-card:hover {
-    box-shadow: var(--homepage-shadow);
-    background: var(--homepage-surface);
-    border-color: var(--palette-klarna-pink-dark);
+  .kc-card:hover  { box-shadow: var(--homepage-shadow); border-color: var(--palette-klarna-pink-dark); }
+  .kc-card.kc-active { border-color: var(--palette-klarna-ink); box-shadow: 0 0 0 3px var(--palette-klarna-pink); }
+  .kc-flag   { font-size: 34px; line-height: 1; }
+  .kc-name   { font-size: 13px; font-weight: 700; color: var(--homepage-ink); text-align: center; line-height: 1.3; }
+  .kc-curr   { font-size: 11px; font-weight: 600; color: var(--homepage-muted); font-family: var(--ds-font-jetbrains-mono); letter-spacing: 0.04em; }
+  .kc-badge-row { display: flex; flex-wrap: wrap; justify-content: center; gap: 4px; margin-top: 2px; }
+  .kc-badge  { font-size: 9px; font-weight: 800; letter-spacing: 0.04em; padding: 2px 7px; border-radius: 9999px; white-space: nowrap; border: 1.5px solid transparent; }
+  .kc-badge-pink  { background: var(--palette-klarna-pink); color: var(--palette-klarna-ink); }
+  .kc-badge-ghost { background: transparent; border-color: rgba(26,0,51,0.18); color: var(--homepage-muted); }
+
+  /* ---- Accordion detail — SEO KEY:
+     Content is ALWAYS in the DOM. Only height & opacity animate.
+     Googlebot reads it on first load, no JS needed.              ---- */
+  .kc-drawer-wrap {
+    /* sits outside normal flow so it spans full grid width */
+    grid-column: 1 / -1;
+    overflow: hidden;
+    max-height: 0;
+    opacity: 0;
+    transition: max-height 0.32s ease, opacity 0.22s ease;
   }
-  .kc-card.kc-active {
-    border-color: var(--palette-klarna-ink);
-    background: var(--homepage-surface);
-    box-shadow: 0 0 0 3px var(--palette-klarna-pink);
+  .kc-drawer-wrap.kc-open {
+    max-height: 400px;   /* large enough for any content */
+    opacity: 1;
   }
-  .kc-flag {
-    font-size: 34px;
-    line-height: 1;
-  }
-  .kc-name {
-    font-size: 13px;
-    font-weight: 700;
-    color: var(--homepage-ink);
-    text-align: center;
-    line-height: 1.3;
-  }
-  .kc-currency {
-    font-size: 11px;
-    font-weight: 600;
-    color: var(--homepage-muted);
-    font-family: var(--ds-font-jetbrains-mono);
-    letter-spacing: 0.04em;
-  }
-  .kc-badge-row {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 4px;
-    margin-top: 2px;
-  }
-  .kc-badge {
-    font-size: 9px;
-    font-weight: 800;
-    letter-spacing: 0.04em;
-    padding: 2px 7px;
-    border-radius: 9999px;
-    white-space: nowrap;
-    border: 1.5px solid transparent;
-  }
-  .kc-badge-pink {
-    background: var(--palette-klarna-pink);
-    color: var(--palette-klarna-ink);
-  }
-  .kc-badge-ghost {
-    background: transparent;
-    border-color: rgba(26,0,51,0.18);
-    color: var(--homepage-muted);
-  }
-  /* Detail panel */
-  .kc-detail-panel {
-    display: none;
-    margin-top: 1.25rem;
+  .kc-drawer {
+    margin-top: 4px;
     background: var(--homepage-surface);
     border: 2px solid var(--homepage-border);
     border-radius: var(--homepage-card-radius);
     overflow: hidden;
     position: relative;
-    animation: kc-fadein 0.18s ease;
   }
-  @keyframes kc-fadein { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: translateY(0); } }
-  .kc-detail-panel.kc-open { display: block; }
-  .kc-detail-head {
+  .kc-drawer-head {
     display: flex;
     align-items: center;
     gap: 1rem;
-    padding: 1.25rem 1.5rem;
+    padding: 1.1rem 1.5rem;
     background: var(--homepage-surface-alt);
     border-bottom: 2px solid var(--homepage-border);
   }
-  .kc-detail-flag-lg { font-size: 44px; line-height: 1; flex-shrink: 0; }
-  .kc-detail-country-name {
-    font-family: var(--font-heading);
-    font-size: 1.25rem;
-    font-weight: 800;
-    color: var(--homepage-ink);
-    letter-spacing: -0.02em;
-  }
-  .kc-detail-currency-label {
-    font-size: 12px;
-    font-weight: 700;
-    color: var(--homepage-muted);
-    font-family: var(--ds-font-jetbrains-mono);
-    letter-spacing: 0.05em;
-    margin-top: 2px;
-  }
-  .kc-detail-body { padding: 1.25rem 1.5rem; display: flex; flex-direction: column; gap: 1rem; }
-  .kc-detail-plans-label {
-    font-size: 10px;
-    font-weight: 900;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--homepage-muted);
-    margin-bottom: 0.4rem;
-  }
-  .kc-detail-plans-row { display: flex; flex-wrap: wrap; gap: 8px; }
-  .kc-plan-chip {
-    display: inline-flex;
-    align-items: center;
-    gap: 5px;
-    font-size: 12px;
-    font-weight: 700;
-    padding: 5px 14px;
-    border-radius: 9999px;
+  .kc-drawer-flag   { font-size: 40px; line-height: 1; flex-shrink: 0; }
+  .kc-drawer-cname  { font-family: var(--font-heading); font-size: 1.15rem; font-weight: 800; color: var(--homepage-ink); letter-spacing: -0.02em; }
+  .kc-drawer-clabel { font-size: 11px; font-weight: 700; color: var(--homepage-muted); font-family: var(--ds-font-jetbrains-mono); letter-spacing: 0.05em; margin-top: 2px; }
+  .kc-drawer-body   { padding: 1.1rem 1.5rem; display: flex; flex-direction: column; gap: 0.85rem; }
+  .kc-plans-label   { font-size: 10px; font-weight: 900; letter-spacing: 0.08em; text-transform: uppercase; color: var(--homepage-muted); margin-bottom: 0.4rem; }
+  .kc-plans-row     { display: flex; flex-wrap: wrap; gap: 8px; }
+  .kc-chip {
+    display: inline-flex; align-items: center; gap: 5px;
+    font-size: 12px; font-weight: 700;
+    padding: 5px 14px; border-radius: 9999px;
     border: 2px solid var(--homepage-border);
-    color: var(--homepage-ink);
-    background: white;
+    color: var(--homepage-ink); background: white;
   }
-  .kc-plan-chip-featured {
+  .kc-chip-feat {
     background: var(--palette-klarna-pink);
     border-color: var(--palette-klarna-pink-dark);
     color: var(--palette-klarna-ink);
   }
-  .kc-plan-chip-featured::before {
-    content: '★';
-    font-size: 10px;
-  }
-  .kc-detail-note {
-    font-size: 12px;
-    line-height: 1.65;
-    color: var(--homepage-muted);
+  .kc-chip-feat::before { content: '★'; font-size: 10px; }
+  .kc-note {
+    font-size: 12px; line-height: 1.65; color: var(--homepage-muted);
     padding: 0.75rem 1rem;
     background: var(--homepage-surface-alt);
     border-radius: 8px;
     border-left: 3px solid var(--palette-klarna-pink-dark);
   }
-  .kc-close-btn {
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    width: 28px;
-    height: 28px;
-    border-radius: 50%;
+  .kc-close {
+    position: absolute; top: 0.9rem; right: 1rem;
+    width: 26px; height: 26px; border-radius: 50%;
     border: 2px solid var(--homepage-border);
-    background: white;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 14px;
-    font-weight: 900;
-    color: var(--homepage-muted);
-    line-height: 1;
+    background: white; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 14px; font-weight: 900;
+    color: var(--homepage-muted); line-height: 1;
   }
-  .kc-close-btn:hover { background: var(--homepage-surface-pop); color: var(--homepage-ink); }
-  .kc-footer-note {
-    font-size: 11px;
-    color: var(--homepage-muted);
-    margin-top: 1rem;
-  }
+  .kc-close:hover { background: var(--homepage-surface-pop); color: var(--homepage-ink); }
+  .kc-footer-note { font-size: 11px; color: var(--homepage-muted); margin-top: 1rem; }
+
   @media (max-width: 480px) {
-    .kc-grid { grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); gap: 8px; }
-    .kc-flag { font-size: 28px; }
-    .kc-name { font-size: 12px; }
+    .kc-grid  { grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); gap: 8px; }
+    .kc-flag  { font-size: 28px; }
+    .kc-name  { font-size: 12px; }
   }
 </style>
 
@@ -1161,107 +1145,498 @@
       <p class="homepage-copy">Klarna is accepted at FlyFairly checkout when your billing address is in one of the countries below. Select a country to see which plans are available.</p>
     </div>
 
-    <div class="kc-grid" id="kcGrid"></div>
-    <div class="kc-detail-panel" id="kcDetail" role="region" aria-live="polite"></div>
-    <p class="kc-footer-note" id="kcFooter"></p>
+    <!-- =====================================================
+         COUNTRY GRID — all text in static HTML for crawlers
+    ====================================================== -->
+    <div class="kc-grid" id="kcGrid">
+
+      <!-- United States -->
+      <div class="kc-card" onclick="kcOpen('us')" tabindex="0" role="button" aria-expanded="false" aria-controls="kc-drawer-us" aria-label="View Klarna plans for United States">
+        <div class="kc-flag">🇺🇸</div>
+        <div class="kc-name">United States</div>
+        <div class="kc-curr">USD</div>
+        <div class="kc-badge-row">
+          <span class="kc-badge kc-badge-pink">Pay in 4</span>
+          <span class="kc-badge kc-badge-ghost">Pay in 30</span>
+          <span class="kc-badge kc-badge-ghost">+1 more</span>
+        </div>
+      </div>
+
+      <!-- United Kingdom -->
+      <div class="kc-card" onclick="kcOpen('gb')" tabindex="0" role="button" aria-expanded="false" aria-controls="kc-drawer-gb" aria-label="View Klarna plans for United Kingdom">
+        <div class="kc-flag">🇬🇧</div>
+        <div class="kc-name">United Kingdom</div>
+        <div class="kc-curr">GBP</div>
+        <div class="kc-badge-row">
+          <span class="kc-badge kc-badge-pink">Pay in 3</span>
+          <span class="kc-badge kc-badge-ghost">Pay in 30</span>
+          <span class="kc-badge kc-badge-ghost">+1 more</span>
+        </div>
+      </div>
+
+      <!-- Australia -->
+      <div class="kc-card" onclick="kcOpen('au')" tabindex="0" role="button" aria-expanded="false" aria-controls="kc-drawer-au" aria-label="View Klarna plans for Australia">
+        <div class="kc-flag">🇦🇺</div>
+        <div class="kc-name">Australia</div>
+        <div class="kc-curr">AUD</div>
+        <div class="kc-badge-row">
+          <span class="kc-badge kc-badge-pink">Pay in 4</span>
+          <span class="kc-badge kc-badge-ghost">Pay in 30</span>
+        </div>
+      </div>
+
+      <!-- Germany -->
+      <div class="kc-card" onclick="kcOpen('de')" tabindex="0" role="button" aria-expanded="false" aria-controls="kc-drawer-de" aria-label="View Klarna plans for Germany">
+        <div class="kc-flag">🇩🇪</div>
+        <div class="kc-name">Germany</div>
+        <div class="kc-curr">EUR</div>
+        <div class="kc-badge-row">
+          <span class="kc-badge kc-badge-pink">Pay in 4</span>
+          <span class="kc-badge kc-badge-ghost">Pay in 30</span>
+          <span class="kc-badge kc-badge-ghost">+1 more</span>
+        </div>
+      </div>
+
+      <!-- Sweden -->
+      <div class="kc-card" onclick="kcOpen('se')" tabindex="0" role="button" aria-expanded="false" aria-controls="kc-drawer-se" aria-label="View Klarna plans for Sweden">
+        <div class="kc-flag">🇸🇪</div>
+        <div class="kc-name">Sweden</div>
+        <div class="kc-curr">SEK</div>
+        <div class="kc-badge-row">
+          <span class="kc-badge kc-badge-pink">Pay in 30</span>
+          <span class="kc-badge kc-badge-ghost">Pay in 4</span>
+          <span class="kc-badge kc-badge-ghost">+1 more</span>
+        </div>
+      </div>
+
+      <!-- Netherlands -->
+      <div class="kc-card" onclick="kcOpen('nl')" tabindex="0" role="button" aria-expanded="false" aria-controls="kc-drawer-nl" aria-label="View Klarna plans for Netherlands">
+        <div class="kc-flag">🇳🇱</div>
+        <div class="kc-name">Netherlands</div>
+        <div class="kc-curr">EUR</div>
+        <div class="kc-badge-row">
+          <span class="kc-badge kc-badge-pink">Pay in 4</span>
+          <span class="kc-badge kc-badge-ghost">Pay in 30</span>
+        </div>
+      </div>
+
+      <!-- France -->
+      <div class="kc-card" onclick="kcOpen('fr')" tabindex="0" role="button" aria-expanded="false" aria-controls="kc-drawer-fr" aria-label="View Klarna plans for France">
+        <div class="kc-flag">🇫🇷</div>
+        <div class="kc-name">France</div>
+        <div class="kc-curr">EUR</div>
+        <div class="kc-badge-row">
+          <span class="kc-badge kc-badge-pink">Pay in 4</span>
+          <span class="kc-badge kc-badge-ghost">Pay in 30</span>
+        </div>
+      </div>
+
+      <!-- Spain -->
+      <div class="kc-card" onclick="kcOpen('es')" tabindex="0" role="button" aria-expanded="false" aria-controls="kc-drawer-es" aria-label="View Klarna plans for Spain">
+        <div class="kc-flag">🇪🇸</div>
+        <div class="kc-name">Spain</div>
+        <div class="kc-curr">EUR</div>
+        <div class="kc-badge-row">
+          <span class="kc-badge kc-badge-pink">Pay in 4</span>
+          <span class="kc-badge kc-badge-ghost">Pay in 30</span>
+        </div>
+      </div>
+
+      <!-- Norway -->
+      <div class="kc-card" onclick="kcOpen('no')" tabindex="0" role="button" aria-expanded="false" aria-controls="kc-drawer-no" aria-label="View Klarna plans for Norway">
+        <div class="kc-flag">🇳🇴</div>
+        <div class="kc-name">Norway</div>
+        <div class="kc-curr">NOK</div>
+        <div class="kc-badge-row">
+          <span class="kc-badge kc-badge-pink">Pay in 4</span>
+          <span class="kc-badge kc-badge-ghost">Pay Monthly</span>
+        </div>
+      </div>
+
+      <!-- Finland -->
+      <div class="kc-card" onclick="kcOpen('fi')" tabindex="0" role="button" aria-expanded="false" aria-controls="kc-drawer-fi" aria-label="View Klarna plans for Finland">
+        <div class="kc-flag">🇫🇮</div>
+        <div class="kc-name">Finland</div>
+        <div class="kc-curr">EUR</div>
+        <div class="kc-badge-row">
+          <span class="kc-badge kc-badge-pink">Pay in 4</span>
+          <span class="kc-badge kc-badge-ghost">Pay in 30</span>
+        </div>
+      </div>
+
+      <!-- Canada -->
+      <div class="kc-card" onclick="kcOpen('ca')" tabindex="0" role="button" aria-expanded="false" aria-controls="kc-drawer-ca" aria-label="View Klarna plans for Canada">
+        <div class="kc-flag">🇨🇦</div>
+        <div class="kc-name">Canada</div>
+        <div class="kc-curr">CAD</div>
+        <div class="kc-badge-row">
+          <span class="kc-badge kc-badge-pink">Pay in 4</span>
+        </div>
+      </div>
+
+      <!-- New Zealand -->
+      <div class="kc-card" onclick="kcOpen('nz')" tabindex="0" role="button" aria-expanded="false" aria-controls="kc-drawer-nz" aria-label="View Klarna plans for New Zealand">
+        <div class="kc-flag">🇳🇿</div>
+        <div class="kc-name">New Zealand</div>
+        <div class="kc-curr">NZD</div>
+        <div class="kc-badge-row">
+          <span class="kc-badge kc-badge-pink">Pay in 4</span>
+        </div>
+      </div>
+
+      <!-- =====================================================
+           DETAIL DRAWERS — full content always in DOM for SEO.
+           Hidden via max-height:0 / opacity:0 (NOT display:none).
+           Googlebot indexes this content on first load.
+      ====================================================== -->
+
+      <div class="kc-drawer-wrap" id="kc-drawer-us" role="region" aria-label="Klarna plans for United States">
+        <div class="kc-drawer">
+          <button class="kc-close" onclick="kcClose('us')" aria-label="Close">&times;</button>
+          <div class="kc-drawer-head">
+            <div class="kc-drawer-flag">🇺🇸</div>
+            <div>
+              <div class="kc-drawer-cname">United States</div>
+              <div class="kc-drawer-clabel">USD · Klarna US</div>
+            </div>
+          </div>
+          <div class="kc-drawer-body">
+            <div>
+              <p class="kc-plans-label">Available Klarna plans</p>
+              <div class="kc-plans-row">
+                <span class="kc-chip kc-chip-feat">Pay in 4</span>
+                <span class="kc-chip">Pay in 30</span>
+                <span class="kc-chip">Pay Monthly</span>
+              </div>
+            </div>
+            <div class="kc-note">Late fees up to $7 may apply. Monthly financing issued by WebBank, NMLS #1353190.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="kc-drawer-wrap" id="kc-drawer-gb" role="region" aria-label="Klarna plans for United Kingdom">
+        <div class="kc-drawer">
+          <button class="kc-close" onclick="kcClose('gb')" aria-label="Close">&times;</button>
+          <div class="kc-drawer-head">
+            <div class="kc-drawer-flag">🇬🇧</div>
+            <div>
+              <div class="kc-drawer-cname">United Kingdom</div>
+              <div class="kc-drawer-clabel">GBP · Klarna UK</div>
+            </div>
+          </div>
+          <div class="kc-drawer-body">
+            <div>
+              <p class="kc-plans-label">Available Klarna plans</p>
+              <div class="kc-plans-row">
+                <span class="kc-chip kc-chip-feat">Pay in 3</span>
+                <span class="kc-chip">Pay in 30</span>
+                <span class="kc-chip">Pay Monthly</span>
+              </div>
+            </div>
+            <div class="kc-note">Pay in 3 is an unregulated credit agreement. Borrowing more than you can afford or paying late may negatively impact your financial status.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="kc-drawer-wrap" id="kc-drawer-au" role="region" aria-label="Klarna plans for Australia">
+        <div class="kc-drawer">
+          <button class="kc-close" onclick="kcClose('au')" aria-label="Close">&times;</button>
+          <div class="kc-drawer-head">
+            <div class="kc-drawer-flag">🇦🇺</div>
+            <div>
+              <div class="kc-drawer-cname">Australia</div>
+              <div class="kc-drawer-clabel">AUD · Klarna Australia Pty Ltd</div>
+            </div>
+          </div>
+          <div class="kc-drawer-body">
+            <div>
+              <p class="kc-plans-label">Available Klarna plans</p>
+              <div class="kc-plans-row">
+                <span class="kc-chip kc-chip-feat">Pay in 4</span>
+                <span class="kc-chip">Pay in 30</span>
+              </div>
+            </div>
+            <div class="kc-note">Credit criteria apply. ASIC disclosure: consider if the product is right for you.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="kc-drawer-wrap" id="kc-drawer-de" role="region" aria-label="Klarna plans for Germany">
+        <div class="kc-drawer">
+          <button class="kc-close" onclick="kcClose('de')" aria-label="Close">&times;</button>
+          <div class="kc-drawer-head">
+            <div class="kc-drawer-flag">🇩🇪</div>
+            <div>
+              <div class="kc-drawer-cname">Germany</div>
+              <div class="kc-drawer-clabel">EUR · Klarna Bank AB</div>
+            </div>
+          </div>
+          <div class="kc-drawer-body">
+            <div>
+              <p class="kc-plans-label">Available Klarna plans</p>
+              <div class="kc-plans-row">
+                <span class="kc-chip kc-chip-feat">Pay in 4</span>
+                <span class="kc-chip">Pay in 30</span>
+                <span class="kc-chip">Pay Monthly</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="kc-drawer-wrap" id="kc-drawer-se" role="region" aria-label="Klarna plans for Sweden">
+        <div class="kc-drawer">
+          <button class="kc-close" onclick="kcClose('se')" aria-label="Close">&times;</button>
+          <div class="kc-drawer-head">
+            <div class="kc-drawer-flag">🇸🇪</div>
+            <div>
+              <div class="kc-drawer-cname">Sweden</div>
+              <div class="kc-drawer-clabel">SEK · Klarna's home market</div>
+            </div>
+          </div>
+          <div class="kc-drawer-body">
+            <div>
+              <p class="kc-plans-label">Available Klarna plans</p>
+              <div class="kc-plans-row">
+                <span class="kc-chip kc-chip-feat">Pay in 30</span>
+                <span class="kc-chip">Pay in 4</span>
+                <span class="kc-chip">Pay Monthly</span>
+              </div>
+            </div>
+            <div class="kc-note">Klarna's home market. Widest plan availability of any country.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="kc-drawer-wrap" id="kc-drawer-nl" role="region" aria-label="Klarna plans for Netherlands">
+        <div class="kc-drawer">
+          <button class="kc-close" onclick="kcClose('nl')" aria-label="Close">&times;</button>
+          <div class="kc-drawer-head">
+            <div class="kc-drawer-flag">🇳🇱</div>
+            <div>
+              <div class="kc-drawer-cname">Netherlands</div>
+              <div class="kc-drawer-clabel">EUR · Klarna Bank AB</div>
+            </div>
+          </div>
+          <div class="kc-drawer-body">
+            <div>
+              <p class="kc-plans-label">Available Klarna plans</p>
+              <div class="kc-plans-row">
+                <span class="kc-chip kc-chip-feat">Pay in 4</span>
+                <span class="kc-chip">Pay in 30</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="kc-drawer-wrap" id="kc-drawer-fr" role="region" aria-label="Klarna plans for France">
+        <div class="kc-drawer">
+          <button class="kc-close" onclick="kcClose('fr')" aria-label="Close">&times;</button>
+          <div class="kc-drawer-head">
+            <div class="kc-drawer-flag">🇫🇷</div>
+            <div>
+              <div class="kc-drawer-cname">France</div>
+              <div class="kc-drawer-clabel">EUR · Klarna Bank AB</div>
+            </div>
+          </div>
+          <div class="kc-drawer-body">
+            <div>
+              <p class="kc-plans-label">Available Klarna plans</p>
+              <div class="kc-plans-row">
+                <span class="kc-chip kc-chip-feat">Pay in 4</span>
+                <span class="kc-chip">Pay in 30</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="kc-drawer-wrap" id="kc-drawer-es" role="region" aria-label="Klarna plans for Spain">
+        <div class="kc-drawer">
+          <button class="kc-close" onclick="kcClose('es')" aria-label="Close">&times;</button>
+          <div class="kc-drawer-head">
+            <div class="kc-drawer-flag">🇪🇸</div>
+            <div>
+              <div class="kc-drawer-cname">Spain</div>
+              <div class="kc-drawer-clabel">EUR · Klarna Bank AB</div>
+            </div>
+          </div>
+          <div class="kc-drawer-body">
+            <div>
+              <p class="kc-plans-label">Available Klarna plans</p>
+              <div class="kc-plans-row">
+                <span class="kc-chip kc-chip-feat">Pay in 4</span>
+                <span class="kc-chip">Pay in 30</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="kc-drawer-wrap" id="kc-drawer-no" role="region" aria-label="Klarna plans for Norway">
+        <div class="kc-drawer">
+          <button class="kc-close" onclick="kcClose('no')" aria-label="Close">&times;</button>
+          <div class="kc-drawer-head">
+            <div class="kc-drawer-flag">🇳🇴</div>
+            <div>
+              <div class="kc-drawer-cname">Norway</div>
+              <div class="kc-drawer-clabel">NOK · Klarna Bank AB</div>
+            </div>
+          </div>
+          <div class="kc-drawer-body">
+            <div>
+              <p class="kc-plans-label">Available Klarna plans</p>
+              <div class="kc-plans-row">
+                <span class="kc-chip kc-chip-feat">Pay in 4</span>
+                <span class="kc-chip">Pay Monthly</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="kc-drawer-wrap" id="kc-drawer-fi" role="region" aria-label="Klarna plans for Finland">
+        <div class="kc-drawer">
+          <button class="kc-close" onclick="kcClose('fi')" aria-label="Close">&times;</button>
+          <div class="kc-drawer-head">
+            <div class="kc-drawer-flag">🇫🇮</div>
+            <div>
+              <div class="kc-drawer-cname">Finland</div>
+              <div class="kc-drawer-clabel">EUR · Klarna Bank AB</div>
+            </div>
+          </div>
+          <div class="kc-drawer-body">
+            <div>
+              <p class="kc-plans-label">Available Klarna plans</p>
+              <div class="kc-plans-row">
+                <span class="kc-chip kc-chip-feat">Pay in 4</span>
+                <span class="kc-chip">Pay in 30</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="kc-drawer-wrap" id="kc-drawer-ca" role="region" aria-label="Klarna plans for Canada">
+        <div class="kc-drawer">
+          <button class="kc-close" onclick="kcClose('ca')" aria-label="Close">&times;</button>
+          <div class="kc-drawer-head">
+            <div class="kc-drawer-flag">🇨🇦</div>
+            <div>
+              <div class="kc-drawer-cname">Canada</div>
+              <div class="kc-drawer-clabel">CAD · Klarna Canada</div>
+            </div>
+          </div>
+          <div class="kc-drawer-body">
+            <div>
+              <p class="kc-plans-label">Available Klarna plans</p>
+              <div class="kc-plans-row">
+                <span class="kc-chip kc-chip-feat">Pay in 4</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="kc-drawer-wrap" id="kc-drawer-nz" role="region" aria-label="Klarna plans for New Zealand">
+        <div class="kc-drawer">
+          <button class="kc-close" onclick="kcClose('nz')" aria-label="Close">&times;</button>
+          <div class="kc-drawer-head">
+            <div class="kc-drawer-flag">🇳🇿</div>
+            <div>
+              <div class="kc-drawer-cname">New Zealand</div>
+              <div class="kc-drawer-clabel">NZD · Klarna NZ</div>
+            </div>
+          </div>
+          <div class="kc-drawer-body">
+            <div>
+              <p class="kc-plans-label">Available Klarna plans</p>
+              <div class="kc-plans-row">
+                <span class="kc-chip kc-chip-feat">Pay in 4</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /kc-grid -->
+
+    <p class="kc-footer-note">12 countries supported. Plan availability depends on your billing address country.</p>
 
   </div>
 </section>
 
 <script>
 (function() {
-  var kcCountries = [
-    { flag: '🇺🇸', name: 'United States',  currency: 'USD', plans: ['Pay in 4', 'Pay in 30', 'Pay Monthly'], featured: 'Pay in 4',  note: 'Late fees up to $7 may apply. Monthly financing issued by WebBank, NMLS #1353190.' },
-    { flag: '🇬🇧', name: 'United Kingdom', currency: 'GBP', plans: ['Pay in 3', 'Pay in 30', 'Pay Monthly'], featured: 'Pay in 3',  note: 'Pay in 3 is an unregulated credit agreement. Borrowing more than you can afford or paying late may negatively impact your financial status.' },
-    { flag: '🇦🇺', name: 'Australia',      currency: 'AUD', plans: ['Pay in 4', 'Pay in 30'],                featured: 'Pay in 4',  note: 'Klarna Australia Pty Ltd. Credit criteria apply. ASIC disclosure: consider if the product is right for you.' },
-    { flag: '🇩🇪', name: 'Germany',        currency: 'EUR', plans: ['Pay in 4', 'Pay in 30', 'Pay Monthly'], featured: 'Pay in 4',  note: null },
-    { flag: '🇸🇪', name: 'Sweden',         currency: 'SEK', plans: ['Pay in 4', 'Pay in 30', 'Pay Monthly'], featured: 'Pay in 30', note: "Klarna's home market. Widest plan availability." },
-    { flag: '🇳🇱', name: 'Netherlands',    currency: 'EUR', plans: ['Pay in 4', 'Pay in 30'],                featured: 'Pay in 4',  note: null },
-    { flag: '🇫🇷', name: 'France',         currency: 'EUR', plans: ['Pay in 4', 'Pay in 30'],                featured: 'Pay in 4',  note: null },
-    { flag: '🇪🇸', name: 'Spain',          currency: 'EUR', plans: ['Pay in 4', 'Pay in 30'],                featured: 'Pay in 4',  note: null },
-    { flag: '🇳🇴', name: 'Norway',         currency: 'NOK', plans: ['Pay in 4', 'Pay Monthly'],              featured: 'Pay in 4',  note: null },
-    { flag: '🇫🇮', name: 'Finland',        currency: 'EUR', plans: ['Pay in 4', 'Pay in 30'],                featured: 'Pay in 4',  note: null },
-    { flag: '🇨🇦', name: 'Canada',         currency: 'CAD', plans: ['Pay in 4'],                             featured: 'Pay in 4',  note: null },
-    { flag: '🇳🇿', name: 'New Zealand',    currency: 'NZD', plans: ['Pay in 4'],                             featured: 'Pay in 4',  note: null }
-  ];
+  var kcActive = null;
 
-  var grid   = document.getElementById('kcGrid');
-  var detail = document.getElementById('kcDetail');
-  var footer = document.getElementById('kcFooter');
-  var activeIdx = null;
+  window.kcOpen = function(code) {
+    var cards   = document.querySelectorAll('#kcGrid .kc-card');
+    var drawers = document.querySelectorAll('.kc-drawer-wrap');
 
-  footer.textContent = kcCountries.length + ' countries supported. Plan availability depends on your billing address country.';
+    /* find index of clicked card */
+    var cardIdx = -1;
+    cards.forEach(function(c, i) {
+      if (c.getAttribute('aria-controls') === 'kc-drawer-' + code) cardIdx = i;
+    });
 
-  kcCountries.forEach(function(c, i) {
-    var card = document.createElement('div');
-    card.className = 'kc-card';
-    card.setAttribute('tabindex', '0');
-    card.setAttribute('role', 'button');
-    card.setAttribute('aria-label', 'View Klarna plans for ' + c.name);
-
-    var visiblePlans = c.plans.slice(0, 2);
-    var extra = c.plans.length > 2 ? c.plans.length - 2 : 0;
-    var badgesHtml = visiblePlans.map(function(p) {
-      return '<span class="kc-badge ' + (p === c.featured ? 'kc-badge-pink' : 'kc-badge-ghost') + '">' + p + '</span>';
-    }).join('');
-    if (extra > 0) badgesHtml += '<span class="kc-badge kc-badge-ghost">+' + extra + ' more</span>';
-
-    card.innerHTML =
-      '<div class="kc-flag">' + c.flag + '</div>' +
-      '<div class="kc-name">' + c.name + '</div>' +
-      '<div class="kc-currency">' + c.currency + '</div>' +
-      '<div class="kc-badge-row">' + badgesHtml + '</div>';
-
-    card.addEventListener('click', function() { kcToggle(i); });
-    card.addEventListener('keydown', function(e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); kcToggle(i); } });
-    grid.appendChild(card);
-  });
-
-  function kcToggle(i) {
-    var cards = grid.querySelectorAll('.kc-card');
-    if (activeIdx === i) {
-      activeIdx = null;
-      detail.classList.remove('kc-open');
-      detail.innerHTML = '';
-      cards.forEach(function(c) { c.classList.remove('kc-active'); });
+    /* toggle off if same card clicked again */
+    if (kcActive === code) {
+      kcClose(code);
       return;
     }
-    activeIdx = i;
-    cards.forEach(function(c, idx) { c.classList.toggle('kc-active', idx === i); });
-    var c = kcCountries[i];
 
-    var plansHtml = c.plans.map(function(p) {
-      return '<span class="kc-plan-chip' + (p === c.featured ? ' kc-plan-chip-featured' : '') + '">' + p + '</span>';
-    }).join('');
+    /* close previous */
+    if (kcActive) {
+      document.getElementById('kc-drawer-' + kcActive).classList.remove('kc-open');
+      cards.forEach(function(c) {
+        if (c.getAttribute('aria-controls') === 'kc-drawer-' + kcActive) {
+          c.classList.remove('kc-active');
+          c.setAttribute('aria-expanded', 'false');
+        }
+      });
+    }
 
-    var noteHtml = c.note
-      ? '<div><p class="kc-detail-plans-label">Disclosure</p><div class="kc-detail-note">' + c.note + '</div></div>'
-      : '';
+    kcActive = code;
 
-    detail.innerHTML =
-      '<button class="kc-close-btn" onclick="(function(){' +
-        'document.getElementById(\'kcDetail\').classList.remove(\'kc-open\');' +
-        'document.getElementById(\'kcDetail\').innerHTML=\'\';' +
-        'document.querySelectorAll(\'.kc-card\').forEach(function(c){c.classList.remove(\'kc-active\');});' +
-      '})()" aria-label="Close">&times;</button>' +
-      '<div class="kc-detail-head">' +
-        '<div class="kc-detail-flag-lg">' + c.flag + '</div>' +
-        '<div>' +
-          '<div class="kc-detail-country-name">' + c.name + '</div>' +
-          '<div class="kc-detail-currency-label">' + c.currency + '</div>' +
-        '</div>' +
-      '</div>' +
-      '<div class="kc-detail-body">' +
-        '<div>' +
-          '<p class="kc-detail-plans-label">Available Klarna plans</p>' +
-          '<div class="kc-detail-plans-row">' + plansHtml + '</div>' +
-        '</div>' +
-        noteHtml +
-      '</div>';
+    /* activate card */
+    if (cardIdx > -1) {
+      cards[cardIdx].classList.add('kc-active');
+      cards[cardIdx].setAttribute('aria-expanded', 'true');
+    }
 
-    detail.classList.add('kc-open');
-    setTimeout(function() { detail.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); }, 60);
-  }
+    /* open drawer — must be inside grid (after last card in its row) */
+    var drawer = document.getElementById('kc-drawer-' + code);
+    drawer.classList.add('kc-open');
+
+    /* smooth scroll drawer into view */
+    setTimeout(function() {
+      drawer.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }, 60);
+  };
+
+  window.kcClose = function(code) {
+    var cards = document.querySelectorAll('#kcGrid .kc-card');
+    document.getElementById('kc-drawer-' + code).classList.remove('kc-open');
+    cards.forEach(function(c) {
+      if (c.getAttribute('aria-controls') === 'kc-drawer-' + code) {
+        c.classList.remove('kc-active');
+        c.setAttribute('aria-expanded', 'false');
+      }
+    });
+    if (kcActive === code) kcActive = null;
+  };
+
+  /* keyboard support */
+  document.querySelectorAll('#kcGrid .kc-card').forEach(function(card) {
+    card.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        card.click();
+      }
+    });
+  });
 })();
 </script>
 
@@ -1440,45 +1815,69 @@
       <p class="homepage-copy">The routes travellers book most often using Klarna on FlyFairly. Split any fare into interest-free payments at checkout.</p>
     </div>
     <div class="routes-grid">
-      <a href="file:///C:/klarna-flights-london" class="homepage-card p-4" style="text-decoration:none">
-        <p style="font-size:11px;color:var(--homepage-muted)">New York → London</p>
-        <p style="font-weight:700;font-size:1.1rem;margin:4px 0">from $380</p>
-        <p style="font-size:11px;color:var(--homepage-muted)">$126.67 × 3 with Klarna</p>
+      <a href="https://flyfairly.com/klarna-flights-london" class="route-card">
+        <div class="route-card-route">New York → London</div>
+        <div class="route-card-mid">
+          <div class="route-card-split-amt">$95.00</div>
+          <div class="route-card-split-label">× 4 payments with Klarna</div>
+        </div>
+        <div class="route-card-total">Full fare from $380</div>
       </a>
-      <a href="file:///C:/klarna-flights-bali" class="homepage-card p-4" style="text-decoration:none">
-        <p style="font-size:11px;color:var(--homepage-muted)">Sydney → Bali</p>
-        <p style="font-weight:700;font-size:1.1rem;margin:4px 0">from A$290</p>
-        <p style="font-size:11px;color:var(--homepage-muted)">A$96.67 × 3 with Klarna</p>
+      <a href="https://flyfairly.com/klarna-flights-bali" class="route-card">
+        <div class="route-card-route">Sydney → Bali</div>
+        <div class="route-card-mid">
+          <div class="route-card-split-amt">A$72.50</div>
+          <div class="route-card-split-label">× 4 payments with Klarna</div>
+        </div>
+        <div class="route-card-total">Full fare from A$290</div>
       </a>
-      <a href="file:///C:/klarna-flights-tokyo" class="homepage-card p-4" style="text-decoration:none">
-        <p style="font-size:11px;color:var(--homepage-muted)">Kuala Lumpur → Tokyo</p>
-        <p style="font-weight:700;font-size:1.1rem;margin:4px 0">from $220</p>
-        <p style="font-size:11px;color:var(--homepage-muted)">$73.33 × 3 with Klarna</p>
+      <a href="https://flyfairly.com/klarna-flights-tokyo" class="route-card">
+        <div class="route-card-route">Kuala Lumpur → Tokyo</div>
+        <div class="route-card-mid">
+          <div class="route-card-split-amt">$55.00</div>
+          <div class="route-card-split-label">× 4 payments with Klarna</div>
+        </div>
+        <div class="route-card-total">Full fare from $220</div>
       </a>
-      <a href="file:///C:/klarna-flights-dubai" class="homepage-card p-4" style="text-decoration:none">
-        <p style="font-size:11px;color:var(--homepage-muted)">London → Dubai</p>
-        <p style="font-weight:700;font-size:1.1rem;margin:4px 0">from £180</p>
-        <p style="font-size:11px;color:var(--homepage-muted)">£60 × 3 with Klarna</p>
+      <a href="https://flyfairly.com/klarna-flights-dubai" class="route-card">
+        <div class="route-card-route">London → Dubai</div>
+        <div class="route-card-mid">
+          <div class="route-card-split-amt">£45.00</div>
+          <div class="route-card-split-label">× 4 payments with Klarna</div>
+        </div>
+        <div class="route-card-total">Full fare from £180</div>
       </a>
-      <a href="file:///C:/klarna-flights-new-york" class="homepage-card p-4" style="text-decoration:none">
-        <p style="font-size:11px;color:var(--homepage-muted)">Los Angeles → New York</p>
-        <p style="font-weight:700;font-size:1.1rem;margin:4px 0">from $95</p>
-        <p style="font-size:11px;color:var(--homepage-muted)">$31.67 × 3 with Klarna</p>
+      <a href="https://flyfairly.com/klarna-flights-new-york" class="route-card">
+        <div class="route-card-route">Los Angeles → New York</div>
+        <div class="route-card-mid">
+          <div class="route-card-split-amt">$23.75</div>
+          <div class="route-card-split-label">× 4 payments with Klarna</div>
+        </div>
+        <div class="route-card-total">Full fare from $95</div>
       </a>
-      <a href="file:///C:/klarna-flights-singapore" class="homepage-card p-4" style="text-decoration:none">
-        <p style="font-size:11px;color:var(--homepage-muted)">Singapore → London</p>
-        <p style="font-weight:700;font-size:1.1rem;margin:4px 0">from $760</p>
-        <p style="font-size:11px;color:var(--homepage-muted)">$63/month × 12 with Klarna</p>
+      <a href="https://flyfairly.com/klarna-flights-singapore" class="route-card">
+        <div class="route-card-route">Singapore → London</div>
+        <div class="route-card-mid">
+          <div class="route-card-split-amt">$63.33</div>
+          <div class="route-card-split-label">× 12 months with Klarna</div>
+        </div>
+        <div class="route-card-total">Full fare from $760</div>
       </a>
-      <a href="file:///C:/klarna-flights-sydney" class="homepage-card p-4" style="text-decoration:none">
-        <p style="font-size:11px;color:var(--homepage-muted)">Melbourne → Singapore</p>
-        <p style="font-weight:700;font-size:1.1rem;margin:4px 0">from A$480</p>
-        <p style="font-size:11px;color:var(--homepage-muted)">A$160 × 3 with Klarna</p>
+      <a href="https://flyfairly.com/klarna-flights-sydney" class="route-card">
+        <div class="route-card-route">Melbourne → Singapore</div>
+        <div class="route-card-mid">
+          <div class="route-card-split-amt">A$120.00</div>
+          <div class="route-card-split-label">× 4 payments with Klarna</div>
+        </div>
+        <div class="route-card-total">Full fare from A$480</div>
       </a>
-      <a href="file:///C:/klarna-flights-amsterdam" class="homepage-card p-4" style="text-decoration:none">
-        <p style="font-size:11px;color:var(--homepage-muted)">Berlin → Amsterdam</p>
-        <p style="font-weight:700;font-size:1.1rem;margin:4px 0">from €89</p>
-        <p style="font-size:11px;color:var(--homepage-muted)">€29.67 × 3 with Klarna</p>
+      <a href="https://flyfairly.com/klarna-flights-amsterdam" class="route-card">
+        <div class="route-card-route">Berlin → Amsterdam</div>
+        <div class="route-card-mid">
+          <div class="route-card-split-amt">€22.25</div>
+          <div class="route-card-split-label">× 4 payments with Klarna</div>
+        </div>
+        <div class="route-card-total">Full fare from €89</div>
       </a>
     </div>
   </div>
@@ -1783,43 +2182,19 @@
   }
 
   // Instalment Calculator
-  const priceInput = document.getElementById('calc-price');
-  const planSelect = document.getElementById('calc-plan');
-  const output = document.getElementById('calc-output');
-  const note = document.getElementById('calc-note');
-
-  function calcUpdate() {
-    const price = parseFloat(priceInput.value) || 0;
-    const plan = planSelect.value;
-    if (plan === 'pay4') {
-      const inst = (price / 4).toFixed(2);
-      output.textContent = `4 × $${inst} — 25% today ($${inst}), then 3 payments every 2 weeks`;
-      note.textContent = '0% interest · Pay in 4 · Baskets $35–$1,000 · Late fees up to $7 may apply.';
-    } else if (plan === 'pay30') {
-      output.textContent = `$${price.toFixed(2)} due in 30 days — pay nothing today`;
-      note.textContent = '0% interest · Pay in 30 · Full balance deferred, interest-free.';
-    } else if (plan === 'month6') {
-      const inst = (price / 6).toFixed(2);
-      output.textContent = `6 × $${inst}/month`;
-      note.textContent = 'APR 0.00%–35.99% · Financing / Pay Monthly · Soft credit check required.';
-    } else if (plan === 'month12') {
-      const inst = (price / 12).toFixed(2);
-      output.textContent = `12 × $${inst}/month`;
-      note.textContent = 'APR 0.00%–35.99% · Financing / Pay Monthly · Soft credit check required.';
-    } else if (plan === 'month18') {
-      const inst = (price / 18).toFixed(2);
-      output.textContent = `18 × $${inst}/month`;
-      note.textContent = 'APR 0.00%–35.99% · Financing / Pay Monthly · Soft credit check required.';
-    } else if (plan === 'month24') {
-      const inst = (price / 24).toFixed(2);
-      output.textContent = `24 × $${inst}/month`;
-      note.textContent = 'APR 0.00%–35.99% · Financing / Pay Monthly · Soft credit check required.';
+  (function() {
+    var inp = document.getElementById('calc-price');
+    function calcUpdate() {
+      var v = parseFloat(inp.value) || 0;
+      document.getElementById('calc-p4').textContent  = '$' + (v / 4).toFixed(2);
+      document.getElementById('calc-p30').textContent = '$' + v.toFixed(2);
+      document.getElementById('calc-m6').textContent  = '$' + (v / 6).toFixed(2);
+      document.getElementById('calc-m12').textContent = '$' + (v / 12).toFixed(2);
+      document.getElementById('calc-m18').textContent = '$' + (v / 18).toFixed(2);
+      document.getElementById('calc-m24').textContent = '$' + (v / 24).toFixed(2);
     }
-  }
-
-  priceInput.addEventListener('input', calcUpdate);
-  planSelect.addEventListener('change', calcUpdate);
-  calcUpdate();
+    inp.addEventListener('input', calcUpdate);
+  })();
 </script>
 
 
