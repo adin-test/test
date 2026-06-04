@@ -677,37 +677,37 @@
   <div class="homepage-container">
     <div class="hero-headings">
       <h1 class="homepage-heading-xl">Book flight tickets with <span class="klarna-wordmark-hero">Klarna</span> — search 600+ airlines, pay in instalments.</h1>
-      <h2 style="margin-top:0.75rem;font-size:1.1rem;font-weight:400;color:rgba(0,0,0,0.7)">Pay over time for flights with Klarna</h2>
-      <div class="klarna-plan-strip">
-        <span class="klarna-plan-pill">Pay in 4</span>
-        <span class="klarna-plan-pill">Pay in 30</span>
-        <span class="klarna-plan-pill">Pay Monthly</span>
-      </div>
-      <p class="klarna-plan-pill-note">Choose your plan at checkout.</p>
-    </div>
-
+      <h2 style="margin-top:0.75rem;margin-bottom:0.75rem;font-size:1.1rem;font-weight:400;color:rgba(0,0,0,0.7)">Pay over time for flights with Klarna</h2>
     <!-- Flight search widget -->
-    <div class="search-widget" role="search" aria-label="Flight search">
-      <div class="search-field">
-        <span class="search-field-label">From</span>
-        <span class="search-field-value">Any city</span>
+      <div class="search-widget" role="search" aria-label="Flight search">
+        <div class="search-field">
+          <span class="search-field-label">From</span>
+          <span class="search-field-value">Any city</span>
+        </div>
+        <div class="search-divider"></div>
+        <div class="search-field">
+          <span class="search-field-label">To</span>
+          <span class="search-field-value">Destination</span>
+        </div>
+        <div class="search-divider"></div>
+        <div class="search-field">
+          <span class="search-field-label">Dates</span>
+          <span class="search-field-value">Any dates</span>
+        </div>
+        <div class="search-divider"></div>
+        <div class="search-field">
+          <span class="search-field-label">Passengers</span>
+          <span class="search-field-value">1 adult</span>
+        </div>
+        <button class="search-btn" aria-label="Search flights">Search Flights</button>
       </div>
-      <div class="search-divider"></div>
-      <div class="search-field">
-        <span class="search-field-label">To</span>
-        <span class="search-field-value">Destination</span>
-      </div>
-      <div class="search-divider"></div>
-      <div class="search-field">
-        <span class="search-field-label">Dates</span>
-        <span class="search-field-value">Any dates</span>
-      </div>
-      <div class="search-divider"></div>
-      <div class="search-field">
-        <span class="search-field-label">Passengers</span>
-        <span class="search-field-value">1 adult</span>
-      </div>
-      <button class="search-btn" aria-label="Search flights">Search Flights</button>
+      <!-- Flight search widget -->
+        <div class="klarna-plan-strip">
+          <span class="klarna-plan-pill">Pay in 4</span>
+          <span class="klarna-plan-pill">Pay in 30</span>
+          <span class="klarna-plan-pill">Pay Monthly</span>
+        </div>
+      <p class="klarna-plan-pill-note">Choose your plan at checkout.</p>
     </div>
   </div>
 </section>
@@ -969,105 +969,301 @@
 </section>
 
 <!-- ===========================
-     SECTION 7 — COUNTRY AVAILABILITY TABLE
+     SECTION 7 — COUNTRY AVAILABILITY GRID
 =========================== -->
+<style>
+  /* Country Card Grid */
+  .kc-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+    gap: 12px;
+  }
+  .kc-card {
+    background: var(--homepage-surface);
+    border: 2px solid var(--homepage-border);
+    border-radius: var(--homepage-card-radius);
+    padding: 16px 12px 14px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    transition: box-shadow 0.18s ease, background 0.15s ease, border-color 0.15s ease;
+    user-select: none;
+  }
+  .kc-card:hover {
+    box-shadow: var(--homepage-shadow);
+    background: var(--homepage-surface);
+    border-color: var(--palette-klarna-pink-dark);
+  }
+  .kc-card.kc-active {
+    border-color: var(--palette-klarna-ink);
+    background: var(--homepage-surface);
+    box-shadow: 0 0 0 3px var(--palette-klarna-pink);
+  }
+  .kc-flag {
+    font-size: 34px;
+    line-height: 1;
+  }
+  .kc-name {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--homepage-ink);
+    text-align: center;
+    line-height: 1.3;
+  }
+  .kc-currency {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--homepage-muted);
+    font-family: var(--ds-font-jetbrains-mono);
+    letter-spacing: 0.04em;
+  }
+  .kc-badge-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 4px;
+    margin-top: 2px;
+  }
+  .kc-badge {
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    padding: 2px 7px;
+    border-radius: 9999px;
+    white-space: nowrap;
+    border: 1.5px solid transparent;
+  }
+  .kc-badge-pink {
+    background: var(--palette-klarna-pink);
+    color: var(--palette-klarna-ink);
+  }
+  .kc-badge-ghost {
+    background: transparent;
+    border-color: rgba(26,0,51,0.18);
+    color: var(--homepage-muted);
+  }
+  /* Detail panel */
+  .kc-detail-panel {
+    display: none;
+    margin-top: 1.25rem;
+    background: var(--homepage-surface);
+    border: 2px solid var(--homepage-border);
+    border-radius: var(--homepage-card-radius);
+    overflow: hidden;
+    position: relative;
+    animation: kc-fadein 0.18s ease;
+  }
+  @keyframes kc-fadein { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: translateY(0); } }
+  .kc-detail-panel.kc-open { display: block; }
+  .kc-detail-head {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.25rem 1.5rem;
+    background: var(--homepage-surface-alt);
+    border-bottom: 2px solid var(--homepage-border);
+  }
+  .kc-detail-flag-lg { font-size: 44px; line-height: 1; flex-shrink: 0; }
+  .kc-detail-country-name {
+    font-family: var(--font-heading);
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: var(--homepage-ink);
+    letter-spacing: -0.02em;
+  }
+  .kc-detail-currency-label {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--homepage-muted);
+    font-family: var(--ds-font-jetbrains-mono);
+    letter-spacing: 0.05em;
+    margin-top: 2px;
+  }
+  .kc-detail-body { padding: 1.25rem 1.5rem; display: flex; flex-direction: column; gap: 1rem; }
+  .kc-detail-plans-label {
+    font-size: 10px;
+    font-weight: 900;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--homepage-muted);
+    margin-bottom: 0.4rem;
+  }
+  .kc-detail-plans-row { display: flex; flex-wrap: wrap; gap: 8px; }
+  .kc-plan-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 5px 14px;
+    border-radius: 9999px;
+    border: 2px solid var(--homepage-border);
+    color: var(--homepage-ink);
+    background: white;
+  }
+  .kc-plan-chip-featured {
+    background: var(--palette-klarna-pink);
+    border-color: var(--palette-klarna-pink-dark);
+    color: var(--palette-klarna-ink);
+  }
+  .kc-plan-chip-featured::before {
+    content: '★';
+    font-size: 10px;
+  }
+  .kc-detail-note {
+    font-size: 12px;
+    line-height: 1.65;
+    color: var(--homepage-muted);
+    padding: 0.75rem 1rem;
+    background: var(--homepage-surface-alt);
+    border-radius: 8px;
+    border-left: 3px solid var(--palette-klarna-pink-dark);
+  }
+  .kc-close-btn {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: 2px solid var(--homepage-border);
+    background: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 900;
+    color: var(--homepage-muted);
+    line-height: 1;
+  }
+  .kc-close-btn:hover { background: var(--homepage-surface-pop); color: var(--homepage-ink); }
+  .kc-footer-note {
+    font-size: 11px;
+    color: var(--homepage-muted);
+    margin-top: 1rem;
+  }
+  @media (max-width: 480px) {
+    .kc-grid { grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); gap: 8px; }
+    .kc-flag { font-size: 28px; }
+    .kc-name { font-size: 12px; }
+  }
+</style>
+
 <section class="homepage-section" style="background:var(--homepage-surface-alt)">
   <div class="homepage-container">
+
     <div class="mb-10" style="max-width:48rem">
       <p class="homepage-eyebrow homepage-eyebrow-pink" style="display:inline-flex;margin-bottom:0.75rem">Where Klarna Works</p>
       <h2 class="homepage-heading mb-4 md:mb-6">Klarna Flight Booking — Available Countries</h2>
-      <p class="homepage-copy">Klarna is accepted at FlyFairly checkout when your billing address is in one of the following countries.</p>
+      <p class="homepage-copy">Klarna is accepted at FlyFairly checkout when your billing address is in one of the countries below. Select a country to see which plans are available.</p>
     </div>
-    <div class="homepage-card" style="overflow:auto">
-      <table class="country-table">
-        <thead>
-          <tr>
-            <th>Country</th>
-            <th>Plans available</th>
-            <th>Currency</th>
-            <th>Notes</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><strong>🇺🇸 United States</strong></td>
-            <td>Pay in 4 · Pay in 30 · Pay Monthly</td>
-            <td>USD</td>
-            <td>
-              <p class="disclosure">Late fees up to $7 may apply. Monthly financing issued by WebBank, NMLS #1353190.</p>
-            </td>
-          </tr>
-          <tr>
-            <td><strong>🇬🇧 United Kingdom</strong></td>
-            <td>Pay in 4 · Pay in 30 · Pay Monthly</td>
-            <td>GBP</td>
-            <td><p class="disclosure">Pay in 4 is an unregulated credit agreement. Borrowing more than you can afford or paying late may negatively impact your financial status.</p></td>
-          </tr>
-          <tr>
-            <td><strong>🇦🇺 Australia</strong></td>
-            <td>Pay in 4 · Pay in 30</td>
-            <td>AUD</td>
-            <td><p class="disclosure">Klarna Australia Pty Ltd. Credit criteria apply. ASIC disclosure: consider if the product is right for you.</p></td>
-          </tr>
-          <tr>
-            <td><strong>🇩🇪 Germany</strong></td>
-            <td>Pay in 4 · Pay in 30 · Pay Monthly</td>
-            <td>EUR</td>
-            <td>—</td>
-          </tr>
-          <tr>
-            <td><strong>🇸🇪 Sweden</strong></td>
-            <td>Pay in 4 · Pay in 30 · Pay Monthly</td>
-            <td>SEK</td>
-            <td>Klarna's home market. Widest plan availability.</td>
-          </tr>
-          <tr>
-            <td><strong>🇳🇱 Netherlands</strong></td>
-            <td>Pay in 4 · Pay in 30</td>
-            <td>EUR</td>
-            <td>—</td>
-          </tr>
-          <tr>
-            <td><strong>🇫🇷 France</strong></td>
-            <td>Pay in 4 · Pay in 30</td>
-            <td>EUR</td>
-            <td>—</td>
-          </tr>
-          <tr>
-            <td><strong>🇪🇸 Spain</strong></td>
-            <td>Pay in 4 · Pay in 30</td>
-            <td>EUR</td>
-            <td>—</td>
-          </tr>
-          <tr>
-            <td><strong>🇳🇴 Norway</strong></td>
-            <td>Pay in 4 · Pay Monthly</td>
-            <td>NOK</td>
-            <td>—</td>
-          </tr>
-          <tr>
-            <td><strong>🇫🇮 Finland</strong></td>
-            <td>Pay in 4 · Pay in 30</td>
-            <td>EUR</td>
-            <td>—</td>
-          </tr>
-          <tr>
-            <td><strong>🇨🇦 Canada</strong></td>
-            <td>Pay in 4</td>
-            <td>CAD</td>
-            <td>—</td>
-          </tr>
-          <tr>
-            <td><strong>🇳🇿 New Zealand</strong></td>
-            <td>Pay in 4</td>
-            <td>NZD</td>
-            <td>—</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+
+    <div class="kc-grid" id="kcGrid"></div>
+    <div class="kc-detail-panel" id="kcDetail" role="region" aria-live="polite"></div>
+    <p class="kc-footer-note" id="kcFooter"></p>
+
   </div>
 </section>
+
+<script>
+(function() {
+  var kcCountries = [
+    { flag: '🇺🇸', name: 'United States',  currency: 'USD', plans: ['Pay in 4', 'Pay in 30', 'Pay Monthly'], featured: 'Pay in 4',  note: 'Late fees up to $7 may apply. Monthly financing issued by WebBank, NMLS #1353190.' },
+    { flag: '🇬🇧', name: 'United Kingdom', currency: 'GBP', plans: ['Pay in 3', 'Pay in 30', 'Pay Monthly'], featured: 'Pay in 3',  note: 'Pay in 3 is an unregulated credit agreement. Borrowing more than you can afford or paying late may negatively impact your financial status.' },
+    { flag: '🇦🇺', name: 'Australia',      currency: 'AUD', plans: ['Pay in 4', 'Pay in 30'],                featured: 'Pay in 4',  note: 'Klarna Australia Pty Ltd. Credit criteria apply. ASIC disclosure: consider if the product is right for you.' },
+    { flag: '🇩🇪', name: 'Germany',        currency: 'EUR', plans: ['Pay in 4', 'Pay in 30', 'Pay Monthly'], featured: 'Pay in 4',  note: null },
+    { flag: '🇸🇪', name: 'Sweden',         currency: 'SEK', plans: ['Pay in 4', 'Pay in 30', 'Pay Monthly'], featured: 'Pay in 30', note: "Klarna's home market. Widest plan availability." },
+    { flag: '🇳🇱', name: 'Netherlands',    currency: 'EUR', plans: ['Pay in 4', 'Pay in 30'],                featured: 'Pay in 4',  note: null },
+    { flag: '🇫🇷', name: 'France',         currency: 'EUR', plans: ['Pay in 4', 'Pay in 30'],                featured: 'Pay in 4',  note: null },
+    { flag: '🇪🇸', name: 'Spain',          currency: 'EUR', plans: ['Pay in 4', 'Pay in 30'],                featured: 'Pay in 4',  note: null },
+    { flag: '🇳🇴', name: 'Norway',         currency: 'NOK', plans: ['Pay in 4', 'Pay Monthly'],              featured: 'Pay in 4',  note: null },
+    { flag: '🇫🇮', name: 'Finland',        currency: 'EUR', plans: ['Pay in 4', 'Pay in 30'],                featured: 'Pay in 4',  note: null },
+    { flag: '🇨🇦', name: 'Canada',         currency: 'CAD', plans: ['Pay in 4'],                             featured: 'Pay in 4',  note: null },
+    { flag: '🇳🇿', name: 'New Zealand',    currency: 'NZD', plans: ['Pay in 4'],                             featured: 'Pay in 4',  note: null }
+  ];
+
+  var grid   = document.getElementById('kcGrid');
+  var detail = document.getElementById('kcDetail');
+  var footer = document.getElementById('kcFooter');
+  var activeIdx = null;
+
+  footer.textContent = kcCountries.length + ' countries supported. Plan availability depends on your billing address country.';
+
+  kcCountries.forEach(function(c, i) {
+    var card = document.createElement('div');
+    card.className = 'kc-card';
+    card.setAttribute('tabindex', '0');
+    card.setAttribute('role', 'button');
+    card.setAttribute('aria-label', 'View Klarna plans for ' + c.name);
+
+    var visiblePlans = c.plans.slice(0, 2);
+    var extra = c.plans.length > 2 ? c.plans.length - 2 : 0;
+    var badgesHtml = visiblePlans.map(function(p) {
+      return '<span class="kc-badge ' + (p === c.featured ? 'kc-badge-pink' : 'kc-badge-ghost') + '">' + p + '</span>';
+    }).join('');
+    if (extra > 0) badgesHtml += '<span class="kc-badge kc-badge-ghost">+' + extra + ' more</span>';
+
+    card.innerHTML =
+      '<div class="kc-flag">' + c.flag + '</div>' +
+      '<div class="kc-name">' + c.name + '</div>' +
+      '<div class="kc-currency">' + c.currency + '</div>' +
+      '<div class="kc-badge-row">' + badgesHtml + '</div>';
+
+    card.addEventListener('click', function() { kcToggle(i); });
+    card.addEventListener('keydown', function(e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); kcToggle(i); } });
+    grid.appendChild(card);
+  });
+
+  function kcToggle(i) {
+    var cards = grid.querySelectorAll('.kc-card');
+    if (activeIdx === i) {
+      activeIdx = null;
+      detail.classList.remove('kc-open');
+      detail.innerHTML = '';
+      cards.forEach(function(c) { c.classList.remove('kc-active'); });
+      return;
+    }
+    activeIdx = i;
+    cards.forEach(function(c, idx) { c.classList.toggle('kc-active', idx === i); });
+    var c = kcCountries[i];
+
+    var plansHtml = c.plans.map(function(p) {
+      return '<span class="kc-plan-chip' + (p === c.featured ? ' kc-plan-chip-featured' : '') + '">' + p + '</span>';
+    }).join('');
+
+    var noteHtml = c.note
+      ? '<div><p class="kc-detail-plans-label">Disclosure</p><div class="kc-detail-note">' + c.note + '</div></div>'
+      : '';
+
+    detail.innerHTML =
+      '<button class="kc-close-btn" onclick="(function(){' +
+        'document.getElementById(\'kcDetail\').classList.remove(\'kc-open\');' +
+        'document.getElementById(\'kcDetail\').innerHTML=\'\';' +
+        'document.querySelectorAll(\'.kc-card\').forEach(function(c){c.classList.remove(\'kc-active\');});' +
+      '})()" aria-label="Close">&times;</button>' +
+      '<div class="kc-detail-head">' +
+        '<div class="kc-detail-flag-lg">' + c.flag + '</div>' +
+        '<div>' +
+          '<div class="kc-detail-country-name">' + c.name + '</div>' +
+          '<div class="kc-detail-currency-label">' + c.currency + '</div>' +
+        '</div>' +
+      '</div>' +
+      '<div class="kc-detail-body">' +
+        '<div>' +
+          '<p class="kc-detail-plans-label">Available Klarna plans</p>' +
+          '<div class="kc-detail-plans-row">' + plansHtml + '</div>' +
+        '</div>' +
+        noteHtml +
+      '</div>';
+
+    detail.classList.add('kc-open');
+    setTimeout(function() { detail.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); }, 60);
+  }
+})();
+</script>
 
 <!-- ===========================
      SECTION 12-13 — KLARNA SCORE
@@ -1124,6 +1320,112 @@
       </div>
       <div class="ar-footer"><p class="ar-footer-text">FlyFairly editorial assessment · Updated June 2026</p></div>
     </div>
+  </div>
+</section>
+
+<!-- ===========================
+     UGC SECTION — FLYING SQ WITH FLYFAIRLY
+=========================== -->
+<section style="padding:3.5rem 0;background:#ffffff;overflow:hidden">
+  <div class="homepage-container">
+
+    <!-- Header row -->
+    <div style="display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:2rem;flex-wrap:wrap;gap:1rem">
+      <div>
+        <p style="font-size:10px;font-weight:900;letter-spacing:0.1em;text-transform:uppercase;color:var(--homepage-muted);margin-bottom:0.35rem">Real Travellers. Real Trips.</p>
+        <h2 style="font-family:var(--font-heading);font-size:clamp(1.75rem,4vw,2.5rem);font-weight:900;letter-spacing:-0.03em;text-transform:uppercase;color:var(--homepage-ink);line-height:1">Flying SQ with FlyFairly</h2>
+      </div>
+      <a href="#" style="font-size:11px;font-weight:900;letter-spacing:0.1em;text-transform:uppercase;color:var(--homepage-ink);text-decoration:none;border-bottom:2px solid var(--homepage-ink);padding-bottom:2px;white-space:nowrap">SEE ALL</a>
+    </div>
+
+    <!-- 4-card UGC grid -->
+    <div class="ugc-grid" style="display:grid;grid-template-columns:repeat(4,1fr);gap:1rem">
+
+      <!-- Card 1: @rani.adventures -->
+      <div style="background:#0d1b3e;border-radius:1.25rem;overflow:hidden;display:flex;flex-direction:column;position:relative">
+        <!-- YouTube embed -->
+        <div style="width:100%;overflow:hidden;line-height:0"><iframe width="410" height="730" src="https://www.youtube.com/embed/G--SVZpzeKE" title="FlyFairly BNPL — @rani.adventures" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen style="width:100%;height:auto;aspect-ratio:410/730;display:block;border-radius:1.25rem 1.25rem 0 0"></iframe></div>
+        <!-- Author row -->
+        <div style="border-top:1px solid rgba(255,255,255,0.08);padding:0.85rem 1.25rem;display:flex;align-items:center;gap:0.6rem">
+          <div style="width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,#e91e63,#9c27b0);display:flex;align-items:center;justify-content:center;flex-shrink:0">
+            <span style="color:white;font-size:10px;font-weight:900">RA</span>
+          </div>
+          <div style="flex:1;min-width:0">
+            <p style="color:white;font-size:12px;font-weight:700">@rani.adventures</p>
+            <p style="color:rgba(255,255,255,0.45);font-size:10px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">CGK → SIN booked in 3 mins flat <span style="color:#a5b4fc">#FlyFairly #BNPL</span></p>
+          </div>
+        </div>
+        <div style="padding:0 1.25rem 1rem;display:flex;gap:1rem">
+          <span style="color:rgba(255,255,255,0.4);font-size:11px">♡ 14.2K</span>
+          <span style="color:rgba(255,255,255,0.4);font-size:11px">💬 312</span>
+        </div>
+      </div>
+
+      <!-- Card 2: @dylantravel.id -->
+      <div style="background:#0f1a2e;border-radius:1.25rem;overflow:hidden;display:flex;flex-direction:column;position:relative">
+        <div style="width:100%;overflow:hidden;line-height:0"><iframe width="410" height="730" src="https://www.youtube.com/embed/yWyumUTAd40" title="FlyFairly SQ 954 — @dylantravel.id" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen style="width:100%;height:auto;aspect-ratio:410/730;display:block;border-radius:1.25rem 1.25rem 0 0"></iframe></div>
+        <div style="border-top:1px solid rgba(255,255,255,0.08);padding:0.85rem 1.25rem;display:flex;align-items:center;gap:0.6rem">
+          <div style="width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,#0ea5e9,#6366f1);display:flex;align-items:center;justify-content:center;flex-shrink:0">
+            <span style="color:white;font-size:10px;font-weight:900">DT</span>
+          </div>
+          <div style="flex:1;min-width:0">
+            <p style="color:white;font-size:12px;font-weight:700">@dylantravel.id</p>
+            <p style="color:rgba(255,255,255,0.45);font-size:10px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">Paid my SQ ticket in 3 parts — no stress <span style="color:#a5b4fc">#SingaporeAirlines</span></p>
+          </div>
+        </div>
+        <div style="padding:0 1.25rem 1rem;display:flex;gap:1rem">
+          <span style="color:rgba(255,255,255,0.4);font-size:11px">♡ 8.7K</span>
+          <span style="color:rgba(255,255,255,0.4);font-size:11px">💬 204</span>
+        </div>
+      </div>
+
+      <!-- Card 3: @suki.flies -->
+      <div style="background:#1a0a3e;border-radius:1.25rem;overflow:hidden;display:flex;flex-direction:column;position:relative">
+        <div style="width:100%;overflow:hidden;line-height:0"><iframe width="410" height="730" src="https://www.youtube.com/embed/DIbbrLFiT7k" title="Bali trip recap — @suki.flies" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen style="width:100%;height:auto;aspect-ratio:410/730;display:block;border-radius:1.25rem 1.25rem 0 0"></iframe></div>
+        <div style="border-top:1px solid rgba(255,255,255,0.08);padding:0.85rem 1.25rem;display:flex;align-items:center;gap:0.6rem">
+          <div style="width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,#06b6d4,#22c55e);display:flex;align-items:center;justify-content:center;flex-shrink:0">
+            <span style="color:white;font-size:10px;font-weight:900">SK</span>
+          </div>
+          <div style="flex:1;min-width:0">
+            <p style="color:white;font-size:12px;font-weight:700">@suki.flies</p>
+            <p style="color:rgba(255,255,255,0.45);font-size:10px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">Bali trip recap — split 3 ways with Kredivo <span style="color:#a5b4fc">#FlyFairly</span></p>
+          </div>
+        </div>
+        <div style="padding:0 1.25rem 1rem;display:flex;gap:1rem">
+          <span style="color:rgba(255,255,255,0.4);font-size:11px">♡ 22.1K</span>
+          <span style="color:rgba(255,255,255,0.4);font-size:11px">💬 891</span>
+        </div>
+      </div>
+
+      <!-- Card 4: @marcus.goes.far -->
+      <div style="background:#130d2a;border-radius:1.25rem;overflow:hidden;display:flex;flex-direction:column;position:relative">
+        <div style="width:100%;overflow:hidden;line-height:0"><iframe width="410" height="730" src="https://www.youtube.com/embed/SF2QioM0JoA" title="SQ Business Class — @marcus.goes.far" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen style="width:100%;height:auto;aspect-ratio:410/730;display:block;border-radius:1.25rem 1.25rem 0 0"></iframe></div>
+        <div style="border-top:1px solid rgba(255,255,255,0.08);padding:0.85rem 1.25rem;display:flex;align-items:center;gap:0.6rem">
+          <div style="width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,#f59e0b,#ef4444);display:flex;align-items:center;justify-content:center;flex-shrink:0">
+            <span style="color:white;font-size:10px;font-weight:900">MG</span>
+          </div>
+          <div style="flex:1;min-width:0">
+            <p style="color:white;font-size:12px;font-weight:700">@marcus.goes.far</p>
+            <p style="color:rgba(255,255,255,0.45);font-size:10px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">SQ Business Class — split 6 ways. Full review <span style="color:#a5b4fc">#SQBusiness</span></p>
+          </div>
+        </div>
+        <div style="padding:0 1.25rem 1rem;display:flex;gap:1rem">
+          <span style="color:rgba(255,255,255,0.4);font-size:11px">♡ 41.8K</span>
+          <span style="color:rgba(255,255,255,0.4);font-size:11px">💬 1.2K</span>
+        </div>
+      </div>
+
+    </div><!-- end grid -->
+
+    <style>
+      @media (max-width: 900px) {
+        .ugc-grid { grid-template-columns: repeat(2,1fr) !important; }
+      }
+      @media (max-width: 540px) {
+        .ugc-grid { grid-template-columns: 1fr !important; }
+      }
+    </style>
+
   </div>
 </section>
 
