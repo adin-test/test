@@ -1,0 +1,1067 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bali Destination Guide — Everything You Need to Know</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --blue:#2563EB; --blue-dark:#1D4ED8; --blue-light:#EFF6FF; --blue-mid:#DBEAFE;
+      --green:#16A34A; --green-light:#DCFCE7;
+      --amber:#D97706; --amber-light:#FEF3C7;
+      --red:#DC2626; --red-light:#FEE2E2;
+      --purple:#7C3AED; --purple-light:#EDE9FE;
+      --gray-950:#0A0A0A; --gray-900:#111827; --gray-800:#1F2937; --gray-700:#374151;
+      --gray-600:#4B5563; --gray-500:#6B7280; --gray-400:#9CA3AF; --gray-300:#D1D5DB;
+      --gray-200:#E5E7EB; --gray-100:#F3F4F6; --gray-50:#F9FAFB; --white:#FFFFFF;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif; background:var(--white); color:var(--gray-900); line-height:1.6; font-size:15px; -webkit-font-smoothing:antialiased; }
+
+    /* ── TOP NAV ── */
+    .nav { position:sticky; top:0; z-index:100; background:var(--white); border-bottom:1px solid var(--gray-200); display:flex; align-items:center; justify-content:space-between; padding:0 2rem; height:56px; }
+    .nav-logo { font-weight:700; font-size:1.1rem; color:var(--gray-900); text-decoration:none; letter-spacing:-.02em; }
+    .nav-logo span { color:var(--blue); }
+    .nav-right { display:flex; align-items:center; gap:.75rem; }
+    .nav-link { font-size:.85rem; font-weight:500; color:var(--gray-600); text-decoration:none; }
+    .nav-link:hover { color:var(--gray-900); }
+    .nav-btn { background:var(--blue); color:var(--white); border:none; cursor:pointer; padding:.45rem 1rem; border-radius:6px; font-size:.85rem; font-weight:600; font-family:inherit; text-decoration:none; transition:background .15s; }
+    .nav-btn:hover { background:var(--blue-dark); }
+
+    /* ── ANCHOR NAV ── */
+    .anchor-nav {
+      position:sticky; top:56px; z-index:90;
+      background:var(--white); border-bottom:1px solid var(--gray-200);
+      overflow-x:auto; scrollbar-width:none;
+    }
+    .anchor-nav::-webkit-scrollbar { display:none; }
+    .anchor-nav-inner { display:flex; padding:0 2rem; max-width:1100px; margin:0 auto; gap:0; }
+    .anchor-link {
+      flex-shrink:0; padding:.75rem 1rem; font-size:.8rem; font-weight:600;
+      color:var(--gray-500); text-decoration:none; border-bottom:2px solid transparent;
+      white-space:nowrap; transition:color .15s, border-color .15s;
+    }
+    .anchor-link:hover { color:var(--gray-900); }
+    .anchor-link.active { color:var(--blue); border-bottom-color:var(--blue); }
+
+    /* ── HERO ── */
+    .hero { background:var(--gray-950); padding:4.5rem 2rem 0; overflow:hidden; }
+    .hero-inner { max-width:1100px; margin:0 auto; }
+    .hero-meta { display:flex; align-items:center; gap:.75rem; margin-bottom:1.1rem; flex-wrap:wrap; }
+    .hero-eyebrow { display:inline-flex; align-items:center; gap:.5rem; background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.12); color:rgba(255,255,255,.7); font-size:.75rem; font-weight:500; padding:.3rem .75rem; border-radius:999px; letter-spacing:.02em; }
+    .hero-eyebrow-dot { width:6px; height:6px; border-radius:50%; background:#4ADE80; }
+    .hero-updated { font-size:.72rem; color:rgba(255,255,255,.35); }
+    .hero-title { font-size:clamp(2rem,4.5vw,3.5rem); font-weight:800; color:var(--white); line-height:1.1; letter-spacing:-.03em; margin-bottom:1rem; }
+    .hero-title .accent { color:#60A5FA; }
+    .hero-sub { font-size:1.05rem; color:rgba(255,255,255,.6); max-width:580px; margin-bottom:1.75rem; font-weight:400; line-height:1.7; }
+
+    /* know-before quick ref */
+    .kbyg-strip {
+      display:grid; grid-template-columns:repeat(5,1fr); gap:0;
+      border:1px solid rgba(255,255,255,.1); border-radius:10px; overflow:hidden;
+      margin-bottom:1.75rem;
+    }
+    .kbyg-cell { padding:.7rem 1rem; border-right:1px solid rgba(255,255,255,.08); }
+    .kbyg-cell:last-child { border-right:none; }
+    .kbyg-label { font-size:.65rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:rgba(255,255,255,.35); margin-bottom:.25rem; }
+    .kbyg-val { font-size:.88rem; font-weight:600; color:var(--white); }
+
+    .hero-chips { display:flex; flex-wrap:wrap; gap:.5rem; margin-bottom:1.75rem; }
+    .hero-chip { background:rgba(255,255,255,.07); border:1px solid rgba(255,255,255,.1); color:rgba(255,255,255,.75); font-size:.78rem; font-weight:500; padding:.35rem .8rem; border-radius:999px; }
+
+    /* search widget */
+    .search-widget { background:var(--white); border-radius:14px; padding:1.25rem 1.4rem 1.4rem; margin-bottom:2.5rem; box-shadow:0 4px 24px rgba(0,0,0,.28),0 1px 4px rgba(0,0,0,.14); }
+    .search-widget-label { font-size:.7rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--gray-400); margin-bottom:.85rem; }
+    .search-fields { display:grid; grid-template-columns:1fr 1fr 1fr 1fr auto; gap:0; border:1px solid var(--gray-200); border-radius:10px; overflow:hidden; background:var(--white); }
+    .search-field { display:flex; flex-direction:column; justify-content:center; padding:.7rem 1rem; border-right:1px solid var(--gray-200); cursor:pointer; transition:background .12s; min-width:0; }
+    .search-field:hover { background:var(--gray-50); }
+    .search-field-label { font-size:.68rem; font-weight:700; color:var(--gray-400); letter-spacing:.06em; text-transform:uppercase; margin-bottom:.18rem; white-space:nowrap; }
+    .search-field-value { font-size:.88rem; font-weight:500; color:var(--gray-900); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+    .search-field-value.placeholder { color:var(--gray-400); font-weight:400; }
+    .search-btn { background:var(--blue); color:var(--white); border:none; cursor:pointer; padding:0 1.5rem; font-family:inherit; font-size:.88rem; font-weight:700; display:flex; align-items:center; gap:.5rem; white-space:nowrap; transition:background .15s; }
+    .search-btn:hover { background:var(--blue-dark); }
+    .search-bnpl { display:flex; align-items:center; gap:.6rem; margin-top:.85rem; flex-wrap:wrap; }
+    .search-bnpl-label { font-size:.72rem; color:var(--gray-400); font-weight:500; }
+    .search-bnpl-chips { display:flex; gap:.4rem; flex-wrap:wrap; }
+    .bnpl-pill { font-size:.72rem; font-weight:600; padding:.2rem .65rem; border-radius:999px; border:1px solid var(--gray-200); color:var(--gray-600); background:var(--gray-50); }
+
+    .hero-stats { display:flex; border-top:1px solid rgba(255,255,255,.08); padding:1.5rem 0 0; }
+    .hero-stat { flex:1; padding:0 0 1.5rem; border-right:1px solid rgba(255,255,255,.08); padding-left:1.5rem; }
+    .hero-stat:first-child { padding-left:0; }
+    .hero-stat:last-child { border-right:none; }
+    .hero-stat-val { font-size:1.6rem; font-weight:800; color:var(--white); letter-spacing:-.03em; line-height:1; margin-bottom:.25rem; }
+    .hero-stat-label { font-size:.75rem; color:rgba(255,255,255,.45); font-weight:400; }
+
+    /* ── PAGE ── */
+    .page { max-width:1100px; margin:0 auto; padding:0 2rem; }
+    .section { padding:3.5rem 0; border-bottom:1px solid var(--gray-200); }
+    .section:last-of-type { border-bottom:none; }
+    .section-eyebrow { display:inline-block; font-size:.7rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--blue); margin-bottom:.6rem; }
+    .section-title { font-size:1.6rem; font-weight:800; color:var(--gray-900); letter-spacing:-.025em; line-height:1.2; margin-bottom:.6rem; }
+    .section-sub { font-size:.95rem; color:var(--gray-500); max-width:600px; line-height:1.65; margin-bottom:2rem; }
+
+    /* score strip */
+    .score-strip { display:grid; grid-template-columns:repeat(6,1fr); border:1px solid var(--gray-200); border-radius:12px; overflow:hidden; margin-bottom:2rem; }
+    .score-cell { padding:1.1rem 1rem; border-right:1px solid var(--gray-200); text-align:center; }
+    .score-cell:last-child { border-right:none; }
+    .score-cell-val { font-size:1.4rem; font-weight:800; color:var(--gray-900); letter-spacing:-.03em; }
+    .score-cell-label { font-size:.7rem; color:var(--gray-500); font-weight:500; margin-top:.2rem; }
+    .score-cell-bar { height:3px; background:var(--gray-200); border-radius:2px; margin-top:.6rem; overflow:hidden; }
+    .score-cell-fill { height:100%; background:var(--blue); border-radius:2px; }
+
+    /* cards grid */
+    .cards-grid { display:grid; gap:1px; background:var(--gray-200); border:1px solid var(--gray-200); border-radius:12px; overflow:hidden; }
+    .cards-grid-2 { grid-template-columns:repeat(2,1fr); }
+    .cards-grid-3 { grid-template-columns:repeat(3,1fr); }
+    .cards-grid-4 { grid-template-columns:repeat(4,1fr); }
+    .cards-grid-5 { grid-template-columns:repeat(5,1fr); }
+    .card { background:var(--white); padding:1.4rem 1.5rem; transition:background .12s; }
+    .card:hover { background:var(--gray-50); }
+    .card-icon { font-size:1.4rem; margin-bottom:.6rem; }
+    .card-title { font-size:.95rem; font-weight:700; color:var(--gray-900); margin-bottom:.3rem; }
+    .card-sub { font-size:.83rem; color:var(--gray-500); line-height:1.6; }
+    .card-tag { display:inline-block; font-size:.68rem; font-weight:600; letter-spacing:.05em; text-transform:uppercase; padding:.2rem .55rem; border-radius:4px; margin-bottom:.5rem; }
+    .tag-green { background:var(--green-light); color:var(--green); }
+    .tag-blue  { background:var(--blue-light);  color:var(--blue); }
+    .tag-amber { background:var(--amber-light); color:var(--amber); }
+    .tag-red   { background:var(--red-light);   color:var(--red); }
+    .tag-purple{ background:var(--purple-light); color:var(--purple); }
+
+    /* area cards */
+    .area-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; }
+    .area-card { border:1px solid var(--gray-200); border-radius:10px; overflow:hidden; transition:box-shadow .15s; }
+    .area-card:hover { box-shadow:0 4px 16px rgba(0,0,0,.07); }
+    .area-card-img { height:90px; display:flex; align-items:center; justify-content:center; font-size:2.5rem; }
+    .area-card-body { padding:1rem 1.1rem 1.2rem; }
+    .area-card-name { font-size:.95rem; font-weight:700; color:var(--gray-900); margin-bottom:.2rem; }
+    .area-card-desc { font-size:.82rem; color:var(--gray-500); line-height:1.6; margin-bottom:.6rem; }
+    .area-card-footer { display:flex; justify-content:space-between; align-items:flex-end; gap:.5rem; flex-wrap:wrap; }
+    .area-card-pills { display:flex; flex-wrap:wrap; gap:.3rem; }
+    .pill { font-size:.7rem; font-weight:500; background:var(--gray-100); color:var(--gray-600); padding:.2rem .6rem; border-radius:999px; }
+    .area-price { font-size:.75rem; font-weight:700; color:var(--green); white-space:nowrap; }
+    .area-price-label { font-size:.68rem; color:var(--gray-400); font-weight:400; }
+
+    /* steps / numbered */
+    .steps { display:flex; flex-direction:column; }
+    .step { display:flex; gap:1.25rem; padding:1.4rem 0; border-bottom:1px solid var(--gray-100); }
+    .step:last-child { border-bottom:none; }
+    .step-num { flex-shrink:0; width:32px; height:32px; border-radius:50%; background:var(--gray-900); color:var(--white); display:flex; align-items:center; justify-content:center; font-size:.78rem; font-weight:800; margin-top:.1rem; }
+    .step-title { font-size:.95rem; font-weight:700; color:var(--gray-900); margin-bottom:.3rem; }
+    .step-body { font-size:.86rem; color:var(--gray-600); line-height:1.65; }
+
+    /* month table */
+    .month-table { width:100%; border-collapse:collapse; font-size:.86rem; }
+    .month-table thead th { text-align:left; padding:.7rem 1rem; background:var(--gray-50); border-bottom:1px solid var(--gray-200); font-size:.75rem; font-weight:600; color:var(--gray-500); letter-spacing:.04em; text-transform:uppercase; }
+    .month-table tbody tr { border-bottom:1px solid var(--gray-100); }
+    .month-table tbody tr:hover { background:var(--gray-50); }
+    .month-table tbody td { padding:.7rem 1rem; color:var(--gray-700); vertical-align:middle; }
+    .month-table tbody td:first-child { font-weight:600; color:var(--gray-900); }
+    .temp-range { font-size:.78rem; color:var(--gray-500); }
+    .rain-dots { display:flex; gap:2px; }
+    .rain-dot { width:7px; height:7px; border-radius:50%; background:var(--gray-200); }
+    .rain-dot.on { background:var(--blue); }
+
+    /* info table */
+    .info-table { width:100%; border-collapse:collapse; font-size:.86rem; border:1px solid var(--gray-200); border-radius:10px; overflow:hidden; margin-top:1.25rem; }
+    .info-table thead th { background:var(--gray-50); padding:.65rem 1rem; text-align:left; font-size:.74rem; font-weight:600; color:var(--gray-500); text-transform:uppercase; letter-spacing:.04em; border-bottom:1px solid var(--gray-200); }
+    .info-table tbody tr { border-bottom:1px solid var(--gray-100); }
+    .info-table tbody tr:last-child { border-bottom:none; }
+    .info-table tbody td { padding:.75rem 1rem; color:var(--gray-700); }
+    .info-table tbody td:first-child { font-weight:600; color:var(--gray-900); }
+
+    /* callout */
+    .callout { border-radius:10px; padding:1.25rem 1.4rem; margin-top:1rem; display:flex; gap:1rem; align-items:flex-start; }
+    .callout-green { background:var(--green-light); border:1px solid #BBF7D0; }
+    .callout-amber { background:var(--amber-light); border:1px solid #FDE68A; }
+    .callout-blue  { background:var(--blue-light);  border:1px solid var(--blue-mid); }
+    .callout-icon  { font-size:1.1rem; flex-shrink:0; margin-top:.05rem; }
+    .callout-title { font-size:.82rem; font-weight:700; margin-bottom:.2rem; }
+    .callout-body  { font-size:.83rem; line-height:1.6; color:var(--gray-700); }
+
+    /* checklist */
+    .checklist { list-style:none; display:flex; flex-direction:column; gap:.55rem; margin-top:1rem; }
+    .checklist li { display:flex; gap:.7rem; font-size:.875rem; color:var(--gray-700); align-items:flex-start; }
+    .check-icon { color:var(--green); font-weight:700; flex-shrink:0; margin-top:.1rem; }
+
+    /* ── BALI MAP SVG ── */
+    .map-section { display:grid; grid-template-columns:1fr 400px; gap:2rem; align-items:start; }
+    .map-wrap { border:1px solid var(--gray-200); border-radius:12px; overflow:hidden; background:#E8F4F0; position:relative; }
+    .map-legend { display:flex; flex-direction:column; gap:.6rem; }
+    .legend-item { display:flex; align-items:center; gap:.75rem; padding:.75rem 1rem; border:1px solid var(--gray-200); border-radius:8px; cursor:pointer; transition:background .12s; }
+    .legend-item:hover { background:var(--gray-50); }
+    .legend-item.active { background:var(--blue-light); border-color:var(--blue-mid); }
+    .legend-dot { width:12px; height:12px; border-radius:50%; flex-shrink:0; }
+    .legend-name { font-size:.88rem; font-weight:700; color:var(--gray-900); }
+    .legend-tag  { font-size:.72rem; color:var(--gray-500); }
+
+    /* ── BUDGET TABLE ── */
+    .budget-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--gray-200); border:1px solid var(--gray-200); border-radius:12px; overflow:hidden; }
+    .budget-col { background:var(--white); }
+    .budget-header { padding:1rem 1.25rem; border-bottom:1px solid var(--gray-200); }
+    .budget-tier { font-size:.95rem; font-weight:800; color:var(--gray-900); }
+    .budget-daily { font-size:1.5rem; font-weight:800; color:var(--blue); letter-spacing:-.03em; line-height:1; margin:.3rem 0 .2rem; }
+    .budget-daily-sub { font-size:.72rem; color:var(--gray-400); }
+    .budget-rows { display:flex; flex-direction:column; }
+    .budget-row { display:flex; justify-content:space-between; padding:.65rem 1.25rem; border-bottom:1px solid var(--gray-100); font-size:.83rem; gap:.5rem; }
+    .budget-row:last-child { border-bottom:none; }
+    .budget-row-label { color:var(--gray-600); }
+    .budget-row-val { font-weight:600; color:var(--gray-900); text-align:right; }
+    .budget-tag { display:inline-block; font-size:.65rem; font-weight:700; padding:.15rem .5rem; border-radius:4px; text-transform:uppercase; letter-spacing:.05em; }
+
+    /* ── ITINERARY ── */
+    .itinerary-tabs { display:flex; gap:0; border:1px solid var(--gray-200); border-radius:8px; overflow:hidden; margin-bottom:1.5rem; width:fit-content; }
+    .itab { padding:.5rem 1.25rem; font-size:.83rem; font-weight:600; color:var(--gray-500); cursor:pointer; background:var(--white); border:none; font-family:inherit; transition:background .12s; }
+    .itab.active { background:var(--gray-900); color:var(--white); }
+    .itab:hover:not(.active) { background:var(--gray-50); }
+    .itinerary-plan { display:none; }
+    .itinerary-plan.active { display:flex; flex-direction:column; gap:0; }
+    .iday { display:flex; gap:0; border-bottom:1px solid var(--gray-100); }
+    .iday:last-child { border-bottom:none; }
+    .iday-num { flex-shrink:0; width:52px; padding:1rem 0; display:flex; flex-direction:column; align-items:center; gap:.3rem; }
+    .iday-circle { width:32px; height:32px; border-radius:50%; background:var(--blue-light); color:var(--blue); display:flex; align-items:center; justify-content:center; font-size:.75rem; font-weight:800; }
+    .iday-line { width:2px; flex:1; background:var(--gray-200); min-height:20px; }
+    .iday:last-child .iday-line { display:none; }
+    .iday-content { flex:1; padding:1rem 0 1rem 1rem; }
+    .iday-title { font-size:.9rem; font-weight:700; color:var(--gray-900); margin-bottom:.35rem; }
+    .iday-body  { font-size:.83rem; color:var(--gray-600); line-height:1.65; }
+    .iday-tags  { display:flex; gap:.4rem; flex-wrap:wrap; margin-top:.5rem; }
+    .iday-tag   { font-size:.68rem; font-weight:600; padding:.18rem .55rem; border-radius:4px; background:var(--gray-100); color:var(--gray-600); }
+
+    /* reviews */
+    .reviews-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:1rem; }
+    .review-card { border:1px solid var(--gray-200); border-radius:10px; padding:1.25rem; }
+    .review-top { display:flex; gap:.75rem; align-items:flex-start; margin-bottom:.75rem; }
+    .review-avatar { width:38px; height:38px; border-radius:50%; background:var(--gray-900); color:var(--white); font-size:.78rem; font-weight:700; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+    .review-name { font-size:.88rem; font-weight:700; color:var(--gray-900); }
+    .review-handle { font-size:.78rem; color:var(--gray-400); }
+    .review-body { font-size:.86rem; color:var(--gray-700); line-height:1.65; }
+    .review-stars { color:#FBBF24; font-size:.85rem; margin-bottom:.3rem; }
+
+    /* dest grid */
+    .dest-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--gray-200); border:1px solid var(--gray-200); border-radius:12px; overflow:hidden; }
+    .dest-card { background:var(--white); padding:1.1rem 1.25rem; text-decoration:none; transition:background .12s; }
+    .dest-card:hover { background:var(--gray-50); }
+    .dest-country { font-size:.72rem; font-weight:600; color:var(--gray-400); text-transform:uppercase; letter-spacing:.06em; margin-bottom:.2rem; }
+    .dest-name { font-size:.95rem; font-weight:700; color:var(--gray-900); margin-bottom:.3rem; }
+    .dest-desc { font-size:.8rem; color:var(--gray-500); line-height:1.5; }
+
+    /* faq */
+    .faq { display:flex; flex-direction:column; }
+    .faq-item { border-bottom:1px solid var(--gray-200); }
+    .faq-q { width:100%; background:none; border:none; cursor:pointer; display:flex; align-items:center; justify-content:space-between; padding:1.1rem 0; gap:1rem; font-family:inherit; }
+    .faq-q-text { font-size:.92rem; font-weight:600; color:var(--gray-900); text-align:left; }
+    .faq-q-num { font-size:.75rem; font-weight:700; color:var(--gray-400); flex-shrink:0; }
+    .faq-toggle { width:22px; height:22px; border-radius:50%; border:1.5px solid var(--gray-300); flex-shrink:0; display:flex; align-items:center; justify-content:center; color:var(--gray-400); font-size:.9rem; transition:all .15s; }
+    .faq-item.open .faq-toggle { background:var(--gray-900); border-color:var(--gray-900); color:var(--white); transform:rotate(45deg); }
+    .faq-a { display:none; padding:0 0 1.1rem; font-size:.875rem; color:var(--gray-600); line-height:1.75; max-width:700px; }
+    .faq-item.open .faq-a { display:block; }
+
+    /* email + cta */
+    .email-band { background:var(--gray-50); border:1px solid var(--gray-200); border-radius:12px; padding:2rem 2.5rem; display:flex; align-items:center; justify-content:space-between; gap:2rem; margin:2rem 0; }
+    .email-band-title { font-size:1rem; font-weight:700; color:var(--gray-900); margin-bottom:.3rem; }
+    .email-band-sub { font-size:.83rem; color:var(--gray-500); }
+    .email-band-form { display:flex; gap:.5rem; flex-shrink:0; }
+    .email-input { border:1px solid var(--gray-300); border-radius:6px; padding:.55rem .9rem; font-family:inherit; font-size:.85rem; color:var(--gray-900); min-width:220px; }
+    .email-input:focus { outline:2px solid var(--blue); border-color:transparent; }
+    .email-submit { background:var(--gray-900); color:var(--white); border:none; cursor:pointer; padding:.55rem 1.2rem; border-radius:6px; font-family:inherit; font-size:.85rem; font-weight:600; transition:background .15s; }
+    .email-submit:hover { background:var(--gray-700); }
+    .cta-section { background:var(--gray-900); border-radius:16px; padding:3rem; text-align:center; margin:3rem 0; }
+    .cta-title { font-size:1.6rem; font-weight:800; color:var(--white); letter-spacing:-.03em; margin-bottom:.6rem; }
+    .cta-sub { font-size:.92rem; color:rgba(255,255,255,.55); margin-bottom:1.75rem; }
+    .cta-btn { display:inline-block; background:var(--blue); color:var(--white); text-decoration:none; padding:.75rem 2rem; border-radius:8px; font-weight:700; font-size:.95rem; transition:background .15s; }
+    .cta-btn:hover { background:var(--blue-dark); }
+    .cta-perks { display:flex; justify-content:center; gap:2rem; margin-top:1.75rem; flex-wrap:wrap; }
+    .cta-perk { font-size:.8rem; color:rgba(255,255,255,.45); display:flex; align-items:center; gap:.4rem; }
+    .cta-perk::before { content:'✓'; color:#4ADE80; font-weight:700; }
+
+    footer { border-top:1px solid var(--gray-200); padding:1.5rem 2rem; display:flex; justify-content:space-between; align-items:center; font-size:.8rem; color:var(--gray-400); }
+    footer a { color:var(--gray-500); text-decoration:none; }
+    footer a:hover { color:var(--gray-900); }
+
+    /* overlays */
+    .overlay { position:fixed; inset:0; z-index:200; display:none; align-items:center; justify-content:center; background:rgba(0,0,0,.4); }
+    .overlay.active { display:flex; }
+    .overlay-modal { background:var(--white); border-radius:14px; padding:1.5rem; box-shadow:0 20px 60px rgba(0,0,0,.25); min-width:280px; }
+    .overlay-title { font-size:.8rem; font-weight:700; color:var(--gray-500); text-transform:uppercase; letter-spacing:.07em; margin-bottom:1rem; }
+    .overlay-actions { display:flex; gap:.5rem; justify-content:flex-end; margin-top:1rem; }
+    .overlay-cancel { background:none; border:1px solid var(--gray-200); border-radius:6px; padding:.45rem .9rem; font-family:inherit; font-size:.85rem; cursor:pointer; color:var(--gray-600); }
+    .overlay-ok { background:var(--blue); color:var(--white); border:none; border-radius:6px; padding:.45rem .9rem; font-family:inherit; font-size:.85rem; font-weight:600; cursor:pointer; }
+    .city-option { display:flex; align-items:center; gap:.6rem; text-align:left; width:100%; background:none; border:1px solid var(--gray-200); border-radius:8px; padding:.65rem .9rem; font-family:inherit; font-size:.88rem; font-weight:500; color:var(--gray-800); cursor:pointer; transition:background .12s; margin-bottom:.4rem; }
+    .city-option:last-child { margin-bottom:0; }
+    .city-option:hover { background:var(--blue-light); border-color:var(--blue-mid); color:var(--blue-dark); }
+    .date-input-field { width:100%; border:1px solid var(--gray-200); border-radius:8px; padding:.65rem .9rem; font-family:inherit; font-size:.95rem; color:var(--gray-900); margin-bottom:0; }
+    .date-input-field:focus { outline:2px solid var(--blue); border-color:transparent; }
+    .pax-row { display:flex; align-items:center; justify-content:space-between; margin-bottom:.85rem; }
+    .pax-row:last-child { margin-bottom:0; }
+    .pax-label { font-size:.9rem; font-weight:600; color:var(--gray-900); }
+    .pax-sublabel { font-size:.75rem; color:var(--gray-400); }
+    .pax-controls { display:flex; align-items:center; gap:.75rem; }
+    .pax-btn { width:30px; height:30px; border-radius:50%; border:1.5px solid var(--gray-300); background:none; cursor:pointer; font-size:1.1rem; color:var(--gray-700); display:flex; align-items:center; justify-content:center; transition:all .12s; font-family:inherit; line-height:1; }
+    .pax-btn:hover:not(:disabled) { border-color:var(--blue); color:var(--blue); }
+    .pax-btn:disabled { opacity:.3; cursor:default; }
+    .pax-count { font-size:1rem; font-weight:700; width:16px; text-align:center; }
+
+    /* ── RESPONSIVE ── */
+    @media(max-width:900px){
+      .score-strip{grid-template-columns:repeat(3,1fr);}
+      .cards-grid-4{grid-template-columns:repeat(2,1fr);}
+      .cards-grid-5{grid-template-columns:repeat(3,1fr);}
+      .area-grid{grid-template-columns:repeat(2,1fr);}
+      .dest-grid{grid-template-columns:repeat(2,1fr);}
+      .map-section{grid-template-columns:1fr;}
+      .budget-grid{grid-template-columns:1fr;}
+      .kbyg-strip{grid-template-columns:repeat(3,1fr);}
+    }
+    @media(max-width:768px){
+      .search-fields{grid-template-columns:1fr 1fr; grid-template-rows:auto auto auto;}
+      .search-field{border-bottom:1px solid var(--gray-200);}
+      .search-field:nth-child(2n){border-right:none;}
+      .search-btn{grid-column:1/-1;justify-content:center;padding:.85rem;border-radius:0 0 9px 9px;}
+    }
+    @media(max-width:640px){
+      .nav{padding:0 1rem;}
+      .page{padding:0 1rem;}
+      .hero{padding:3rem 1rem 0;}
+      .anchor-nav-inner{padding:0 1rem;}
+      .hero-stats{flex-direction:column;gap:0;}
+      .hero-stat{border-right:none;border-bottom:1px solid rgba(255,255,255,.08);padding:.75rem 0 !important;}
+      .score-strip{grid-template-columns:repeat(2,1fr);}
+      .cards-grid-3,.cards-grid-2{grid-template-columns:1fr;}
+      .cards-grid-4{grid-template-columns:1fr;}
+      .area-grid{grid-template-columns:1fr;}
+      .reviews-grid{grid-template-columns:1fr;}
+      .dest-grid{grid-template-columns:1fr;}
+      .email-band{flex-direction:column;align-items:flex-start;}
+      .email-band-form{flex-direction:column;width:100%;}
+      .email-input{min-width:unset;}
+      .kbyg-strip{grid-template-columns:repeat(2,1fr);}
+      .budget-grid{grid-template-columns:1fr;}
+      .itinerary-tabs{flex-wrap:wrap;}
+    }
+  </style>
+</head>
+<body>
+
+<!-- TOP NAV -->
+<nav class="nav">
+  <a class="nav-logo" href="#">Fly<span>Fairly</span></a>
+  <div class="nav-right">
+    <a class="nav-link" href="#">Destinations</a>
+    <a class="nav-link" href="#">Travel Tips</a>
+    <a class="nav-btn" href="#">Search Flights</a>
+  </div>
+</nav>
+
+<!-- ANCHOR NAV -->
+<nav class="anchor-nav" id="anchor-nav">
+  <div class="anchor-nav-inner">
+    <a class="anchor-link" href="#overview"    data-section="overview">Overview</a>
+    <a class="anchor-link" href="#essentials"  data-section="essentials">Essentials</a>
+    <a class="anchor-link" href="#where-to-stay" data-section="where-to-stay">Where to Stay</a>
+    <a class="anchor-link" href="#experiences" data-section="experiences">Experiences</a>
+    <a class="anchor-link" href="#food"        data-section="food">Food</a>
+    <a class="anchor-link" href="#when"        data-section="when">When to Go</a>
+    <a class="anchor-link" href="#budget"      data-section="budget">Budget</a>
+    <a class="anchor-link" href="#itinerary"   data-section="itinerary">Itinerary</a>
+    <a class="anchor-link" href="#getting-around" data-section="getting-around">Getting Around</a>
+    <a class="anchor-link" href="#map"         data-section="map">Map</a>
+    <a class="anchor-link" href="#faq"         data-section="faq">FAQ</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero" id="overview">
+  <div class="hero-inner">
+    <div class="hero-meta">
+      <div class="hero-eyebrow">
+        <span class="hero-eyebrow-dot"></span>
+        Destination Guide · Bali, Indonesia
+      </div>
+      <span class="hero-updated">Last updated June 2026</span>
+    </div>
+    <h1 class="hero-title">Bali — <span class="accent">The Island</span><br>of the Gods</h1>
+    <p class="hero-sub">Everything you need to plan your trip to Bali: the best areas to stay, temples to visit, food to eat, when to go, and how to get around the island like a local.</p>
+
+    <!-- KNOW BEFORE YOU GO QUICK REF -->
+    <div class="kbyg-strip">
+      <div class="kbyg-cell">
+        <div class="kbyg-label">Currency</div>
+        <div class="kbyg-val">IDR (Rupiah)</div>
+      </div>
+      <div class="kbyg-cell">
+        <div class="kbyg-label">Language</div>
+        <div class="kbyg-val">Balinese / Indonesian</div>
+      </div>
+      <div class="kbyg-cell">
+        <div class="kbyg-label">Time zone</div>
+        <div class="kbyg-val">WITA (UTC+8)</div>
+      </div>
+      <div class="kbyg-cell">
+        <div class="kbyg-label">Power plug</div>
+        <div class="kbyg-val">Type C/F · 230V</div>
+      </div>
+      <div class="kbyg-cell">
+        <div class="kbyg-label">Visa</div>
+        <div class="kbyg-val">VoA ~$30 / 30 days</div>
+      </div>
+    </div>
+
+    <div class="hero-chips">
+      <span class="hero-chip">🌴 Tropical paradise</span>
+      <span class="hero-chip">🛕 Ancient Hindu culture</span>
+      <span class="hero-chip">🏄 World-class surf</span>
+      <span class="hero-chip">🍜 Street food heaven</span>
+      <span class="hero-chip">🌿 Rice terrace treks</span>
+      <span class="hero-chip">🤿 Diving &amp; snorkelling</span>
+    </div>
+
+    <!-- SEARCH WIDGET -->
+    <div class="search-widget">
+      <div class="search-widget-label">Search flights to Bali</div>
+      <div class="search-fields">
+        <div class="search-field" onclick="openCityPicker()">
+          <div class="search-field-label">From</div>
+          <div class="search-field-value placeholder" id="sf-from-val">Any city</div>
+        </div>
+        <div class="search-field" style="background:var(--blue-light);border-right:1px solid var(--blue-mid);">
+          <div class="search-field-label" style="color:var(--blue)">To</div>
+          <div class="search-field-value" style="color:var(--blue-dark);font-weight:700;">Bali (DPS)</div>
+        </div>
+        <div class="search-field" onclick="openDatePicker()">
+          <div class="search-field-label">Depart</div>
+          <div class="search-field-value placeholder" id="sf-depart-val">Any dates</div>
+        </div>
+        <div class="search-field" onclick="openPaxPicker()">
+          <div class="search-field-label">Passengers</div>
+          <div class="search-field-value" id="sf-pax-val">1 adult</div>
+        </div>
+        <button class="search-btn" onclick="handleSearch()">
+          <svg width="15" height="15" viewBox="0 0 15 15" fill="none"><circle cx="6.5" cy="6.5" r="5" stroke="white" stroke-width="1.6"/><path d="M10.5 10.5L13.5 13.5" stroke="white" stroke-width="1.6" stroke-linecap="round"/></svg>
+          Search Flights
+        </button>
+      </div>
+      <div class="search-bnpl">
+        <span class="search-bnpl-label">Pay later with:</span>
+        <div class="search-bnpl-chips">
+          <span class="bnpl-pill">Atome</span>
+          <span class="bnpl-pill">Kredivo</span>
+          <span class="bnpl-pill">GrabPay Later</span>
+          <span class="bnpl-pill">Afterpay</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="hero-stat-val">9/10</div>
+        <div class="hero-stat-label">Destination Score</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-val">Apr–Oct</div>
+        <div class="hero-stat-label">Best season to visit</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-val">4M+</div>
+        <div class="hero-stat-label">Annual visitors</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-val">VoA</div>
+        <div class="hero-stat-label">Most nationalities</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="page">
+
+  <!-- DESTINATION SCORE -->
+  <section class="section" id="essentials">
+    <p class="section-eyebrow">Destination Score</p>
+    <h2 class="section-title">Why Bali ranks among Asia's best</h2>
+    <p class="section-sub">Rated across six categories by our editorial team using traveller data and independent research. Last reviewed June 2026.</p>
+    <div class="score-strip">
+      <div class="score-cell"><div class="score-cell-val">9</div><div class="score-cell-label">Culture</div><div class="score-cell-bar"><div class="score-cell-fill" style="width:90%"></div></div></div>
+      <div class="score-cell"><div class="score-cell-val">9</div><div class="score-cell-label">Scenery</div><div class="score-cell-bar"><div class="score-cell-fill" style="width:90%"></div></div></div>
+      <div class="score-cell"><div class="score-cell-val">8</div><div class="score-cell-label">Food</div><div class="score-cell-bar"><div class="score-cell-fill" style="width:80%"></div></div></div>
+      <div class="score-cell"><div class="score-cell-val">8</div><div class="score-cell-label">Value</div><div class="score-cell-bar"><div class="score-cell-fill" style="width:80%"></div></div></div>
+      <div class="score-cell"><div class="score-cell-val">8</div><div class="score-cell-label">Activities</div><div class="score-cell-bar"><div class="score-cell-fill" style="width:80%"></div></div></div>
+      <div class="score-cell"><div class="score-cell-val">7</div><div class="score-cell-label">Accessibility</div><div class="score-cell-bar"><div class="score-cell-fill" style="width:70%"></div></div></div>
+    </div>
+    <div class="callout callout-blue">
+      <div class="callout-icon">✏️</div>
+      <div>
+        <div class="callout-title">Editorial snapshot</div>
+        <div class="callout-body">Bali earns every superlative. The combination of Hindu temple culture, dramatic volcanic landscapes, world-class surf, and some of Southeast Asia's most exciting food makes it genuinely hard to rival. The catch: avoid July, August, and the Christmas–New Year window unless you book everything months in advance. Outside peak season, Bali offers extraordinary variety at a fraction of what you'd pay elsewhere in the world.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHERE TO STAY -->
+  <section class="section" id="where-to-stay">
+    <p class="section-eyebrow">Where to Stay</p>
+    <h2 class="section-title">Bali's best areas — picked for every type of traveller</h2>
+    <p class="section-sub">Each part of Bali has a completely different character. Where you stay shapes your entire trip. Price signals below are per night for a decent mid-range room.</p>
+    <div class="area-grid">
+      <div class="area-card">
+        <div class="area-card-img" style="background:#FEF3C7">🌿</div>
+        <div class="area-card-body">
+          <div class="area-card-name">Ubud</div>
+          <div class="area-card-desc">Bali's cultural heartland. Rice terraces, traditional dance, art galleries, and the island's best cooking classes. Cool, green, inland — ideal for wellness retreats and slow travel.</div>
+          <div class="area-card-footer">
+            <div class="area-card-pills"><span class="pill">Culture</span><span class="pill">Wellness</span><span class="pill">Yoga</span></div>
+            <div><div class="area-price">$35–80</div><div class="area-price-label">/ night</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="area-card">
+        <div class="area-card-img" style="background:#DBEAFE">🏄</div>
+        <div class="area-card-body">
+          <div class="area-card-name">Seminyak &amp; Canggu</div>
+          <div class="area-card-desc">Bali's trendiest coastal strip. Boutique hotels, rooftop bars, world-class surf, and a food scene anchored by independent cafés.</div>
+          <div class="area-card-footer">
+            <div class="area-card-pills"><span class="pill">Surf</span><span class="pill">Nightlife</span><span class="pill">Food</span></div>
+            <div><div class="area-price">$50–150</div><div class="area-price-label">/ night</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="area-card">
+        <div class="area-card-img" style="background:#DCFCE7">🐠</div>
+        <div class="area-card-body">
+          <div class="area-card-name">Uluwatu &amp; Bukit</div>
+          <div class="area-card-desc">Perched on limestone cliffs at the southern tip. Iconic temple, hidden beach coves, and some of the world's best left-hand surf breaks.</div>
+          <div class="area-card-footer">
+            <div class="area-card-pills"><span class="pill">Surf</span><span class="pill">Temples</span><span class="pill">Cliffs</span></div>
+            <div><div class="area-price">$40–120</div><div class="area-price-label">/ night</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="area-card">
+        <div class="area-card-img" style="background:#F3E8FF">🐚</div>
+        <div class="area-card-body">
+          <div class="area-card-name">Nusa Dua &amp; Sanur</div>
+          <div class="area-card-desc">Calm, reef-protected lagoons. The quietest, most resort-oriented part of Bali — great for families wanting a relaxed beach holiday away from the crowds.</div>
+          <div class="area-card-footer">
+            <div class="area-card-pills"><span class="pill">Family</span><span class="pill">Resorts</span><span class="pill">Calm water</span></div>
+            <div><div class="area-price">$60–200</div><div class="area-price-label">/ night</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="area-card">
+        <div class="area-card-img" style="background:#FEE2E2">🌺</div>
+        <div class="area-card-body">
+          <div class="area-card-name">Lovina &amp; North Bali</div>
+          <div class="area-card-desc">Far fewer tourists, entirely different scenery. Black-sand beaches, dolphin-watching at sunrise, Buddhist monasteries, and Bali's best waterfalls.</div>
+          <div class="area-card-footer">
+            <div class="area-card-pills"><span class="pill">Off the beaten track</span><span class="pill">Waterfalls</span></div>
+            <div><div class="area-price">$20–50</div><div class="area-price-label">/ night</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="area-card">
+        <div class="area-card-img" style="background:#ECFCCB">🤿</div>
+        <div class="area-card-body">
+          <div class="area-card-name">Amed &amp; East Bali</div>
+          <div class="area-card-desc">Bali's best diving, including the famous USS Liberty shipwreck. Authentic fishing villages, Mount Agung views, and a pace of life worlds away from Seminyak.</div>
+          <div class="area-card-footer">
+            <div class="area-card-pills"><span class="pill">Diving</span><span class="pill">Shipwreck</span><span class="pill">Volcano views</span></div>
+            <div><div class="area-price">$20–60</div><div class="area-price-label">/ night</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCES -->
+  <section class="section" id="experiences">
+    <p class="section-eyebrow">Top Experiences</p>
+    <h2 class="section-title">What to do in Bali</h2>
+    <p class="section-sub">From sacred ceremonies to surf lessons — these are the experiences that define a Bali trip.</p>
+    <div class="cards-grid cards-grid-4">
+      <div class="card"><div class="card-icon">🛕</div><div class="card-tag tag-amber">Cultural</div><div class="card-title">Tanah Lot Temple</div><div class="card-sub">Bali's most photographed sea temple, perched on a rocky outcrop. Visit at sunset for the full spectacle.</div></div>
+      <div class="card"><div class="card-icon">🌾</div><div class="card-tag tag-green">Nature</div><div class="card-title">Tegallalang Rice Terraces</div><div class="card-sub">UNESCO-recognised subak irrigation system carved into Ubud's hillsides. Most photogenic in the early morning.</div></div>
+      <div class="card"><div class="card-icon">🌋</div><div class="card-tag tag-red">Adventure</div><div class="card-title">Mount Batur Sunrise Trek</div><div class="card-sub">A 2-hour pre-dawn hike to the caldera rim for one of Southeast Asia's great sunrises. Book a guide — the trail splits frequently.</div></div>
+      <div class="card"><div class="card-icon">🐒</div><div class="card-tag tag-amber">Cultural</div><div class="card-title">Uluwatu Kecak Dance</div><div class="card-sub">Nightly fire dance at cliff-top Uluwatu Temple — ancient Hindu epic with dramatic ocean views.</div></div>
+      <div class="card"><div class="card-icon">🤿</div><div class="card-tag tag-blue">Water</div><div class="card-title">USS Liberty Shipwreck</div><div class="card-sub">A WW2 cargo ship off Tulamben — one of the world's top shore dives. Accessible to beginners; extraordinary for experienced divers.</div></div>
+      <div class="card"><div class="card-icon">🏄</div><div class="card-tag tag-blue">Water</div><div class="card-title">Surf Lessons in Kuta</div><div class="card-sub">Kuta's gentle beach break is one of the world's best spots to learn. Lessons run daily; most beginners stand up on day one.</div></div>
+      <div class="card"><div class="card-icon">💆</div><div class="card-tag tag-green">Wellness</div><div class="card-title">Ubud Spa &amp; Yoga</div><div class="card-sub">Bali is Asia's wellness capital. A 90-minute Balinese massage typically costs less than a coffee in London.</div></div>
+      <div class="card"><div class="card-icon">🌊</div><div class="card-tag tag-green">Nature</div><div class="card-title">Sekumpul Waterfall</div><div class="card-sub">Bali's most spectacular waterfall — a cluster of seven cascades deep in the North Bali jungle. Needs a guide to reach.</div></div>
+    </div>
+  </section>
+
+  <!-- FOOD -->
+  <section class="section" id="food">
+    <p class="section-eyebrow">Food &amp; Drink</p>
+    <h2 class="section-title">What to eat in Bali</h2>
+    <p class="section-sub">Balinese food is distinct from the rest of Indonesia — deeply spiced, rich in ceremony, and eaten at every hour of day.</p>
+    <div class="steps">
+      <div class="step"><div class="step-num">01</div><div><div class="step-title">Babi Guling (Suckling Pig)</div><div class="step-body">Bali's most celebrated dish — a whole pig slow-roasted over coconut husks with turmeric, lemongrass, galangal, and shrimp paste. Ibu Oka in Ubud is the most famous spot; arrive before noon as it sells out.</div></div></div>
+      <div class="step"><div class="step-num">02</div><div><div class="step-title">Nasi Campur</div><div class="step-body">Bali's everyday staple — steamed rice served with small portions of multiple dishes: spit-roasted meat, sautéed vegetables, crispy tempeh, sambal, and peanuts. Every warung has its own version.</div></div></div>
+      <div class="step"><div class="step-num">03</div><div><div class="step-title">Bebek Betutu (Slow-Cooked Duck)</div><div class="step-body">Duck marinated in a complex spice paste, wrapped in banana leaves, and slow-cooked for up to 8 hours. A ceremonial dish you'll find at better warungs in Ubud and Seminyak.</div></div></div>
+      <div class="step"><div class="step-num">04</div><div><div class="step-title">Sate Lilit</div><div class="step-body">Uniquely Balinese satay — minced seafood or chicken mixed with shredded coconut and spices, wrapped around lemongrass sticks and grilled. Sold at roadside stalls for pennies; unmissable.</div></div></div>
+      <div class="step"><div class="step-num">05</div><div><div class="step-title">Kopi Bali (Balinese Coffee)</div><div class="step-body">Strong, unfiltered, and served sweet. Bali grows its own arabica in the Kintamani highlands — drink it at a warung above the Tegallalang terraces for the full experience.</div></div></div>
+    </div>
+  </section>
+
+  <!-- WHEN TO GO -->
+  <section class="section" id="when">
+    <p class="section-eyebrow">When to Visit</p>
+    <h2 class="section-title">Best time to go to Bali</h2>
+    <p class="section-sub">Bali has two seasons: dry (April–October) and wet (November–March). The difference in experience — and price — is significant.</p>
+    <table class="month-table">
+      <thead>
+        <tr>
+          <th>Month</th>
+          <th>Season</th>
+          <th>Temp</th>
+          <th>Rainfall</th>
+          <th>Crowds</th>
+          <th>What's happening</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>January</td><td><span class="card-tag tag-blue">Wet</span></td><td><span class="temp-range">27–31°C</span></td><td><div class="rain-dots"><span class="rain-dot on"></span><span class="rain-dot on"></span><span class="rain-dot on"></span><span class="rain-dot on"></span><span class="rain-dot"></span></div></td><td>Low</td><td>Post-holiday lull. Heavy afternoon showers but mornings often clear.</td></tr>
+        <tr><td>February</td><td><span class="card-tag tag-blue">Wet</span></td><td><span class="temp-range">27–31°C</span></td><td><div class="rain-dots"><span class="rain-dot on"></span><span class="rain-dot on"></span><span class="rain-dot on"></span><span class="rain-dot on"></span><span class="rain-dot on"></span></div></td><td>Low</td><td>Lowest prices of the year. Lush landscapes; excellent for waterfalls and rice terraces.</td></tr>
+        <tr><td>March</td><td><span class="card-tag tag-blue">Wet</span></td><td><span class="temp-range">27–31°C</span></td><td><div class="rain-dots"><span class="rain-dot on"></span><span class="rain-dot on"></span><span class="rain-dot on"></span><span class="rain-dot"></span><span class="rain-dot"></span></div></td><td>Low</td><td>Wet season ends. Nyepi (Day of Silence) closes the entire island — a unique experience.</td></tr>
+        <tr><td>April</td><td><span class="card-tag tag-green">Dry</span></td><td><span class="temp-range">26–30°C</span></td><td><div class="rain-dots"><span class="rain-dot on"></span><span class="rain-dot"></span><span class="rain-dot"></span><span class="rain-dot"></span><span class="rain-dot"></span></div></td><td>Medium</td><td>Dry season begins. Good weather, still green from the rains. Excellent value.</td></tr>
+        <tr><td>May</td><td><span class="card-tag tag-green">Dry</span></td><td><span class="temp-range">26–30°C</span></td><td><div class="rain-dots"><span class="rain-dot"></span><span class="rain-dot"></span><span class="rain-dot"></span><span class="rain-dot"></span><span class="rain-dot"></span></div></td><td>Medium</td><td>Peak dry season conditions without peak-season crowds. The sweet spot. ⭐</td></tr>
+        <tr><td>June</td><td><span class="card-tag tag-green">Dry</span></td><td><span class="temp-range">25–29°C</span></td><td><div class="rain-dots"><span class="rain-dot"></span><span class="rain-dot"></span><span class="rain-dot"></span><span class="rain-dot"></span><span class="rain-dot"></span></div></td><td>High</td><td>School holidays begin. Crowds build. Bali Kite Festival fills Sanur beach.</td></tr>
+        <tr><td>July</td><td><span class="card-tag tag-green">Dry</span></td><td><span class="temp-range">24–28°C</span></td><td><div class="rain-dots"><span class="rain-dot"></span><span class="rain-dot"></span><span class="rain-dot"></span><span class="rain-dot"></span><span class="rain-dot"></span></div></td><td>Very high</td><td>Busiest month. Perfect weather, but queues everywhere. Book 8+ weeks ahead.</td></tr>
+        <tr><td>August</td><td><span class="card-tag tag-green">Dry</span></td><td><span class="temp-range">24–28°C</span></td><td><div class="rain-dots"><span class="rain-dot"></span><span class="rain-dot"></span><span class="rain-dot"></span><span class="rain-dot"></span><span class="rain-dot"></span></div></td><td>Very high</td><td>Peak continues. Ideal surf on the south coast. Book everything in advance.</td></tr>
+        <tr><td>September</td><td><span class="card-tag tag-green">Dry</span></td><td><span class="temp-range">25–29°C</span></td><td><div class="rain-dots"><span class="rain-dot"></span><span class="rain-dot"></span><span class="rain-dot"></span><span class="rain-dot"></span><span class="rain-dot"></span></div></td><td>Medium</td><td>Crowds thin as schools return. Dry weather holds. Best value in the dry season. ⭐</td></tr>
+        <tr><td>October</td><td><span class="card-tag tag-green">Dry</span></td><td><span class="temp-range">26–30°C</span></td><td><div class="rain-dots"><span class="rain-dot on"></span><span class="rain-dot"></span><span class="rain-dot"></span><span class="rain-dot"></span><span class="rain-dot"></span></div></td><td>Low–Medium</td><td>Late dry season. Rains can start late month. Comfortable for trekking.</td></tr>
+        <tr><td>November</td><td><span class="card-tag tag-blue">Wet</span></td><td><span class="temp-range">27–31°C</span></td><td><div class="rain-dots"><span class="rain-dot on"></span><span class="rain-dot on"></span><span class="rain-dot on"></span><span class="rain-dot"></span><span class="rain-dot"></span></div></td><td>Low</td><td>Wet season starts. Strong deals, fewer crowds. Good for budget travellers.</td></tr>
+        <tr><td>December</td><td><span class="card-tag tag-blue">Wet</span></td><td><span class="temp-range">27–31°C</span></td><td><div class="rain-dots"><span class="rain-dot on"></span><span class="rain-dot on"></span><span class="rain-dot on"></span><span class="rain-dot on"></span><span class="rain-dot"></span></div></td><td>Very high</td><td>Christmas–New Year surge. Highest prices of the year. Book 12+ weeks out.</td></tr>
+      </tbody>
+    </table>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1rem">
+      <div class="callout callout-green"><div class="callout-icon">⭐</div><div><div class="callout-title">Sweet spot months</div><div class="callout-body">May and September — dry weather, manageable crowds, best value in the dry season window.</div></div></div>
+      <div class="callout callout-amber"><div class="callout-icon">⚠️</div><div><div class="callout-title">Avoid if you hate crowds</div><div class="callout-body">July, August, and December–January. Every beach, temple, and restaurant will be packed and prices spike 40–60%.</div></div></div>
+    </div>
+  </section>
+
+  <!-- DAILY BUDGET -->
+  <section class="section" id="budget">
+    <p class="section-eyebrow">Daily Budget</p>
+    <h2 class="section-title">How much does Bali cost per day?</h2>
+    <p class="section-sub">Bali is excellent value at every budget level. These are realistic daily estimates including accommodation, food, transport, and one paid activity.</p>
+    <div class="budget-grid">
+      <div class="budget-col">
+        <div class="budget-header">
+          <span class="card-tag tag-green" style="margin-bottom:.5rem">Budget</span>
+          <div class="budget-tier">Backpacker</div>
+          <div class="budget-daily">$30–45<span style="font-size:.9rem;font-weight:400;color:var(--gray-400)"> /day</span></div>
+          <div class="budget-daily-sub">Hostel dorm, warungs, scooter</div>
+        </div>
+        <div class="budget-rows">
+          <div class="budget-row"><span class="budget-row-label">Accommodation</span><span class="budget-row-val">$8–15</span></div>
+          <div class="budget-row"><span class="budget-row-label">Food (3 meals)</span><span class="budget-row-val">$8–12</span></div>
+          <div class="budget-row"><span class="budget-row-label">Transport</span><span class="budget-row-val">$3–6</span></div>
+          <div class="budget-row"><span class="budget-row-label">1 activity / entry</span><span class="budget-row-val">$5–10</span></div>
+          <div class="budget-row"><span class="budget-row-label">Drinks / snacks</span><span class="budget-row-val">$3–5</span></div>
+        </div>
+      </div>
+      <div class="budget-col">
+        <div class="budget-header">
+          <span class="card-tag tag-blue" style="margin-bottom:.5rem">Mid-range</span>
+          <div class="budget-tier">Comfortable</div>
+          <div class="budget-daily">$80–130<span style="font-size:.9rem;font-weight:400;color:var(--gray-400)"> /day</span></div>
+          <div class="budget-daily-sub">Boutique hotel, mix of restaurants</div>
+        </div>
+        <div class="budget-rows">
+          <div class="budget-row"><span class="budget-row-label">Accommodation</span><span class="budget-row-val">$40–70</span></div>
+          <div class="budget-row"><span class="budget-row-label">Food (3 meals)</span><span class="budget-row-val">$20–30</span></div>
+          <div class="budget-row"><span class="budget-row-label">Transport</span><span class="budget-row-val">$10–15</span></div>
+          <div class="budget-row"><span class="budget-row-label">1 activity / tour</span><span class="budget-row-val">$15–25</span></div>
+          <div class="budget-row"><span class="budget-row-label">Drinks / snacks</span><span class="budget-row-val">$8–12</span></div>
+        </div>
+      </div>
+      <div class="budget-col">
+        <div class="budget-header">
+          <span class="card-tag tag-purple" style="margin-bottom:.5rem">Luxury</span>
+          <div class="budget-tier">Premium</div>
+          <div class="budget-daily">$250+<span style="font-size:.9rem;font-weight:400;color:var(--gray-400)"> /day</span></div>
+          <div class="budget-daily-sub">Private villa, fine dining, driver</div>
+        </div>
+        <div class="budget-rows">
+          <div class="budget-row"><span class="budget-row-label">Accommodation</span><span class="budget-row-val">$150–400</span></div>
+          <div class="budget-row"><span class="budget-row-label">Food (3 meals)</span><span class="budget-row-val">$50–80</span></div>
+          <div class="budget-row"><span class="budget-row-label">Private driver</span><span class="budget-row-val">$40–60</span></div>
+          <div class="budget-row"><span class="budget-row-label">Activities / spa</span><span class="budget-row-val">$40–80</span></div>
+          <div class="budget-row"><span class="budget-row-label">Drinks / extras</span><span class="budget-row-val">$20–40</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="callout callout-blue" style="margin-top:1rem">
+      <div class="callout-icon">💡</div>
+      <div>
+        <div class="callout-title">Money-saving tip</div>
+        <div class="callout-body">Eat at local warungs (family-run cafés) rather than tourist restaurants and your food costs drop by 60–70%. A full plate of nasi campur costs IDR 20,000–35,000 (~$1.20–2.10). Alcohol is the biggest budget-buster — imported spirits are taxed heavily in Indonesia.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ITINERARY -->
+  <section class="section" id="itinerary">
+    <p class="section-eyebrow">Suggested Itineraries</p>
+    <h2 class="section-title">How to spend your time in Bali</h2>
+    <p class="section-sub">Whether you have 5 days or 10, here's how to make the most of your trip.</p>
+    <div class="itinerary-tabs">
+      <button class="itab active" onclick="switchItinerary('5day', this)">5 Days</button>
+      <button class="itab" onclick="switchItinerary('7day', this)">7 Days</button>
+      <button class="itab" onclick="switchItinerary('10day', this)">10 Days</button>
+    </div>
+
+    <div class="itinerary-plan active" id="itin-5day">
+      <div class="iday"><div class="iday-num"><div class="iday-circle">1</div><div class="iday-line"></div></div><div class="iday-content"><div class="iday-title">Arrive → Seminyak</div><div class="iday-body">Land at Ngurah Rai (DPS), grab a Grab to Seminyak. Check in, shake off the jet lag with a walk along Seminyak Beach, and have your first nasi campur at a warung on Jalan Kayu Aya. Sunset at Ku De Ta or Potato Head.</div><div class="iday-tags"><span class="iday-tag">Arrival</span><span class="iday-tag">Beach</span><span class="iday-tag">Sunset</span></div></div></div>
+      <div class="iday"><div class="iday-num"><div class="iday-circle">2</div><div class="iday-line"></div></div><div class="iday-content"><div class="iday-title">Tanah Lot + Canggu</div><div class="iday-body">Morning at Tanah Lot sea temple — arrive before 9am before the tour groups. Head to Canggu for lunch at one of the cafés on Jalan Batu Bolong. Afternoon surf lesson on Echo Beach. Evening tacos and beers on Jalan Canggu.</div><div class="iday-tags"><span class="iday-tag">Temple</span><span class="iday-tag">Surf</span><span class="iday-tag">Food</span></div></div></div>
+      <div class="iday"><div class="iday-num"><div class="iday-circle">3</div><div class="iday-line"></div></div><div class="iday-content"><div class="iday-title">Drive to Ubud</div><div class="iday-body">Hire a driver for the day (~IDR 500,000). Stop at Tegallalang rice terraces en route. Check in to an Ubud villa, do the Sacred Monkey Forest in the afternoon. Evening: Kecak fire dance at Ubud Palace.</div><div class="iday-tags"><span class="iday-tag">Rice terraces</span><span class="iday-tag">Culture</span><span class="iday-tag">Dance performance</span></div></div></div>
+      <div class="iday"><div class="iday-num"><div class="iday-circle">4</div><div class="iday-line"></div></div><div class="iday-content"><div class="iday-title">Ubud full day</div><div class="iday-body">Morning cooking class (Casa Luna is excellent — book in advance). Afternoon at the Agung Rai Museum of Art. Walk the rice terrace trail at Campuhan Ridge at golden hour. Dinner at Locavore or Naughty Nuri's.</div><div class="iday-tags"><span class="iday-tag">Cooking class</span><span class="iday-tag">Art</span><span class="iday-tag">Trekking</span></div></div></div>
+      <div class="iday"><div class="iday-num"><div class="iday-circle">5</div><div class="iday-line"></div></div><div class="iday-content"><div class="iday-title">Uluwatu → Depart</div><div class="iday-body">Drive south to Uluwatu. Explore the cliffside temple, hike down to Padang Padang Beach. Late afternoon Kecak dance at sunset. Head to the airport from Uluwatu (~45 min to DPS).</div><div class="iday-tags"><span class="iday-tag">Cliffs</span><span class="iday-tag">Temple</span><span class="iday-tag">Departure</span></div></div></div>
+    </div>
+
+    <div class="itinerary-plan" id="itin-7day">
+      <div class="iday"><div class="iday-num"><div class="iday-circle">1</div><div class="iday-line"></div></div><div class="iday-content"><div class="iday-title">Arrive → Seminyak</div><div class="iday-body">Land at DPS, head to Seminyak. Evening walk along the beach, dinner at a warung, sunset drinks on the strip.</div><div class="iday-tags"><span class="iday-tag">Arrival</span><span class="iday-tag">Seminyak</span></div></div></div>
+      <div class="iday"><div class="iday-num"><div class="iday-circle">2</div><div class="iday-line"></div></div><div class="iday-content"><div class="iday-title">Tanah Lot + Canggu</div><div class="iday-body">Tanah Lot at dawn, then a full day in Canggu — surf lesson, café-hopping, evening on the strip.</div><div class="iday-tags"><span class="iday-tag">Temple</span><span class="iday-tag">Surf</span></div></div></div>
+      <div class="iday"><div class="iday-num"><div class="iday-circle">3</div><div class="iday-line"></div></div><div class="iday-content"><div class="iday-title">Uluwatu</div><div class="iday-body">Full day on the Bukit peninsula. Cliff walk, hidden beaches (Nyang Nyang, Thomas Beach), Kecak at sunset from the temple.</div><div class="iday-tags"><span class="iday-tag">Cliffs</span><span class="iday-tag">Hidden beaches</span></div></div></div>
+      <div class="iday"><div class="iday-num"><div class="iday-circle">4</div><div class="iday-line"></div></div><div class="iday-content"><div class="iday-title">Drive to Ubud</div><div class="iday-body">Tegallalang stop en route. Ubud Palace, Sacred Monkey Forest, evening Kecak dance at Ubud.</div><div class="iday-tags"><span class="iday-tag">Rice terraces</span><span class="iday-tag">Culture</span></div></div></div>
+      <div class="iday"><div class="iday-num"><div class="iday-circle">5</div><div class="iday-line"></div></div><div class="iday-content"><div class="iday-title">Ubud: culture + cooking</div><div class="iday-body">Morning cooking class, afternoon at ARMA museum, Campuhan Ridge walk at golden hour.</div><div class="iday-tags"><span class="iday-tag">Cooking class</span><span class="iday-tag">Art</span></div></div></div>
+      <div class="iday"><div class="iday-num"><div class="iday-circle">6</div><div class="iday-line"></div></div><div class="iday-content"><div class="iday-title">Mount Batur sunrise trek</div><div class="iday-body">3am start for the 2-hour hike to the caldera rim. Watch sunrise over the volcano and Lake Batur. Back to Ubud by midday; afternoon spa session to recover.</div><div class="iday-tags"><span class="iday-tag">Volcano</span><span class="iday-tag">Sunrise trek</span><span class="iday-tag">Spa</span></div></div></div>
+      <div class="iday"><div class="iday-num"><div class="iday-circle">7</div><div class="iday-line"></div></div><div class="iday-content"><div class="iday-title">Free day → Depart</div><div class="iday-body">Morning market in Ubud, last meal at your favourite warung, head to DPS for departure.</div><div class="iday-tags"><span class="iday-tag">Market</span><span class="iday-tag">Departure</span></div></div></div>
+    </div>
+
+    <div class="itinerary-plan" id="itin-10day">
+      <div class="iday"><div class="iday-num"><div class="iday-circle">1–2</div><div class="iday-line"></div></div><div class="iday-content"><div class="iday-title">Seminyak &amp; Canggu (2 nights)</div><div class="iday-body">Settle in on the coast. Tanah Lot on day 1, surf lessons and Canggu cafés on day 2. Use these days to adjust to the time zone before heading inland.</div><div class="iday-tags"><span class="iday-tag">Seminyak</span><span class="iday-tag">Canggu</span><span class="iday-tag">Surf</span></div></div></div>
+      <div class="iday"><div class="iday-num"><div class="iday-circle">3</div><div class="iday-line"></div></div><div class="iday-content"><div class="iday-title">Uluwatu day trip</div><div class="iday-body">Hire a driver for the day. Cliff walk, hidden beaches, Kecak at sunset. Return to Seminyak for the night.</div><div class="iday-tags"><span class="iday-tag">Uluwatu</span><span class="iday-tag">Cliffs</span></div></div></div>
+      <div class="iday"><div class="iday-num"><div class="iday-circle">4–6</div><div class="iday-line"></div></div><div class="iday-content"><div class="iday-title">Ubud (3 nights)</div><div class="iday-body">Three full days in Bali's cultural capital. Day 4: arrive via Tegallalang, evening Kecak. Day 5: cooking class, ARMA museum, Campuhan Ridge walk. Day 6: Mount Batur sunrise trek (3am start), afternoon spa.</div><div class="iday-tags"><span class="iday-tag">Culture</span><span class="iday-tag">Cooking</span><span class="iday-tag">Volcano trek</span></div></div></div>
+      <div class="iday"><div class="iday-num"><div class="iday-circle">7–8</div><div class="iday-line"></div></div><div class="iday-content"><div class="iday-title">Amed &amp; East Bali (2 nights)</div><div class="iday-body">Drive east past Mount Agung to Amed. Day 7: snorkel directly from the beach, visit a salt-making village. Day 8: dive the USS Liberty shipwreck at Tulamben — one of the world's great shore dives.</div><div class="iday-tags"><span class="iday-tag">Diving</span><span class="iday-tag">Shipwreck</span><span class="iday-tag">Snorkelling</span></div></div></div>
+      <div class="iday"><div class="iday-num"><div class="iday-circle">9</div><div class="iday-line"></div></div><div class="iday-content"><div class="iday-title">Sekumpul Waterfall, North Bali</div><div class="iday-body">Drive north to Sekumpul — Bali's most spectacular waterfall. Requires a guide and a 30-minute jungle trek, but the payoff is extraordinary. Head south to Lovina or back to south Bali for the final night.</div><div class="iday-tags"><span class="iday-tag">Waterfall</span><span class="iday-tag">North Bali</span></div></div></div>
+      <div class="iday"><div class="iday-num"><div class="iday-circle">10</div><div class="iday-line"></div></div><div class="iday-content"><div class="iday-title">Final day → Depart</div><div class="iday-body">Morning at leisure — a last massage, a final plate of babi guling, one more warung coffee. Head to DPS for departure.</div><div class="iday-tags"><span class="iday-tag">Departure</span></div></div></div>
+    </div>
+  </section>
+
+  <!-- GETTING AROUND -->
+  <section class="section" id="getting-around">
+    <p class="section-eyebrow">Getting Around</p>
+    <h2 class="section-title">Transport in Bali</h2>
+    <p class="section-sub">Bali has no public rail or bus network. Getting around requires planning — but the options are affordable and straightforward.</p>
+    <table class="info-table">
+      <thead><tr><th>Transport</th><th>Best for</th><th>Approx cost</th><th>Notes</th></tr></thead>
+      <tbody>
+        <tr><td>Grab / Gojek</td><td>Short trips in south Bali</td><td>IDR 15,000–60,000</td><td>Cheapest and most transparent. Note: ride-hailing is banned outside the south.</td></tr>
+        <tr><td>Scooter rental</td><td>Ubud, rural areas</td><td>IDR 70,000–100,000 / day</td><td>Most flexible. International driving licence required. Traffic in Canggu can be intense.</td></tr>
+        <tr><td>Private driver</td><td>Full-day tours, north Bali</td><td>IDR 500,000–700,000 / day</td><td>Best value for multi-stop days. Drivers often double as excellent local guides.</td></tr>
+        <tr><td>Metered taxi (Blue Bird)</td><td>Airport, Kuta, Nusa Dua</td><td>IDR 50,000–150,000</td><td>Use Blue Bird only — clearly marked. Avoid unlicensed taxis at the airport.</td></tr>
+        <tr><td>Perama shuttle</td><td>Kuta–Ubud–Lovina routes</td><td>IDR 80,000–150,000</td><td>Tourist shuttle network. Slower but cheap for longer inter-area journeys.</td></tr>
+      </tbody>
+    </table>
+    <ul class="checklist" style="margin-top:1.5rem">
+      <li><span class="check-icon">✓</span>Download Grab and Gojek before arriving — they won't work in Ubud or North Bali but are essential in the south.</li>
+      <li><span class="check-icon">✓</span>Get an Indonesian SIM at the airport (Telkomsel or XL) — data is cheap and Maps/Grab won't work without it.</li>
+      <li><span class="check-icon">✓</span>Traffic around Canggu and Seminyak is severe 4–7pm. Plan your afternoon accordingly.</li>
+      <li><span class="check-icon">✓</span>Ubud to south Bali takes 1.5–2 hours by car — plan day trips with this in mind.</li>
+    </ul>
+  </section>
+
+  <!-- BALI MAP -->
+  <section class="section" id="map">
+    <p class="section-eyebrow">Bali Map</p>
+    <h2 class="section-title">Where things are in Bali</h2>
+    <p class="section-sub">Bali's main areas are spread across the island — this map shows how they relate to each other and the airport.</p>
+    <div class="map-section">
+      <div class="map-wrap">
+        <svg viewBox="0 0 520 380" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;">
+          <defs>
+            <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+              <feDropShadow dx="0" dy="2" stdDeviation="4" flood-opacity="0.12"/>
+            </filter>
+          </defs>
+          <!-- ocean background -->
+          <rect width="520" height="380" fill="#C8E6F5"/>
+          <!-- Bali island shape (simplified polygon) -->
+          <path d="M60,180 Q80,130 130,110 Q180,90 240,85 Q300,80 350,90 Q400,100 430,120 Q460,145 465,170 Q468,190 455,210 Q440,235 410,250 Q380,268 340,272 Q310,276 280,278 Q250,280 220,275 Q185,268 155,258 Q120,244 95,225 Q70,208 60,180Z" fill="#A8D5A2" filter="url(#shadow)"/>
+          <!-- internal terrain suggestion -->
+          <ellipse cx="240" cy="170" rx="80" ry="55" fill="#7CB87A" opacity="0.4"/>
+          <ellipse cx="300" cy="145" rx="35" ry="25" fill="#5A9B57" opacity="0.5"/>
+          <!-- Mount Batur / Agung hills -->
+          <path d="M300,125 L320,100 L340,125Z" fill="#4A8A47" opacity="0.7"/>
+          <path d="M355,120 L375,92 L395,122Z" fill="#3D7A3A" opacity="0.7"/>
+          <!-- Airport -->
+          <rect x="215" y="255" width="30" height="14" rx="3" fill="#374151"/>
+          <text x="230" y="247" text-anchor="middle" font-size="9" fill="#374151" font-family="Inter,sans-serif" font-weight="700">DPS</text>
+          <text x="230" y="280" text-anchor="middle" font-size="7.5" fill="#6B7280" font-family="Inter,sans-serif">Airport</text>
+
+          <!-- Area pins -->
+          <!-- Seminyak/Canggu -->
+          <circle cx="185" cy="235" r="9" fill="#2563EB" id="pin-seminyak"/>
+          <text x="185" y="224" text-anchor="middle" font-size="8.5" fill="#1D4ED8" font-family="Inter,sans-serif" font-weight="700">Seminyak</text>
+          <text x="185" y="214" text-anchor="middle" font-size="7.5" fill="#4B5563" font-family="Inter,sans-serif">/ Canggu</text>
+          <!-- Kuta -->
+          <circle cx="210" cy="248" r="7" fill="#6B7280"/>
+          <text x="198" y="264" text-anchor="middle" font-size="8" fill="#374151" font-family="Inter,sans-serif">Kuta</text>
+          <!-- Uluwatu -->
+          <circle cx="215" cy="300" r="9" fill="#7C3AED" id="pin-uluwatu"/>
+          <text x="215" y="318" text-anchor="middle" font-size="8.5" fill="#6D28D9" font-family="Inter,sans-serif" font-weight="700">Uluwatu</text>
+          <!-- Nusa Dua -->
+          <circle cx="265" cy="295" r="8" fill="#D97706" id="pin-nusadua"/>
+          <text x="265" y="313" text-anchor="middle" font-size="8.5" fill="#B45309" font-family="Inter,sans-serif" font-weight="700">Nusa Dua</text>
+          <!-- Ubud -->
+          <circle cx="280" cy="195" r="10" fill="#16A34A" id="pin-ubud"/>
+          <text x="280" y="183" text-anchor="middle" font-size="9" fill="#15803D" font-family="Inter,sans-serif" font-weight="700">Ubud</text>
+          <!-- Amed -->
+          <circle cx="400" cy="165" r="8" fill="#DC2626" id="pin-amed"/>
+          <text x="400" y="154" text-anchor="middle" font-size="8.5" fill="#B91C1C" font-family="Inter,sans-serif" font-weight="700">Amed</text>
+          <!-- Lovina -->
+          <circle cx="195" cy="120" r="8" fill="#0891B2" id="pin-lovina"/>
+          <text x="195" y="110" text-anchor="middle" font-size="8.5" fill="#0E7490" font-family="Inter,sans-serif" font-weight="700">Lovina</text>
+          <!-- Mount Agung label -->
+          <text x="375" y="90" text-anchor="middle" font-size="8" fill="#374151" font-family="Inter,sans-serif">🌋 Mt Agung</text>
+          <!-- compass -->
+          <text x="480" y="30" font-size="12" fill="#6B7280" font-family="Inter,sans-serif" text-anchor="middle">N</text>
+          <path d="M480,35 L480,48" stroke="#6B7280" stroke-width="1.5" stroke-linecap="round"/>
+          <path d="M476,42 L480,35 L484,42" fill="#6B7280"/>
+          <!-- scale -->
+          <line x1="430" y1="360" x2="490" y2="360" stroke="#374151" stroke-width="1.5"/>
+          <line x1="430" y1="356" x2="430" y2="364" stroke="#374151" stroke-width="1.5"/>
+          <line x1="490" y1="356" x2="490" y2="364" stroke="#374151" stroke-width="1.5"/>
+          <text x="460" y="373" text-anchor="middle" font-size="8" fill="#374151" font-family="Inter,sans-serif">~30 km</text>
+        </svg>
+      </div>
+      <div class="map-legend">
+        <div style="font-size:.75rem;font-weight:700;color:var(--gray-400);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.25rem">Click an area to highlight</div>
+        <div class="legend-item" onclick="highlightArea('seminyak', this)"><div class="legend-dot" style="background:#2563EB"></div><div><div class="legend-name">Seminyak &amp; Canggu</div><div class="legend-tag">West coast · Surf &amp; nightlife · $50–150/night</div></div></div>
+        <div class="legend-item" onclick="highlightArea('uluwatu', this)"><div class="legend-dot" style="background:#7C3AED"></div><div><div class="legend-name">Uluwatu &amp; Bukit</div><div class="legend-tag">South · Cliffs &amp; temples · $40–120/night</div></div></div>
+        <div class="legend-item" onclick="highlightArea('nusadua', this)"><div class="legend-dot" style="background:#D97706"></div><div><div class="legend-name">Nusa Dua &amp; Sanur</div><div class="legend-tag">South-east · Family resorts · $60–200/night</div></div></div>
+        <div class="legend-item" onclick="highlightArea('ubud', this)"><div class="legend-dot" style="background:#16A34A"></div><div><div class="legend-name">Ubud</div><div class="legend-tag">Central · Culture &amp; wellness · $35–80/night</div></div></div>
+        <div class="legend-item" onclick="highlightArea('amed', this)"><div class="legend-dot" style="background:#DC2626"></div><div><div class="legend-name">Amed &amp; East Bali</div><div class="legend-tag">East · Diving &amp; snorkelling · $20–60/night</div></div></div>
+        <div class="legend-item" onclick="highlightArea('lovina', this)"><div class="legend-dot" style="background:#0891B2"></div><div><div class="legend-name">Lovina &amp; North Bali</div><div class="legend-tag">North · Off the beaten track · $20–50/night</div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRACTICAL INFO -->
+  <section class="section">
+    <p class="section-eyebrow">Practical Info</p>
+    <h2 class="section-title">Before you go — Bali essentials</h2>
+    <p class="section-sub">The quick facts every visitor to Bali needs before they land.</p>
+    <div class="cards-grid cards-grid-3">
+      <div class="card"><div class="card-icon">🛂</div><div class="card-tag tag-green">Entry</div><div class="card-title">Visa on Arrival</div><div class="card-sub">Most nationalities receive a 30-day VoA for IDR 500,000 (~$30), extendable once. Apply at the VoA counter before immigration — or use the e-VoA online before departure.</div></div>
+      <div class="card"><div class="card-icon">💱</div><div class="card-tag tag-blue">Money</div><div class="card-title">Indonesian Rupiah (IDR)</div><div class="card-sub">Cash is still king in Bali. Withdraw IDR from ATMs (BCA and BNI charge the lowest fees). Avoid street money changers — use authorised booths at the airport or in town.</div></div>
+      <div class="card"><div class="card-icon">🩺</div><div class="card-tag tag-amber">Health</div><div class="card-title">Health &amp; Safety</div><div class="card-sub">Drink bottled water only. Bali belly is common — avoid ice at street stalls. Dengue fever is present year-round; use mosquito repellent at dusk. Travel insurance is essential.</div></div>
+      <div class="card"><div class="card-icon">🛕</div><div class="card-tag tag-amber">Culture</div><div class="card-title">Temple Etiquette</div><div class="card-sub">A sarong and sash must be worn at all Hindu temples — most loan them free. Always walk clockwise around a temple. Never step on offerings placed on the ground.</div></div>
+      <div class="card"><div class="card-icon">📶</div><div class="card-tag tag-blue">Connectivity</div><div class="card-title">SIM &amp; Internet</div><div class="card-sub">SIM cards sold inside arrivals at DPS. Telkomsel offers the best rural coverage. A 10GB data pack costs ~IDR 50,000 (~$3). Wi-Fi widely available in tourist areas.</div></div>
+      <div class="card"><div class="card-icon">🌡️</div><div class="card-tag tag-green">Climate</div><div class="card-title">Temperature</div><div class="card-sub">Hot and humid year-round, 27–32°C on the coast. Ubud and highlands are cooler at 20–25°C. Pack light clothing, a rain jacket for wet season, and high-SPF sunscreen.</div></div>
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section class="section">
+    <p class="section-eyebrow">Traveller Reviews</p>
+    <h2 class="section-title">What travellers say about Bali</h2>
+    <p class="section-sub">Real experiences from visitors to the island, anchored to specific areas and activities.</p>
+    <div class="reviews-grid">
+      <div class="review-card"><div class="review-top"><div class="review-avatar">SR</div><div><div class="review-name">Sarah R.</div><div class="review-handle">Ubud · 10 days · Solo</div></div></div><div class="review-stars">★★★★★</div><div class="review-body">The cooking class at Casa Luna is worth every rupiah — we spent 4 hours in the market and kitchen and I've cooked the dishes three times since I got home. Go in May; the terraces at Tegallalang are stunning and there's barely a queue.</div></div>
+      <div class="review-card"><div class="review-top"><div class="review-avatar">DT</div><div><div class="review-name">Dylan T.</div><div class="review-handle">Canggu · 2 weeks · With friends</div></div></div><div class="review-stars">★★★★☆</div><div class="review-body">Canggu is genuinely fun but traffic is a nightmare now — get a scooter and avoid the roads between 4 and 7pm. The food scene is world-class at a quarter of European prices. La Brisa at sunset is non-negotiable.</div></div>
+      <div class="review-card"><div class="review-top"><div class="review-avatar">MK</div><div><div class="review-name">Maria K.</div><div class="review-handle">Amed · 1 week · Couple</div></div></div><div class="review-stars">★★★★★</div><div class="review-body">The USS Liberty shipwreck is staggering — we dived it three days in a row and noticed something new each time. Amed itself is quiet, affordable, and the sunrise over Mount Agung from the water is something I will never forget.</div></div>
+      <div class="review-card"><div class="review-top"><div class="review-avatar">JP</div><div><div class="review-name">James P.</div><div class="review-handle">Uluwatu · 5 days · Surf trip</div></div></div><div class="review-stars">★★★★★</div><div class="review-body">Padang Padang during a south swell in September is world-class. The Kecak dance at sunset from the cliff temple is one of those rare travel moments that actually exceeds expectations. Uluwatu is the real Bali.</div></div>
+    </div>
+  </section>
+
+  <!-- NEARBY DESTINATIONS -->
+  <section class="section">
+    <p class="section-eyebrow">Explore More</p>
+    <h2 class="section-title">Destinations near Bali</h2>
+    <p class="section-sub">Bali makes an excellent base for the broader Indonesian archipelago and Southeast Asia.</p>
+    <div class="dest-grid">
+      <a class="dest-card" href="#"><div class="dest-country">Indonesia</div><div class="dest-name">Lombok</div><div class="dest-desc">Bali's quieter neighbour — fewer crowds, same tropical magic, plus the Gili Islands and Mount Rinjani.</div></a>
+      <a class="dest-card" href="#"><div class="dest-country">Indonesia</div><div class="dest-name">Yogyakarta</div><div class="dest-desc">Borobudur, batik, the Prambanan temples, and the real Java — a completely different Indonesia.</div></a>
+      <a class="dest-card" href="#"><div class="dest-country">Indonesia</div><div class="dest-name">Komodo Islands</div><div class="dest-desc">Dragons, pink-sand beaches, and some of Southeast Asia's finest diving. Fly from DPS to Labuan Bajo.</div></a>
+      <a class="dest-card" href="#"><div class="dest-country">Singapore</div><div class="dest-name">Singapore</div><div class="dest-desc">2h 20m from Bali. Efficient stopover hub with world-class food and architecture.</div></a>
+      <a class="dest-card" href="#"><div class="dest-country">Thailand</div><div class="dest-name">Bangkok</div><div class="dest-desc">4h 20m from Bali. Chaotic, golden, and utterly addictive.</div></a>
+      <a class="dest-card" href="#"><div class="dest-country">Indonesia</div><div class="dest-name">Flores</div><div class="dest-desc">Underdeveloped and spectacular — volcanic lakes, traditional villages, and the Komodo gateway.</div></a>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section" id="faq">
+    <p class="section-eyebrow">FAQ</p>
+    <h2 class="section-title">Frequently asked questions about Bali</h2>
+    <div class="faq">
+      <div class="faq-item"><button class="faq-q"><span class="faq-q-num">01</span><span class="faq-q-text">Do I need a visa to visit Bali?</span><span class="faq-toggle">+</span></button><div class="faq-a">Most nationalities receive a Visa on Arrival (VoA) for IDR 500,000 (~$30), valid for 30 days and extendable once. You can also apply for the e-VoA online before travel. Always verify current requirements at imigrasi.go.id.</div></div>
+      <div class="faq-item"><button class="faq-q"><span class="faq-q-num">02</span><span class="faq-q-text">Is Bali safe for solo travellers?</span><span class="faq-toggle">+</span></button><div class="faq-a">Bali is one of Asia's most solo-friendly destinations. Violent crime is rare. Watch for scooter theft (use a chain lock), unlicensed taxi touts at the airport, and street money exchange scams. Solo female travellers report feeling very safe throughout.</div></div>
+      <div class="faq-item"><button class="faq-q"><span class="faq-q-num">03</span><span class="faq-q-text">How much does a trip to Bali cost per day?</span><span class="faq-toggle">+</span></button><div class="faq-a">Budget travellers can get by on $30–45/day (hostel, local food, scooter). A comfortable mid-range trip costs $80–130/day. Luxury villas and private drivers push this to $250+/day. Bali is excellent value across all budget levels compared to Western destinations.</div></div>
+      <div class="faq-item"><button class="faq-q"><span class="faq-q-num">04</span><span class="faq-q-text">Can I drink the tap water in Bali?</span><span class="faq-toggle">+</span></button><div class="faq-a">No. Tap water in Bali is not safe to drink. Use bottled water for drinking and brushing teeth. Most mid-range accommodation provides complimentary refillable bottles — ask at check-in. Avoid ice at street stalls.</div></div>
+      <div class="faq-item"><button class="faq-q"><span class="faq-q-num">05</span><span class="faq-q-text">What should I wear at Balinese temples?</span><span class="faq-toggle">+</span></button><div class="faq-a">A sarong (wraparound skirt) and a sash tied at the waist are required at all Hindu temples. Most temples provide these on loan for free. Cover your shoulders and knees. Never step on temple offerings placed on the ground.</div></div>
+      <div class="faq-item"><button class="faq-q"><span class="faq-q-num">06</span><span class="faq-q-text">How long should I spend in Bali?</span><span class="faq-toggle">+</span></button><div class="faq-a">A week covers the highlights: 3 nights in Ubud and 4 nights on the coast. Two weeks is ideal for adding east Bali diving, north Bali waterfalls, or a side trip to Lombok. Most visitors who stay longer than two weeks say they wished they'd come sooner.</div></div>
+    </div>
+  </section>
+
+  <div class="email-band">
+    <div><div class="email-band-title">Get Bali travel tips by email</div><div class="email-band-sub">Seasonal guides, hidden spots, and practical updates. No spam, unsubscribe anytime.</div></div>
+    <div class="email-band-form"><input class="email-input" type="email" placeholder="your@email.com" /><button class="email-submit">Subscribe</button></div>
+  </div>
+
+  <div class="cta-section">
+    <div class="cta-title">Ready to book your Bali trip?</div>
+    <div class="cta-sub">Compare 18+ airlines to Bali and split your fare with Atome, Kredivo, or GrabPay Later.</div>
+    <a class="cta-btn" href="#">Search Flights to Bali</a>
+    <div class="cta-perks">
+      <span class="cta-perk">Best price guarantee</span>
+      <span class="cta-perk">0% interest BNPL options</span>
+      <span class="cta-perk">Instant e-ticket delivery</span>
+      <span class="cta-perk">24/7 support</span>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <span>© 2026 FlyFairly. All rights reserved. Last updated June 2026.</span>
+  <span><a href="#">Destinations</a> · <a href="#">Book a flight</a> · <a href="#">Contact</a></span>
+</footer>
+
+<!-- OVERLAYS -->
+<div class="overlay" id="city-overlay" onclick="closeOverlay('city-overlay')">
+  <div class="overlay-modal" onclick="event.stopPropagation()">
+    <div class="overlay-title">Where are you flying from?</div>
+    <button class="city-option" onclick="selectCity('Jakarta (CGK)')">🇮🇩 Jakarta (CGK)</button>
+    <button class="city-option" onclick="selectCity('Singapore (SIN)')">🇸🇬 Singapore (SIN)</button>
+    <button class="city-option" onclick="selectCity('Kuala Lumpur (KUL)')">🇲🇾 Kuala Lumpur (KUL)</button>
+    <button class="city-option" onclick="selectCity('Sydney (SYD)')">🇦🇺 Sydney (SYD)</button>
+    <button class="city-option" onclick="selectCity('Bangkok (BKK)')">🇹🇭 Bangkok (BKK)</button>
+    <button class="city-option" onclick="selectCity('Tokyo (NRT)')">🇯🇵 Tokyo (NRT)</button>
+    <button class="city-option" onclick="selectCity('Dubai (DXB)')">🇦🇪 Dubai (DXB)</button>
+    <button class="city-option" onclick="selectCity('Hong Kong (HKG)')">🇭🇰 Hong Kong (HKG)</button>
+    <div class="overlay-actions"><button class="overlay-cancel" onclick="closeOverlay('city-overlay')">Cancel</button></div>
+  </div>
+</div>
+
+<div class="overlay" id="date-overlay" onclick="closeOverlay('date-overlay')">
+  <div class="overlay-modal" onclick="event.stopPropagation()">
+    <div class="overlay-title">Departure date</div>
+    <input class="date-input-field" type="date" id="date-input" />
+    <div class="overlay-actions"><button class="overlay-cancel" onclick="closeOverlay('date-overlay')">Cancel</button><button class="overlay-ok" onclick="confirmDate()">Done</button></div>
+  </div>
+</div>
+
+<div class="overlay" id="pax-overlay" onclick="closeOverlay('pax-overlay')">
+  <div class="overlay-modal" onclick="event.stopPropagation()" style="min-width:300px">
+    <div class="overlay-title">Passengers</div>
+    <div style="margin-bottom:1.25rem">
+      <div class="pax-row"><div><div class="pax-label">Adults</div><div class="pax-sublabel">18+</div></div><div class="pax-controls"><button class="pax-btn" onclick="changePax('adults',-1)" id="adults-minus">−</button><span class="pax-count" id="adults-count">1</span><button class="pax-btn" onclick="changePax('adults',1)">+</button></div></div>
+      <div class="pax-row"><div><div class="pax-label">Children</div><div class="pax-sublabel">2–17</div></div><div class="pax-controls"><button class="pax-btn" onclick="changePax('children',-1)" id="children-minus">−</button><span class="pax-count" id="children-count">0</span><button class="pax-btn" onclick="changePax('children',1)">+</button></div></div>
+      <div class="pax-row"><div><div class="pax-label">Infants</div><div class="pax-sublabel">Under 2</div></div><div class="pax-controls"><button class="pax-btn" onclick="changePax('infants',-1)" id="infants-minus">−</button><span class="pax-count" id="infants-count">0</span><button class="pax-btn" onclick="changePax('infants',1)">+</button></div></div>
+    </div>
+    <div class="overlay-actions"><button class="overlay-cancel" onclick="closeOverlay('pax-overlay')">Cancel</button><button class="overlay-ok" onclick="confirmPax()">Done</button></div>
+  </div>
+</div>
+
+<script>
+  // ── ANCHOR NAV active state ──
+  const sections = document.querySelectorAll('section[id], div[id="overview"]');
+  const anchorLinks = document.querySelectorAll('.anchor-link');
+  const navOffset = 56 + 40;
+  function updateActiveLink() {
+    let current = '';
+    sections.forEach(s => {
+      if (window.scrollY >= s.offsetTop - navOffset) current = s.id;
+    });
+    anchorLinks.forEach(a => {
+      a.classList.toggle('active', a.dataset.section === current);
+    });
+  }
+  window.addEventListener('scroll', updateActiveLink, { passive: true });
+  updateActiveLink();
+
+  // smooth scroll for anchor links
+  anchorLinks.forEach(a => {
+    a.addEventListener('click', e => {
+      e.preventDefault();
+      const target = document.getElementById(a.dataset.section);
+      if (target) window.scrollTo({ top: target.offsetTop - navOffset + 1, behavior: 'smooth' });
+    });
+  });
+
+  // ── FAQ ──
+  document.querySelectorAll('.faq-q').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.closest('.faq-item');
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    });
+  });
+
+  // ── ITINERARY TABS ──
+  function switchItinerary(id, btn) {
+    document.querySelectorAll('.itinerary-plan').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.itab').forEach(t => t.classList.remove('active'));
+    document.getElementById('itin-' + id).classList.add('active');
+    btn.classList.add('active');
+  }
+
+  // ── MAP LEGEND ──
+  function highlightArea(area, el) {
+    document.querySelectorAll('.legend-item').forEach(i => i.classList.remove('active'));
+    el.classList.add('active');
+  }
+
+  // ── SEARCH WIDGET ──
+  let state = { from:'', depart:'', adults:1, children:0, infants:0 };
+  function openCityPicker() { document.getElementById('city-overlay').classList.add('active'); }
+  function selectCity(city) {
+    state.from = city;
+    const el = document.getElementById('sf-from-val');
+    el.textContent = city; el.classList.remove('placeholder');
+    closeOverlay('city-overlay');
+  }
+  function openDatePicker() {
+    const today = new Date().toISOString().split('T')[0];
+    document.getElementById('date-input').min = today;
+    if (state.depart) document.getElementById('date-input').value = state.depart;
+    document.getElementById('date-overlay').classList.add('active');
+  }
+  function confirmDate() {
+    const val = document.getElementById('date-input').value;
+    if (!val) { closeOverlay('date-overlay'); return; }
+    state.depart = val;
+    const d = new Date(val + 'T00:00:00');
+    const el = document.getElementById('sf-depart-val');
+    el.textContent = d.toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'});
+    el.classList.remove('placeholder');
+    closeOverlay('date-overlay');
+  }
+  function openPaxPicker() { updatePaxUI(); document.getElementById('pax-overlay').classList.add('active'); }
+  function changePax(type, delta) {
+    const mins = {adults:1,children:0,infants:0};
+    state[type] = Math.max(mins[type], state[type]+delta);
+    updatePaxUI();
+  }
+  function updatePaxUI() {
+    ['adults','children','infants'].forEach(t => {
+      document.getElementById(t+'-count').textContent = state[t];
+    });
+    document.getElementById('adults-minus').disabled = state.adults <= 1;
+    document.getElementById('children-minus').disabled = state.children <= 0;
+    document.getElementById('infants-minus').disabled = state.infants <= 0;
+  }
+  function confirmPax() {
+    const parts = [];
+    if (state.adults) parts.push(state.adults+' adult'+(state.adults>1?'s':''));
+    if (state.children) parts.push(state.children+' child'+(state.children>1?'ren':''));
+    if (state.infants) parts.push(state.infants+' infant'+(state.infants>1?'s':''));
+    document.getElementById('sf-pax-val').textContent = parts.join(', ');
+    closeOverlay('pax-overlay');
+  }
+  function closeOverlay(id) { document.getElementById(id).classList.remove('active'); }
+  document.addEventListener('keydown', e => {
+    if (e.key==='Escape') ['city-overlay','date-overlay','pax-overlay'].forEach(closeOverlay);
+  });
+  function handleSearch() {
+    if (!state.from) { openCityPicker(); return; }
+    alert('Searching flights from '+state.from+' to Bali (DPS)'+(state.depart?' on '+state.depart:'')+'\n\n(Would navigate to search results on the live site.)');
+  }
+</script>
+</body>
+</html>
