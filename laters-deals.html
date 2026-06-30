@@ -108,69 +108,120 @@
     h3 { font-size:17px; font-weight:700; color:var(--text-1); margin-bottom:.2rem; }
     .intro-para { font-size:15px; color:var(--text-2); line-height:1.7; margin-bottom:1.5rem; max-width:680px; }
 
-    /* ── BNPL provider section — matching laters.com editorial style ── */
-    .bnpl-section { margin-bottom:2.5rem; }
+    /* ── BNPL provider cards — matching laters.com bordered card grid ── */
+    .bnpl-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+      margin-bottom: 1.5rem;
+    }
+    .bnpl-card {
+      border: 1.5px solid #1a1a1a;
+      border-radius: 16px;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+    }
+    .provider-name {
+      font-size: 14px;
+      font-weight: 800;
+      letter-spacing: .5px;
+      text-transform: uppercase;
+      color: var(--text-1);
+      margin-bottom: .6rem;
+    }
+    .provider-plan-badge {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-2);
+      background: #ececec;
+      padding: 4px 12px;
+      border-radius: 100px;
+      margin-bottom: .9rem;
+      width: fit-content;
+    }
+    .provider-hr {
+      border: none;
+      border-top: 1px solid #e2e2e2;
+      margin-bottom: .9rem;
+    }
+    .provider-avail {
+      font-size: 12.5px;
+      color: var(--text-4);
+      line-height: 1.5;
+      margin-bottom: .8rem;
+    }
+    .provider-body {
+      font-size: 13px;
+      color: var(--text-3);
+      line-height: 1.65;
+      margin-bottom: 1rem;
+      flex: 1;
+    }
 
-    /* Provider header: name as h3, tagline as small text, availability italic */
-    .provider-name { font-size:17px; font-weight:700; color:var(--text-1); margin-bottom:2px; }
-    .provider-plan { font-size:13px; font-weight:600; color:var(--brand); display:block; margin-bottom:2px; }
-    .provider-avail { font-size:13px; color:var(--text-4); font-style:italic; display:block; margin-bottom:.75rem; }
-    .provider-body { font-size:15px; color:var(--text-2); line-height:1.7; margin-bottom:1rem; max-width:680px; }
-
-    /* Promo codes list — inline, styled like the Afterpay page's deal list */
-    .promo-codes { margin-bottom:1rem; }
-    .promo-codes-label { font-size:13px; font-weight:700; color:var(--text-1); margin-bottom:.6rem; }
-
-    /* Each promo code row: monospaced code + description on same line */
+    /* Promo codes inside card */
+    .promo-codes { margin-bottom: 1.1rem; }
+    .promo-codes-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .5px;
+      text-transform: uppercase;
+      color: var(--text-4);
+      margin-bottom: .5rem;
+    }
     .promo-code-item {
-      display:flex;
-      align-items:baseline;
-      gap:.75rem;
-      padding:.55rem 0;
-      border-bottom:1px solid var(--border-light);
-      flex-wrap:wrap;
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+      padding: .45rem 0;
+      border-bottom: 1px solid #f0f0f0;
+      flex-wrap: wrap;
     }
-    .promo-code-item:last-child { border-bottom:none; }
-
+    .promo-code-item:last-child { border-bottom: none; }
     .code-token {
-      font-family:'SFMono-Regular','Consolas','Monaco',monospace;
-      font-size:13px;
-      font-weight:700;
-      letter-spacing:.5px;
-      color:var(--text-1);
-      background:#f4f4f4;
-      border:1px solid #e0e0e0;
-      border-radius:var(--radius-sm);
-      padding:3px 10px;
-      white-space:nowrap;
-      flex-shrink:0;
+      font-family: 'SFMono-Regular', 'Consolas', 'Monaco', monospace;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .4px;
+      color: var(--text-1);
+      background: #f4f4f4;
+      border: 1px solid #e0e0e0;
+      border-radius: var(--radius-sm);
+      padding: 2px 8px;
+      white-space: nowrap;
+      flex-shrink: 0;
     }
-    .code-desc { font-size:13px; color:var(--text-3); flex:1; line-height:1.5; }
-    .code-saving { font-size:13px; font-weight:700; color:var(--text-1); white-space:nowrap; margin-left:auto; padding-left:.5rem; }
-    .code-exp { font-size:11px; color:var(--text-5); white-space:nowrap; }
-    .code-exp.urg { color:#b45309; font-weight:500; }
+    .code-desc { font-size: 12px; color: var(--text-3); flex: 1; line-height: 1.45; min-width: 100%; margin-top: 2px; }
+    .code-saving { font-size: 12px; font-weight: 700; color: var(--text-1); white-space: nowrap; }
+    .code-exp { font-size: 10.5px; color: var(--text-5); white-space: nowrap; margin-left: auto; }
+    .code-exp.urg { color: #b45309; font-weight: 500; }
 
     .copy-btn {
-      background:transparent; border:1px solid #ccc; border-radius:var(--radius-sm);
-      padding:2px 8px; font-size:11px; font-weight:500; color:var(--text-4);
-      display:inline-flex; align-items:center; gap:3px; cursor:pointer;
-      transition:border-color .15s, color .15s; white-space:nowrap; flex-shrink:0;
+      background: transparent; border: 1px solid #ccc; border-radius: var(--radius-sm);
+      padding: 2px 7px; font-size: 10.5px; font-weight: 500; color: var(--text-4);
+      display: inline-flex; align-items: center; gap: 3px; cursor: pointer;
+      transition: border-color .15s, color .15s; white-space: nowrap; flex-shrink: 0;
     }
-    .copy-btn:hover { border-color:var(--brand); color:var(--brand); }
-    .copy-btn i { font-size:12px; }
+    .copy-btn:hover { border-color: var(--brand); color: var(--brand); }
+    .copy-btn i { font-size: 11px; }
 
-    /* Provider CTA link — matching laters.com plain link style */
+    /* Provider CTA — solid dark pill matching screenshot */
     .provider-cta {
-      display:inline-flex; align-items:center; gap:5px;
-      font-size:14px; font-weight:600; color:#fff;
-      background:var(--brand); padding:8px 20px; border-radius:6px;
-      text-decoration:none; transition:background .15s; margin-top:.5rem;
+      display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+      font-size: 12.5px; font-weight: 700; letter-spacing: .3px; text-transform: uppercase;
+      color: #fff; background: #2b1a52; padding: 11px 20px; border-radius: 100px;
+      text-decoration: none; transition: background .15s; margin-top: auto;
     }
-    .provider-cta:hover { background:var(--brand-dark); }
-    .provider-cta i { font-size:13px; }
+    .provider-cta:hover { background: var(--brand-dark); }
+    .provider-cta i { font-size: 13px; }
 
-    /* Divider between providers — lighter than section divider */
-    .provider-divider { border:none; border-top:1px solid var(--border); margin:2rem 0; }
+    @media (max-width: 900px) {
+      .bnpl-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 680px) {
+      .bnpl-grid { grid-template-columns: 1fr; }
+    }
 
     /* Callout */
     .callout { background:var(--brand-light); border-left:3px solid var(--brand); border-radius:0 var(--radius) var(--radius) 0; padding:1rem 1.25rem; margin-bottom:1.5rem; }
@@ -347,233 +398,140 @@
     Each BNPL provider on Laters.com has its own exclusive promo codes. Find your provider below, copy the code that fits your route, and enter it at checkout before selecting your instalment plan. The discount is applied to the base fare first — your instalments are calculated on the reduced total.
   </p>
 
-  <!-- ── Atome ── -->
-  <section class="bnpl-section" aria-labelledby="atome-heading">
-    <h3 class="provider-name" id="atome-heading">Atome</h3>
-    <span class="provider-plan">Pay in 3 interest-free</span>
-    <span class="provider-avail">Available in Singapore, Malaysia, Indonesia, Philippines, Thailand, Hong Kong</span>
-    <p class="provider-body">
-      Atome splits your discounted fare into three equal payments over 30 days, with zero interest and no hidden fees. The first instalment is charged at booking; the remaining two follow automatically. Apply a code below before selecting Atome at checkout — the discount reduces the fare before Atome calculates your three payments.
-    </p>
+  <div class="bnpl-grid">
 
-    <div class="promo-codes">
-      <div class="promo-codes-label">Atome promo codes</div>
+    <!-- ── Atome ── -->
+    <div class="bnpl-card" aria-labelledby="atome-heading">
+      <h3 class="provider-name" id="atome-heading">Atome</h3>
+      <span class="provider-plan-badge">Pay in 3 interest-free</span>
+      <hr class="provider-hr" />
+      <p class="provider-avail">Available in Singapore, Malaysia, Thailand, Indonesia, Philippines, Hong Kong</p>
+      <p class="provider-body">
+        Atome splits your discounted fare into three equal payments over 30 days, with zero interest and no hidden fees. The first instalment is charged at booking; the remaining two follow automatically.
+      </p>
 
-      <div class="promo-code-item">
-        <span class="code-token" aria-label="Promo code: ATOME10">ATOME10</span>
-        <span class="code-desc">10% off any flight, all routes, Economy and Business. No minimum spend.</span>
-        <span class="code-saving">−10%</span>
-        <button class="copy-btn" onclick="copyCode('ATOME10',this)" aria-label="Copy ATOME10">
-          <i class="ti ti-copy" aria-hidden="true"></i> Copy
-        </button>
-        <span class="code-exp urg">Expires Jul 6</span>
+      <div class="promo-codes">
+        <div class="promo-codes-label">Atome promo codes</div>
+        <div class="promo-code-item">
+          <span class="code-token" aria-label="Promo code: ATOME10">ATOME10</span>
+          <span class="code-saving">−10%</span>
+          <button class="copy-btn" onclick="copyCode('ATOME10',this)" aria-label="Copy ATOME10">
+            <i class="ti ti-copy" aria-hidden="true"></i> Copy
+          </button>
+          <span class="code-exp urg">Jul 6</span>
+          <span class="code-desc">10% off any flight, all routes. No minimum spend.</span>
+        </div>
+        <div class="promo-code-item">
+          <span class="code-token" aria-label="Promo code: ATOME-SEA">ATOME-SEA</span>
+          <span class="code-saving">−15%</span>
+          <button class="copy-btn" onclick="copyCode('ATOME-SEA',this)" aria-label="Copy ATOME-SEA">
+            <i class="ti ti-copy" aria-hidden="true"></i> Copy
+          </button>
+          <span class="code-exp">Jul 20</span>
+          <span class="code-desc">15% off Southeast Asia routes — direct economy only.</span>
+        </div>
       </div>
 
-      <div class="promo-code-item">
-        <span class="code-token" aria-label="Promo code: ATOME-SEA">ATOME-SEA</span>
-        <span class="code-desc">15% off Southeast Asia routes — Bangkok, Singapore, Kuala Lumpur, Ho Chi Minh City. Direct economy fares only.</span>
-        <span class="code-saving">−15%</span>
-        <button class="copy-btn" onclick="copyCode('ATOME-SEA',this)" aria-label="Copy ATOME-SEA">
-          <i class="ti ti-copy" aria-hidden="true"></i> Copy
-        </button>
-        <span class="code-exp">Expires Jul 20</span>
-      </div>
+      <a href="/en/payment/atome" class="provider-cta">Book with Atome</a>
     </div>
 
-    <a href="/en/payment/atome" class="provider-cta">Book with Atome <i class="ti ti-arrow-right" aria-hidden="true"></i></a>
-  </section>
+    <!-- ── Kredivo ── -->
+    <div class="bnpl-card" aria-labelledby="kredivo-heading">
+      <h3 class="provider-name" id="kredivo-heading">Kredivo Indonesia</h3>
+      <span class="provider-plan-badge">Pay in 3 or 12 months</span>
+      <hr class="provider-hr" />
+      <p class="provider-avail">Available in Indonesia</p>
+      <p class="provider-body">
+        Kredivo offers Indonesian travellers a 0% interest 3-month plan or an extended 12-month plan for larger fares. Approval is based on your Kredivo credit limit and takes seconds at checkout.
+      </p>
 
-  <hr class="provider-divider" />
-
-  <!-- ── Kredivo ── -->
-  <section class="bnpl-section" aria-labelledby="kredivo-heading">
-    <h3 class="provider-name" id="kredivo-heading">Kredivo Indonesia</h3>
-    <span class="provider-plan">Pay in 3 or 12 months</span>
-    <span class="provider-avail">Available in Indonesia</span>
-    <p class="provider-body">
-      Kredivo offers Indonesian travellers a 0% interest 3-month plan or an extended 12-month plan for larger fares. Approval is based on your Kredivo credit limit and takes seconds at checkout. Apply a code below before selecting Kredivo at checkout — the discounted fare is what Kredivo splits into instalments.
-    </p>
-
-    <div class="promo-codes">
-      <div class="promo-codes-label">Kredivo promo codes</div>
-
-      <div class="promo-code-item">
-        <span class="code-token" aria-label="Promo code: KV-DOM150">KV-DOM150</span>
-        <span class="code-desc">IDR 150,000 off any domestic Indonesian route. Minimum fare IDR 500,000. Valid on 3-month 0% plan.</span>
-        <span class="code-saving">−IDR 150rb</span>
-        <button class="copy-btn" onclick="copyCode('KV-DOM150',this)" aria-label="Copy KV-DOM150">
-          <i class="ti ti-copy" aria-hidden="true"></i> Copy
-        </button>
-        <span class="code-exp">Expires Sep 30</span>
+      <div class="promo-codes">
+        <div class="promo-codes-label">Kredivo promo codes</div>
+        <div class="promo-code-item">
+          <span class="code-token" aria-label="Promo code: KV-DOM150">KV-DOM150</span>
+          <span class="code-saving">−IDR 150rb</span>
+          <button class="copy-btn" onclick="copyCode('KV-DOM150',this)" aria-label="Copy KV-DOM150">
+            <i class="ti ti-copy" aria-hidden="true"></i> Copy
+          </button>
+          <span class="code-exp">Sep 30</span>
+          <span class="code-desc">Off any domestic route. Min. fare IDR 500,000.</span>
+        </div>
+        <div class="promo-code-item">
+          <span class="code-token" aria-label="Promo code: KV-NRT38">KV-NRT38</span>
+          <span class="code-saving">IDR 4.2jt</span>
+          <button class="copy-btn" onclick="copyCode('KV-NRT38',this)" aria-label="Copy KV-NRT38">
+            <i class="ti ti-copy" aria-hidden="true"></i> Copy
+          </button>
+          <span class="code-exp urg">2 days</span>
+          <span class="code-desc">38% off Jakarta → Tokyo on Garuda direct.</span>
+        </div>
       </div>
 
-      <div class="promo-code-item">
-        <span class="code-token" aria-label="Promo code: KV-NRT38">KV-NRT38</span>
-        <span class="code-desc">38% off Jakarta → Tokyo (CGK–NRT) on Garuda Indonesia direct. Fare drops from IDR 6.8jt to IDR 4.2jt. Use 3-month plan for IDR 1.4jt per instalment.</span>
-        <span class="code-saving">IDR 4.2jt</span>
-        <button class="copy-btn" onclick="copyCode('KV-NRT38',this)" aria-label="Copy KV-NRT38">
-          <i class="ti ti-copy" aria-hidden="true"></i> Copy
-        </button>
-        <span class="code-exp urg">Expires in 2 days</span>
-      </div>
+      <a href="/en/payment/kredivo" class="provider-cta">Book with Kredivo</a>
     </div>
 
-    <a href="/en/payment/kredivo" class="provider-cta">Book with Kredivo <i class="ti ti-arrow-right" aria-hidden="true"></i></a>
-  </section>
+    <!-- ── Grab ── -->
+    <div class="bnpl-card" aria-labelledby="grab-heading">
+      <h3 class="provider-name" id="grab-heading">Grab</h3>
+      <span class="provider-plan-badge">Pay later via GrabPay</span>
+      <hr class="provider-hr" />
+      <p class="provider-avail">Available in Singapore, Malaysia, Philippines, Thailand, Indonesia, Vietnam</p>
+      <p class="provider-body">
+        GrabPay Later lets you book your flight now and pay within the next billing cycle. No separate sign-up is needed if you have an active GrabPay account. Available on select routes from Singapore and Kuala Lumpur.
+      </p>
 
-  <hr class="provider-divider" />
-
-  <!-- ── Afterpay ── -->
-  <section class="bnpl-section" aria-labelledby="afterpay-heading">
-    <h3 class="provider-name" id="afterpay-heading">Afterpay</h3>
-    <span class="provider-plan">Pay in 4 fortnightly payments</span>
-    <span class="provider-avail">Available in Australia, New Zealand, United States, Canada, United Kingdom</span>
-    <p class="provider-body">
-      Afterpay splits your fare into four equal fortnightly payments with no interest if all payments are made on time. Apply a code below to reduce your fare before Afterpay calculates your four payments — giving you a lower amount per instalment without changing the payment schedule.
-    </p>
-
-    <div class="promo-codes">
-      <div class="promo-codes-label">Afterpay special deals (AUD)</div>
-
-      <div class="promo-code-item">
-        <span class="code-token" aria-label="Promo code: AFTERPAY25">AFTERPAY25</span>
-        <span class="code-desc">AUD 25 off. Minimum purchase AUD 500.</span>
-        <span class="code-saving">−AUD 25</span>
-        <button class="copy-btn" onclick="copyCode('AFTERPAY25',this)" aria-label="Copy AFTERPAY25">
-          <i class="ti ti-copy" aria-hidden="true"></i> Copy
-        </button>
-        <span class="code-exp">No expiry</span>
+      <div class="promo-codes">
+        <div class="promo-codes-label">Grab promo codes</div>
+        <div class="promo-code-item">
+          <span class="code-token" aria-label="Promo code: GRAB10">GRAB10</span>
+          <span class="code-saving">−10%</span>
+          <button class="copy-btn" onclick="copyCode('GRAB10',this)" aria-label="Copy GRAB10">
+            <i class="ti ti-copy" aria-hidden="true"></i> Copy
+          </button>
+          <span class="code-exp">Aug 5</span>
+          <span class="code-desc">10% off select SG and KL routes booked with GrabPay.</span>
+        </div>
       </div>
 
-      <div class="promo-code-item">
-        <span class="code-token" aria-label="Promo code: AFTERPAY50">AFTERPAY50</span>
-        <span class="code-desc">AUD 50 off. Minimum purchase AUD 1,000.</span>
-        <span class="code-saving">−AUD 50</span>
-        <button class="copy-btn" onclick="copyCode('AFTERPAY50',this)" aria-label="Copy AFTERPAY50">
-          <i class="ti ti-copy" aria-hidden="true"></i> Copy
-        </button>
-        <span class="code-exp">No expiry</span>
-      </div>
-
-      <div class="promo-code-item">
-        <span class="code-token" aria-label="Promo code: AFTERPAY100">AFTERPAY100</span>
-        <span class="code-desc">AUD 100 off. Minimum purchase AUD 2,000.</span>
-        <span class="code-saving">−AUD 100</span>
-        <button class="copy-btn" onclick="copyCode('AFTERPAY100',this)" aria-label="Copy AFTERPAY100">
-          <i class="ti ti-copy" aria-hidden="true"></i> Copy
-        </button>
-        <span class="code-exp">No expiry</span>
-      </div>
-
-      <div class="promo-code-item">
-        <span class="code-token" aria-label="Promo code: AFTERPAY200">AFTERPAY200</span>
-        <span class="code-desc">AUD 200 off. Minimum purchase AUD 3,000.</span>
-        <span class="code-saving">−AUD 200</span>
-        <button class="copy-btn" onclick="copyCode('AFTERPAY200',this)" aria-label="Copy AFTERPAY200">
-          <i class="ti ti-copy" aria-hidden="true"></i> Copy
-        </button>
-        <span class="code-exp">No expiry</span>
-      </div>
+      <a href="/en/payment/grab" class="provider-cta">Book with Grab</a>
     </div>
 
-    <div class="promo-codes" style="margin-top:1rem">
-      <div class="promo-codes-label">Afterpay special deals (NZD)</div>
+    <!-- ── Klarna ── -->
+    <div class="bnpl-card" aria-labelledby="klarna-heading">
+      <h3 class="provider-name" id="klarna-heading">Klarna</h3>
+      <span class="provider-plan-badge">Pay in 3 interest-free</span>
+      <hr class="provider-hr" />
+      <p class="provider-avail">Available in UK, Germany, Australia, US, Sweden, and more</p>
+      <p class="provider-body">
+        Klarna's Pay in 3 plan is ideal for European and Australian travellers booking long-haul flights. Klarna runs a soft credit check that does not affect your credit score.
+      </p>
 
-      <div class="promo-code-item">
-        <span class="code-token" aria-label="Promo code: AFTERPAYNZ50">AFTERPAYNZ50</span>
-        <span class="code-desc">NZD 50 off. Minimum purchase NZD 500.</span>
-        <span class="code-saving">−NZD 50</span>
-        <button class="copy-btn" onclick="copyCode('AFTERPAYNZ50',this)" aria-label="Copy AFTERPAYNZ50">
-          <i class="ti ti-copy" aria-hidden="true"></i> Copy
-        </button>
-        <span class="code-exp">No expiry</span>
+      <div class="promo-codes">
+        <div class="promo-codes-label">Klarna promo codes</div>
+        <div class="promo-code-item">
+          <span class="code-token" aria-label="Promo code: KLARNA8">KLARNA8</span>
+          <span class="code-saving">−8%</span>
+          <button class="copy-btn" onclick="copyCode('KLARNA8',this)" aria-label="Copy KLARNA8">
+            <i class="ti ti-copy" aria-hidden="true"></i> Copy
+          </button>
+          <span class="code-exp">Jul 10</span>
+          <span class="code-desc">8% off any eligible flight, base fare only.</span>
+        </div>
+        <div class="promo-code-item">
+          <span class="code-token" aria-label="Promo code: KL-ASIA30">KL-ASIA30</span>
+          <span class="code-saving">−£30</span>
+          <button class="copy-btn" onclick="copyCode('KL-ASIA30',this)" aria-label="Copy KL-ASIA30">
+            <i class="ti ti-copy" aria-hidden="true"></i> Copy
+          </button>
+          <span class="code-exp">Aug 15</span>
+          <span class="code-desc">£30 off UK to Asia routes. Min. fare £250.</span>
+        </div>
       </div>
 
-      <div class="promo-code-item">
-        <span class="code-token" aria-label="Promo code: AFTERPAYNZ100">AFTERPAYNZ100</span>
-        <span class="code-desc">NZD 100 off. Minimum purchase NZD 1,000.</span>
-        <span class="code-saving">−NZD 100</span>
-        <button class="copy-btn" onclick="copyCode('AFTERPAYNZ100',this)" aria-label="Copy AFTERPAYNZ100">
-          <i class="ti ti-copy" aria-hidden="true"></i> Copy
-        </button>
-        <span class="code-exp">No expiry</span>
-      </div>
+      <a href="/en/payment/klarna" class="provider-cta">Book with Klarna</a>
     </div>
 
-    <div class="promo-codes" style="margin-top:1rem">
-      <div class="promo-codes-label">Afterpay special deals (CAD)</div>
-
-      <div class="promo-code-item">
-        <span class="code-token" aria-label="Promo code: AFTERPAYCA25">AFTERPAYCA25</span>
-        <span class="code-desc">CAD 25 off. Minimum purchase CAD 500.</span>
-        <span class="code-saving">−CAD 25</span>
-        <button class="copy-btn" onclick="copyCode('AFTERPAYCA25',this)" aria-label="Copy AFTERPAYCA25">
-          <i class="ti ti-copy" aria-hidden="true"></i> Copy
-        </button>
-        <span class="code-exp">No expiry</span>
-      </div>
-
-      <div class="promo-code-item">
-        <span class="code-token" aria-label="Promo code: AFTERPAYCA50">AFTERPAYCA50</span>
-        <span class="code-desc">CAD 50 off. Minimum purchase CAD 1,000.</span>
-        <span class="code-saving">−CAD 50</span>
-        <button class="copy-btn" onclick="copyCode('AFTERPAYCA50',this)" aria-label="Copy AFTERPAYCA50">
-          <i class="ti ti-copy" aria-hidden="true"></i> Copy
-        </button>
-        <span class="code-exp">No expiry</span>
-      </div>
-
-      <div class="promo-code-item">
-        <span class="code-token" aria-label="Promo code: AFTERPAYCA100">AFTERPAYCA100</span>
-        <span class="code-desc">CAD 100 off. Minimum purchase CAD 2,000.</span>
-        <span class="code-saving">−CAD 100</span>
-        <button class="copy-btn" onclick="copyCode('AFTERPAYCA100',this)" aria-label="Copy AFTERPAYCA100">
-          <i class="ti ti-copy" aria-hidden="true"></i> Copy
-        </button>
-        <span class="code-exp">No expiry</span>
-      </div>
-    </div>
-
-    <a href="/en/payment/afterpay" class="provider-cta" style="margin-top:1rem">Book with Afterpay <i class="ti ti-arrow-right" aria-hidden="true"></i></a>
-  </section>
-
-  <hr class="provider-divider" />
-
-  <!-- ── Klarna ── -->
-  <section class="bnpl-section" aria-labelledby="klarna-heading">
-    <h3 class="provider-name" id="klarna-heading">Klarna</h3>
-    <span class="provider-plan">Pay in 3 · Soft credit check only</span>
-    <span class="provider-avail">Available in UK, Germany, Australia, US, Sweden, and more</span>
-    <p class="provider-body">
-      Klarna's Pay in 3 plan is ideal for European and Australian travellers booking long-haul flights. Klarna runs a soft credit check that does not affect your credit score. Apply a code before selecting Klarna at checkout — the discount reduces the fare first, and Klarna splits the lower total across three payments.
-    </p>
-
-    <div class="promo-codes">
-      <div class="promo-codes-label">Klarna promo codes</div>
-
-      <div class="promo-code-item">
-        <span class="code-token" aria-label="Promo code: KLARNA8">KLARNA8</span>
-        <span class="code-desc">8% off any eligible flight booking. Applies to base fare only, excluding taxes and fees.</span>
-        <span class="code-saving">−8%</span>
-        <button class="copy-btn" onclick="copyCode('KLARNA8',this)" aria-label="Copy KLARNA8">
-          <i class="ti ti-copy" aria-hidden="true"></i> Copy
-        </button>
-        <span class="code-exp">Expires Jul 10</span>
-      </div>
-
-      <div class="promo-code-item">
-        <span class="code-token" aria-label="Promo code: KL-ASIA30">KL-ASIA30</span>
-        <span class="code-desc">£30 off UK to Asia routes — LHR, LGW, MAN, EDI to any Asian destination. Minimum fare £250.</span>
-        <span class="code-saving">−£30</span>
-        <button class="copy-btn" onclick="copyCode('KL-ASIA30',this)" aria-label="Copy KL-ASIA30">
-          <i class="ti ti-copy" aria-hidden="true"></i> Copy
-        </button>
-        <span class="code-exp">Expires Aug 15</span>
-      </div>
-    </div>
-
-    <a href="/en/payment/klarna" class="provider-cta">Book with Klarna <i class="ti ti-arrow-right" aria-hidden="true"></i></a>
-  </section>
+  </div>
 
   <div class="callout" role="note">
     <p><strong>How to apply a promo code:</strong> Search for your flight above, select your fare, and enter your promo code in the "Discount code" field on the payment screen. The discount reduces the fare total before you select your BNPL provider. Only one code can be applied per booking — choose the code matching your payment provider for the biggest combined saving.</p>
